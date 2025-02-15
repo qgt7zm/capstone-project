@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Eric Weng">
+    <meta name="description" content="{% block description %}{% endblock %}">
+    <meta name="keywords" content="gamification,game element,design">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+<nav>
+    <h1>Navigation</h1>
+    <ul>
+        <li>Home</li>
+        <li>Elements</li>
+        <li>Scenarios</li>
+        <li>Resources</li>
+        <li>About</li>
+    </ul>
+</nav>
+
+<hr>
+
+<main>
+    {% block main %}{% endblock %}
+</main>
+
+<hr>
+
+<footer>
+    © 2025 Eric Weng
+</footer>
+</body>
+</html>
