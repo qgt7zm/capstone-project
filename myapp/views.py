@@ -15,3 +15,10 @@ def home(request) -> HttpResponse:
         request,
         "myapp/home.html"
     )
+
+def about(request) -> HttpResponse:
+    return render(
+        request,
+        "myapp/about.html"
+    )
+
