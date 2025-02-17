@@ -22,6 +22,12 @@ def elements(request) -> HttpResponse:
         "myapp/elements.html"
     )
 
+def resources(request) -> HttpResponse:
+    return render(
+        request,
+        "myapp/resources.html"
+    )
+
 def about(request) -> HttpResponse:
     return render(
         request,
