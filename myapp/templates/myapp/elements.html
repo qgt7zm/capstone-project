@@ -1,0 +1,71 @@
+{% extends "myapp/base.html" %}
+
+<!--Metadata-->
+{% block description %}Gamification learning tool game elements{% endblock %}
+{% block title %}Elements – Gamification Learning Tool{% endblock %}
+
+<!--Main Content-->
+{% block main %}
+<h1>Game Elements</h1>
+
+<p>
+    The following game elements are available for you to learn about.
+    Each element has a list of expected learning outcomes and one or more resources
+    where it was referenced.
+    Click on the name of any element to view more information about it.
+</p>
+
+<h2>Search Elements</h2>
+
+<p>Search for Anything:</p>
+
+<form>
+    <div>
+        <label for="any">Any:</label>
+        <input type="text" id="any" name="any">
+    </div>
+    <div>
+        <input type="submit" value="Submit">
+    </div>
+</form>
+
+<p>Filter by Column:</p>
+
+<form>
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+    </div>
+    <div>
+        <label for="effect">Effect:</label>
+        <input type="text" id="effect" name="effect">
+    </div>
+    <div>
+        <label for="resource">Resource:</label>
+        <input type="text" id="resource" name="resource">
+    </div>
+    <div>
+        <input type="submit" value="Submit">
+    </div>
+</form>
+
+<h2>Search Results</h2>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Effects</th>
+        <th>Resources</th>
+    </tr>
+    <tr>
+        <td>Game Element 1</td>
+        <td>[List of Effects]</td>
+        <td>[List of Resources]</td>
+    </tr>
+    <tr>
+        <td>Game Element 2</td>
+        <td>[List of Effects]</td>
+        <td>[List of Resources]</td>
+    </tr>
+</table>
+{% endblock %}

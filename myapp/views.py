@@ -16,6 +16,12 @@ def home(request) -> HttpResponse:
         "myapp/home.html"
     )
 
+def elements(request) -> HttpResponse:
+    return render(
+        request,
+        "myapp/elements.html"
+    )
+
 def about(request) -> HttpResponse:
     return render(
         request,
