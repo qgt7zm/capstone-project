@@ -22,6 +22,12 @@ def elements(request) -> HttpResponse:
         "myapp/elements.html"
     )
 
+def scenarios(request) -> HttpResponse:
+    return render(
+        request,
+        "myapp/scenarios.html"
+    )
+
 def resources(request) -> HttpResponse:
     return render(
         request,

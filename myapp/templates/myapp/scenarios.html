@@ -1,0 +1,73 @@
+{% extends "myapp/base.html" %}
+
+<!--Metadata-->
+{% block description %}Gamification learning tool game elements{% endblock %}
+{% block title %}Elements – Gamification Learning Tool{% endblock %}
+
+<!--Main Content-->
+{% block main %}
+<h1>Scenario Designer</h1>
+
+<p>
+    Scenarios describe different situations in which an instructor wants to gamify
+    a classroom. When you design a new scenario, input your classroom requirements
+    and desired learning outcome, and the website will make the best recommendations
+    for you. Click on the name of a past scenario to view the needs and results.
+</p>
+
+<a href="#">Create Scenario</a>
+
+<h2>Search Scenarios</h2>
+
+<p>Search for Anything:</p>
+
+<form>
+    <div>
+        <label for="any">Any:</label>
+        <input type="text" id="any" name="any">
+    </div>
+    <div>
+        <input type="submit" value="Submit">
+    </div>
+</form>
+
+<p>Filter by Column:</p>
+
+<form>
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+    </div>
+    <div>
+        <label for="need">Need:</label>
+        <input type="text" id="need" name="need">
+    </div>
+    <div>
+        <label for="effect">Effect:</label>
+        <input type="text" id="effect" name="effect">
+    </div>
+    <div>
+        <input type="submit" value="Submit">
+    </div>
+</form>
+
+<h2>Search Results</h2>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Needs</th>
+        <th>Elements</th>
+    </tr>
+    <tr>
+        <td>My Scenario 1</td>
+        <td>[List of Needs]</td>
+        <td>[List of Elements]</td>
+    </tr>
+    <tr>
+        <td>My Scenario 2</td>
+        <td>[List of Needs]</td>
+        <td>[List of Elements]</td>
+    </tr>
+</table>
+{% endblock %}
