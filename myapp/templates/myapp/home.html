@@ -6,19 +6,53 @@
 
 <!--Main Content-->
 {% block main %}
-<h1>Home</h1>
+<div class="my-3">
+    <h1>Home</h1>
+</div>
 
-<h2>Overview</h2>
-<p>
-    Welcome to the gamification learning tool. Here you can learn about
-    gamification and how to apply it in classrooms to achieve different
-    learning effects.
-</p>
-<p>
-    You can also input your classroom needs and the website will design
-    a gamified learning environment to suit you.
-</p>
+<div class="my-3">
+    <h2>Overview</h2>
+    <p>
+        Welcome to the interactive gamification learning tool. Here you can learn about
+        different <a href="{% url 'myapp:elements' %}">game elements</a> and how to apply
+        them to your classroom to achieve desired learning outcomes.
+        If you're feeling adventurous, you can checkout our the list of
+        <a href="{% url 'myapp:resources' %}">resources</a> to read more.
+    </p>
+    <p>
+        Visit the <a href="{% url 'myapp:scenarios' %}">scenario designer</a>
+        to input your classroom needs,
+        and the website will design a gamified learning environment to suit you.
+    </p>
+</div>
 
-<h2>Gamification Benefits</h2>
-<p>[A description of what gamification is and its documented effects.]</p>
+<div class="my-3">
+    <h2>What is Gamification?</h2>
+    <p>
+        Gamification is the application of game elements in non-game contexts.
+    </p>
+    <p>
+        Students today suffer from a lack of motivation and knowledge retention
+        because schools prioritize memorization and standardization over individuality
+        and critical thinking.
+        Additionally, the recent rise of online learning and digital learning software
+        presents additional challenges to both instructors and students.
+        Gamification can help bring the excitement back to learning by giving students
+        to express their creativity and problem without fear of failure.
+    </p>
+    <p>
+        Chances are, you have noticed the rapid spread of gamified software in the past
+        decade, from learning software such as Kahoot! and Duolingo to even lifestyle
+        companions such as Apple Fitness and Habitica.
+        Perhaps you are already utilizing gamification in your classroom.
+    </p>
+    <p>
+        But can gamification <em>really</em> double your productivity?
+        To ensure the best student performance, learning environments need to be
+        carefully crafted to fit student needs.
+        Start leveling up your gamification learning about the different
+        <a href="{% url 'myapp:elements' %}">game elements</a>.
+    </p>
+</div>
+
 {% endblock %}
