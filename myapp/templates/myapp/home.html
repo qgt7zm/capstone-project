@@ -6,11 +6,9 @@
 
 <!--Main Content-->
 {% block main %}
-<div class="my-3">
-    <h1>Home</h1>
-</div>
+<h1>Home</h1>
 
-<div class="my-3">
+<section class="my-4">
     <h2>Overview</h2>
     <p>
         Welcome to the interactive gamification learning tool. Here you can learn about
@@ -24,9 +22,9 @@
         to input your classroom needs,
         and the website will design a gamified learning environment to suit you.
     </p>
-</div>
+</section>
 
-<div class="my-3">
+<section class="my-4">
     <h2>What is Gamification?</h2>
     <p>
         Gamification is the application of game elements in non-game contexts.
@@ -53,6 +51,6 @@
         Start leveling up your gamification learning about the different
         <a href="{% url 'myapp:elements' %}">game elements</a>.
     </p>
-</div>
+</section>
 
 {% endblock %}
