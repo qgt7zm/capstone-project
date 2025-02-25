@@ -1,18 +1,19 @@
 """
 Views for myapp application.
 """
+from django.contrib import messages
 from django.core import serializers
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-from django.shortcuts import render
-from django.urls import reverse
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import redirect, render
 
 import json
 
+from .forms import *
 from .models import *
 
 
 def index(request) -> HttpResponse:
-    return HttpResponseRedirect(reverse("myapp:home"))
+    return redirect("myapp:home")
 
 
 def home(request) -> HttpResponse:
@@ -67,9 +68,34 @@ def data_export(request) -> HttpResponse:
     all_data = []
     for model_class in model_classes:
         model_data = model_class.objects.all().order_by("pk")
+        # Exports to json array
         json_str = serializers.serialize("json", model_data)
         all_data += json.loads(json_str)
     return JsonResponse(all_data, safe=False)  # Need to export array
+
+
+def data_upload(request) -> HttpResponse:
+    if request.method == "POST":
+        form = UploadDataForm(request.POST, request.FILES)
+        if form.is_valid():
+            messages.success(request, "Data uploaded successfully.")
+
+            # Import data from json
+            # Must be a json array
+            file = request.FILES["file"]
+            model_data = serializers.deserialize("json", file)
+            for model_obj in model_data:
+                model_obj.object.save()
+        else:
+            messages.warning(request, "Please select a .json file.")
+        return redirect("myapp:data")
+    else:
+        form = UploadDataForm()
+
+    context = {
+        "form": form,
+    }
+    return render(request, "myapp/data.html", context)
 
 
 def about(request) -> HttpResponse:

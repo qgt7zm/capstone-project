@@ -15,5 +15,6 @@ urlpatterns = [
     path("resources", views.resources, name="resources"),
     path("data", views.data, name="data"),
     path("data/export", views.data_export, name="data_export"),
+    path("data/upload", views.data_upload, name="data_upload"),
     path("about", views.about, name="about"),
 ]

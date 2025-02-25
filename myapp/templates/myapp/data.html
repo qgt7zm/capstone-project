@@ -17,11 +17,38 @@
         of your data. All imported and exported data is stored in JSON format.
     </p>
 
-    <div class="grid gap-3">
+    <div class="grid gap-3 mb-3">
         <a class="btn btn-success" href="{% url 'myapp:data_export' %}">Export Data</a>
-        <a class="btn btn-primary" href="#">Upload Data</a>
+        <a class="btn btn-primary" data-bs-toggle="collapse"
+           href="#uploadCollapse" role="button">Upload Data</a>
         <a class="btn btn-danger" href="#">Delete Data</a>
     </div>
+
+    <div class="collapse mt-3" id="uploadCollapse">
+        <div class="card card-body">
+            <form method="post" action="{% url 'myapp:data_upload' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="file" class="mr-2">Select File:</label>
+                    <input type="file" id="file" name="file" accept=".json">
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary">Confirm Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--Show messages-->
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} mt-3">
+        <strong>{{ message }}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
 </section>
 
 {% endblock %}
