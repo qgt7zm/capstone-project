@@ -11,6 +11,12 @@ import json
 from .forms import *
 from .models import *
 
+model_classes = [
+    Author,
+    Resource,
+    ResourceAuthor,
+]
+
 
 def index(request) -> HttpResponse:
     return redirect("myapp:home")
@@ -58,11 +64,6 @@ def data(request) -> HttpResponse:
 def data_export(request) -> HttpResponse:
     # Export data to json
     # Source: https://docs.djangoproject.com/en/5.1/topics/serialization/
-    model_classes = [
-        Author,
-        Resource,
-        ResourceAuthor,
-    ]
 
     # Combine json arrays
     all_data = []
@@ -78,24 +79,39 @@ def data_upload(request) -> HttpResponse:
     if request.method == "POST":
         form = UploadDataForm(request.POST, request.FILES)
         if form.is_valid():
-            messages.success(request, "Data uploaded successfully.")
+            try:
+                # Import data from json
+                # Must be a json array
+                file = request.FILES["file"]
+                model_data = serializers.deserialize("json", file)
+                for model_obj in model_data:
+                    model_obj.object.save()
 
-            # Import data from json
-            # Must be a json array
-            file = request.FILES["file"]
-            model_data = serializers.deserialize("json", file)
-            for model_obj in model_data:
-                model_obj.object.save()
+                messages.success(request, "Data uploaded successfully.")
+            except serializers.base.DeserializationError:
+                messages.warning(request, "Please use the Django models .json format.")
         else:
             messages.warning(request, "Please select a .json file.")
         return redirect("myapp:data")
-    else:
-        form = UploadDataForm()
 
-    context = {
-        "form": form,
-    }
-    return render(request, "myapp/data.html", context)
+    return redirect("myapp:data")
+
+
+def data_delete(request) -> HttpResponse:
+    if request.method == "POST":
+        print(request.POST)
+        form = DeleteDataForm(request.POST)
+        if form.is_valid():
+            # DANGER: Delete all data
+            for model_class in model_classes:
+                model_class.objects.all().delete()
+
+            messages.success(request, "Data deleted successfully.")
+        else:
+            messages.warning(request, "Please use the button to delete data.")
+        return redirect("myapp:data")
+
+    return redirect("myapp:data")
 
 
 def about(request) -> HttpResponse:

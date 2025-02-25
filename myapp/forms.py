@@ -19,3 +19,14 @@ class UploadDataForm(forms.Form):
             if file_extension != 'json':
                 raise forms.ValidationError("Please upload a .json file.")
         return file
+
+
+class DeleteDataForm(forms.Form):
+    # Delete models from database
+    confirm = forms.CharField(widget=forms.HiddenInput())
+
+    def clean(self):
+        confirm = self.cleaned_data.get('confirm')
+        if confirm != "1":
+            raise forms.ValidationError("Please confirm delete.")
+        return confirm

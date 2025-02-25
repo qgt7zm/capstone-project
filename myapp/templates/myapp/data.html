@@ -19,15 +19,22 @@
 
     <div class="grid gap-3 mb-3">
         <a class="btn btn-success" href="{% url 'myapp:data_export' %}">Export Data</a>
-        <a class="btn btn-primary" data-bs-toggle="collapse"
-           href="#uploadCollapse" role="button">Upload Data</a>
-        <a class="btn btn-danger" href="#">Delete Data</a>
+        <a class="btn btn-primary" href="#uploadCollapse"
+           data-bs-toggle="collapse" role="button">Upload Data</a>
+        <a class="btn btn-danger" href="#deleteCollapse"
+           data-bs-toggle="collapse" role="button">Delete Data</a>
     </div>
 
     <div class="collapse mt-3" id="uploadCollapse">
         <div class="card card-body">
-            <form method="post" action="{% url 'myapp:data_upload' %}" enctype="multipart/form-data">
+            <form method="post" action="{% url 'myapp:data_upload' %}"
+                  enctype="multipart/form-data">
                 {% csrf_token %}
+
+                <p>
+                    This action may overwrite some data in this application.
+                    Backing up the database beforehand is strongly recommended.
+                </p>
 
                 <div class="mb-3">
                     <label for="file" class="mr-2">Select File:</label>
@@ -36,6 +43,25 @@
 
                 <div>
                     <button type="submit" class="btn btn-primary">Confirm Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="collapse mt-3" id="deleteCollapse">
+        <div class="card card-body">
+            <form method="post" action="{% url 'myapp:data_delete' %}">
+                {% csrf_token %}
+
+                <p>
+                    This action will delete all data in this application.
+                    Backing up the database beforehand is strongly recommended.
+                </p>
+
+                <input type="hidden" name="confirm" value="1">
+
+                <div>
+                    <button type="submit" class="btn btn-danger">Confirm Deletion</button>
                 </div>
             </form>
         </div>
