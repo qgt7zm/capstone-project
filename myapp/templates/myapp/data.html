@@ -1,0 +1,27 @@
+{% extends "myapp/base.html" %}
+
+<!--Metadata-->
+{% block description %}Gamification learning tool data management{% endblock %}
+{% block title %}Data – Gamification Learning Tool{% endblock %}
+
+<!--Main Content-->
+{% block main %}
+<h1>Data</h1>
+
+<section class="my-4">
+    <h2>Data Management</h2>
+    <p>
+        All the data on this website is stored locally in an SQLite database.
+        If you are using this site on your own machine, you can upload a custom
+        version of the data to tune the scenario designer, own download a backup
+        of your data. All imported and exported data is stored in JSON format.
+    </p>
+
+    <div class="grid gap-3">
+        <a class="btn btn-success" href="{% url 'myapp:data_export' %}">Export Data</a>
+        <a class="btn btn-primary" href="#">Upload Data</a>
+        <a class="btn btn-danger" href="#">Delete Data</a>
+    </div>
+</section>
+
+{% endblock %}

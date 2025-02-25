@@ -13,5 +13,7 @@ urlpatterns = [
     path("elements", views.elements, name="elements"),
     path("scenarios", views.scenarios, name="scenarios"),
     path("resources", views.resources, name="resources"),
+    path("data", views.data, name="data"),
+    path("data/export", views.data_export, name="data_export"),
     path("about", views.about, name="about"),
 ]
