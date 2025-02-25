@@ -5,7 +5,6 @@ See also: https://docs.djangoproject.com/en/5.1/ref/models/querysets/
 """
 
 from django.db import models
-from django.db.models import Prefetch
 
 
 class Author(models.Model):
@@ -32,7 +31,7 @@ class Resource(models.Model):
     def __str__(self) -> str:
         return f"{self.get_short_title()} {self.get_citation()}"
 
-    def get_short_title(self, max_length: int = 50) -> str:
+    def get_short_title(self, max_length: int = 40) -> str:
         title = str(self.title)
         if len(title) <= max_length:
             return title

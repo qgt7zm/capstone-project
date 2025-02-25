@@ -15,29 +15,32 @@
         The following resources were referenced directly in at least element info page.
     </p>
 
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Authors</th>
-            <th>Date Published</th>
-            <th>Location Published</th>
-            <th>URL</th>
-        </tr>
-        <tr>
-            <td>Resource 1</td>
-            <td>[Authors]</td>
-            <td>[Date]</td>
-            <td>[Location]</td>
-            <td>[URL]</td>
-        </tr>
-        <tr>
-            <td>Resource 2</td>
-            <td>[Authors]</td>
-            <td>[Date]</td>
-            <td>[Location]</td>
-            <td>[URL]</td>
-        </tr>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-bordered border-secondary">
+            <tr>
+                <th>Title</th>
+                <th>Authors</th>
+                <th>Date</th>
+                <th>Publisher</th>
+                <th>URL</th>
+            </tr>
+            {% for resource in resources %}
+            <tr>
+                <td>{{ resource.get_short_title }}</td>
+                <td>
+                    <ul>
+                        {% for author in resource.get_authors %}
+                        <li>{{ author }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>{{ resource.year }}</td>
+                <td></td>
+                <td></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 </section>
 
 <section class="my-4">
@@ -47,29 +50,31 @@
         The following resources were consulted to make this website but not directly referenced.
     </p>
 
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Authors</th>
-            <th>Date Published</th>
-            <th>Location Published</th>
-            <th>URL</th>
-        </tr>
-        <tr>
-            <td>Resource 1</td>
-            <td>[Authors]</td>
-            <td>[Date]</td>
-            <td>[Location]</td>
-            <td>[URL]</td>
-        </tr>
-        <tr>
-            <td>Resource 2</td>
-            <td>[Authors]</td>
-            <td>[Date]</td>
-            <td>[Location]</td>
-            <td>[URL]</td>
-        </tr>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-bordered border-secondary">
+            <tr>
+                <th>Title</th>
+                <th>Authors</th>
+                <th>Date</th>
+                <th>Publisher</th>
+                <th>URL</th>
+            </tr>
+            <tr>
+                <td>Resource 1</td>
+                <td>[Authors]</td>
+                <td>[Date]</td>
+                <td>[Location]</td>
+                <td>[URL]</td>
+            </tr>
+            <tr>
+                <td>Resource 2</td>
+                <td>[Authors]</td>
+                <td>[Date]</td>
+                <td>[Location]</td>
+                <td>[URL]</td>
+            </tr>
+        </table>
+    </div>
 </section>
 
 {% endblock %}
