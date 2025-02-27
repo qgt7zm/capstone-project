@@ -28,6 +28,9 @@ class Resource(models.Model):
     url = models.CharField(max_length=400, blank=True)
     summary = models.TextField(blank=True)
 
+    class Meta:
+        ordering = ["title"]
+
     def __str__(self) -> str:
         return f"{self.get_short_title()} {self.get_citation()}"
 
@@ -65,7 +68,7 @@ class ResourceAuthor(models.Model):
 
     class Meta:
         unique_together = ["resource", "order"]
-        ordering = ["order"]
+        ordering = ["resource__title", "order"]
 
     def __str__(self):
         return f"{self.resource.get_short_title()}, {self.author}, {self.order}"

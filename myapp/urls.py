@@ -13,6 +13,7 @@ urlpatterns = [
     path("elements", views.elements, name="elements"),
     path("scenarios", views.scenarios, name="scenarios"),
     path("resources", views.resources, name="resources"),
+    path("resources/<int:resource_pk>", views.resource_view, name="resource_view"),
     path("data", views.data, name="data"),
     path("data/export", views.data_export, name="data_export"),
     path("data/upload", views.data_upload, name="data_upload"),

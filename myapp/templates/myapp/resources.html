@@ -15,18 +15,21 @@
         The following resources were referenced directly in at least element info page.
     </p>
 
-    <div class="table-responsive">
+    <div class="table-responsive-lg">
         <table class="table table-bordered border-secondary">
             <tr>
-                <th>Title</th>
-                <th>Authors</th>
-                <th>Date</th>
-                <th>Publisher</th>
-                <th>URL</th>
+                <th class="col-4">Title</th>
+                <th class="col-2">Authors</th>
+                <th class="col-1">Year</th>
+                <th class="col-4">Summary</th>
             </tr>
             {% for resource in resources %}
             <tr>
-                <td>{{ resource.get_short_title }}</td>
+                <td>
+                    <a class="text-primary" href="{% url 'myapp:resource_view' resource_pk=resource.pk %}">
+                        {{ resource.title }}
+                    </a>
+                </td>
                 <td>
                     <ul>
                         {% for author in resource.get_authors %}
@@ -35,8 +38,7 @@
                     </ul>
                 </td>
                 <td>{{ resource.year }}</td>
-                <td></td>
-                <td></td>
+                <td>{{ resource.summary }}</td>
             </tr>
             {% endfor %}
         </table>
@@ -53,25 +55,22 @@
     <div class="table-responsive">
         <table class="table table-bordered border-secondary">
             <tr>
-                <th>Title</th>
-                <th>Authors</th>
-                <th>Date</th>
-                <th>Publisher</th>
-                <th>URL</th>
+                <th class="col-4">Title</th>
+                <th class="col-2">Authors</th>
+                <th class="col-1">Year</th>
+                <th class="col">Summary</th>
             </tr>
             <tr>
                 <td>Resource 1</td>
                 <td>[Authors]</td>
                 <td>[Date]</td>
-                <td>[Location]</td>
-                <td>[URL]</td>
+                <td>[Summary]</td>
             </tr>
             <tr>
                 <td>Resource 2</td>
                 <td>[Authors]</td>
                 <td>[Date]</td>
-                <td>[Location]</td>
-                <td>[URL]</td>
+                <td>[Summary]</td>
             </tr>
         </table>
     </div>

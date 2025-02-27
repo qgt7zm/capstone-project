@@ -1,0 +1,42 @@
+{% extends "myapp/base.html" %}
+
+<!--Metadata-->
+{% block description %}Gamification learning tool resource view{% endblock %}
+{% block title %}Resource view – Gamification Learning Tool{% endblock %}
+
+<!--Main Content-->
+{% block main %}
+<h1>Resource Information</h1>
+
+<section class="my-4">
+
+    <h2>Overview</h2>
+
+    <p><strong>Title:</strong> {{ resource.title }}</p>
+    <p><strong>Authors:</strong></p>
+    <ul>
+        {% for author in resource.get_authors %}
+        <li>{{ author }}</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section class="my-4">
+    <h2>Publishing</h2>
+
+    <p><strong>Year:</strong> {{ resource.year }}</p>
+    <p><strong>Location:</strong> {{ resource.publisher }}</p>
+</section>
+
+<section class="my-4">
+    <h2>Additional</h2>
+
+    <p><strong>Summary:</strong> {{ resource.summary }}</p>
+    <p><strong>URL:</strong> {{ resource.url }}</p>
+</section>
+
+<section class="my-4">
+    <a class="btn btn-secondary" href="{% url 'myapp:resources'%}">Back to Resources</a>
+</section>
+
+{% endblock %}

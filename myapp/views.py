@@ -4,7 +4,7 @@ Views for myapp application.
 from django.contrib import messages
 from django.core import serializers
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 import json
 
@@ -50,6 +50,17 @@ def resources(request) -> HttpResponse:
     return render(
         request,
         "myapp/resources.html",
+        context
+    )
+
+
+def resource_view(request, resource_pk: int) -> HttpResponse:
+    context = {
+        "resource": get_object_or_404(Resource, pk=resource_pk)
+    }
+    return render(
+        request,
+        "myapp/resource_view.html",
         context
     )
 
