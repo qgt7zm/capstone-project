@@ -11,12 +11,6 @@ import json
 from .forms import *
 from .models import *
 
-model_classes = [
-    Author,
-    Resource,
-    ResourceAuthor,
-]
-
 
 def index(request) -> HttpResponse:
     return redirect("myapp:home")
@@ -30,9 +24,13 @@ def home(request) -> HttpResponse:
 
 
 def elements(request) -> HttpResponse:
+    context = {
+        "elements": Element.objects.all(),
+    }
     return render(
         request,
-        "myapp/elements.html"
+        "myapp/elements.html",
+        context
     )
 
 

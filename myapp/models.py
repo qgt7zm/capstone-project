@@ -72,3 +72,23 @@ class ResourceAuthor(models.Model):
 
     def __str__(self):
         return f"{self.resource.get_short_title()}, {self.author}, {self.order}"
+
+
+class Element(models.Model):
+    """A game element or mechanic."""
+    name = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+
+    class Meta:
+        ordering = ["name"]
+
+    def __str__(self):
+        return str(self.name)
+
+
+model_classes = [
+    Author,
+    Resource,
+    ResourceAuthor,
+    Element,
+]
