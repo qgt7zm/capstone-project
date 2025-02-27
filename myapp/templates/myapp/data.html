@@ -25,6 +25,7 @@
            data-bs-toggle="collapse" role="button">Delete Data</a>
     </div>
 
+    <!--Collapsible upload section-->
     <div class="collapse mt-3" id="uploadCollapse">
         <div class="card card-body">
             <form method="post" action="{% url 'myapp:data_upload' %}"
@@ -48,6 +49,7 @@
         </div>
     </div>
 
+    <!--Collapsible delete section-->
     <div class="collapse mt-3" id="deleteCollapse">
         <div class="card card-body">
             <form method="post" action="{% url 'myapp:data_delete' %}">

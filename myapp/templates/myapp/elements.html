@@ -54,22 +54,27 @@
 <section class="my-4">
     <h2>Search Results</h2>
 
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Effects</th>
-            <th>Resources</th>
-        </tr>
-        <tr>
-            <td>Game Element 1</td>
-            <td>[List of Effects]</td>
-            <td>[List of Resources]</td>
-        </tr>
-        <tr>
-            <td>Game Element 2</td>
-            <td>[List of Effects]</td>
-            <td>[List of Resources]</td>
-        </tr>
-    </table>
+    <div class="table-responsive-lg">
+        <table class="table table-bordered border-secondary">
+            <tr>
+                <th class="col-1">Name</th>
+                <th class="col-4">Description</th>
+                <th class="col-2">Effects</th>
+                <th class="col-2">Resources</th>
+            </tr>
+            {% for element in elements %}
+            <tr>
+                <td>
+                    <a class="text-primary" href="#">
+                        {{ element.name }}
+                    </a>
+                </td>
+                <td>{{ element.description }}</td>
+                <td>[List of Effects]</td>
+                <td>[List of Resources]</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 </section>
 {% endblock %}
