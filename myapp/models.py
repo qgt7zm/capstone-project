@@ -86,9 +86,22 @@ class Element(models.Model):
         return str(self.name)
 
 
+class Outcome(models.Model):
+    """A student learning outcome."""
+    name = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+
+    class Meta:
+        ordering = ["name"]
+
+    def __str__(self):
+        return str(self.name)
+
+
 model_classes = [
     Author,
     Resource,
     ResourceAuthor,
     Element,
+    Outcome,
 ]
