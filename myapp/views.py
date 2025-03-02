@@ -89,8 +89,36 @@ def scenarios(request) -> HttpResponse:
 
 
 def resources(request) -> HttpResponse:
+    filtered_results = Resource.objects.all()
+
+    # Filter results using form
+    if request.method == "POST":
+        is_any = request.POST.get("is_any", None)
+        if is_any == "1":
+            any_filter = request.POST.get("any", None)
+            filtered_results = (filtered_results.filter(title__icontains=any_filter) |
+                                filtered_results.filter(summary__icontains=any_filter))
+        elif is_any == "0":
+            summary_filter = request.POST.get("title", None)
+            if summary_filter:
+                filtered_results = filtered_results.filter(title__icontains=summary_filter)
+
+            author_filter = request.POST.get("author", None)
+            if author_filter:
+                filtered_results = ((filtered_results.filter(authors__first_name__icontains=author_filter) |
+                                    filtered_results.filter(authors__last_name__icontains=author_filter))
+                                    .distinct())
+
+            year = request.POST.get("year", None)
+            if year:
+                filtered_results = filtered_results.filter(year=year)
+
+            summary_filter = request.POST.get("summary", None)
+            if summary_filter:
+                filtered_results = filtered_results.filter(summary__icontains=summary_filter)
+
     context = {
-        "resources": Resource.objects.all(),
+        "resources": filtered_results
     }
     return render(
         request,
