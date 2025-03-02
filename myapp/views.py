@@ -33,6 +33,16 @@ def elements(request) -> HttpResponse:
         context
     )
 
+def outcomes(request) -> HttpResponse:
+    context = {
+        "outcomes": Outcome.objects.all(),
+    }
+    return render(
+        request,
+        "myapp/outcomes.html",
+        context
+    )
+
 
 def scenarios(request) -> HttpResponse:
     return render(

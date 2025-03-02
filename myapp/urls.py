@@ -11,6 +11,7 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("home", views.home, name="home"),
     path("elements", views.elements, name="elements"),
+    path("outcomes", views.outcomes, name="outcomes"),
     path("scenarios", views.scenarios, name="scenarios"),
     path("resources", views.resources, name="resources"),
     path("resources/<int:resource_pk>", views.resource_view, name="resource_view"),
