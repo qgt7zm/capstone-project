@@ -53,8 +53,26 @@ def elements(request) -> HttpResponse:
 
 
 def outcomes(request) -> HttpResponse:
+    filtered_results = Outcome.objects.all()
+
+    # Filter results using form
+    if request.method == "POST":
+        is_any = request.POST.get("is_any", None)
+        if is_any == "1":
+            any_filter = request.POST.get("any", None)
+            filtered_results = (filtered_results.filter(name__icontains=any_filter) |
+                                filtered_results.filter(description__icontains=any_filter))
+        elif is_any == "0":
+            name_filter = request.POST.get("name", None)
+            if name_filter:
+                filtered_results = filtered_results.filter(name__icontains=name_filter)
+
+            description_filter = request.POST.get("description", None)
+            if description_filter:
+                filtered_results = filtered_results.filter(description__icontains=description_filter)
+
     context = {
-        "outcomes": Outcome.objects.all(),
+        "outcomes": filtered_results,
     }
     return render(
         request,
