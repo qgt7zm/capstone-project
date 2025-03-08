@@ -61,7 +61,7 @@ class Resource(models.Model):
 
 
 class ResourceAuthor(models.Model):
-    """Describe which authors wrote which resources."""
+    """Describes which authors wrote which resources."""
     resource = models.ForeignKey(Resource, on_delete=models.CASCADE)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     order = models.PositiveIntegerField()
@@ -98,10 +98,43 @@ class Outcome(models.Model):
         return str(self.name)
 
 
+class Result(models.Model):
+    """The result of a gamification study."""
+
+    class ResultRatings(models.IntegerChoices):
+        VERY_POSITIVE = 2, "Very Positive"
+        SOMEWHAT_POSITIVE = 1, "Somewhat Positive"
+        NEUTRAL = 0, "Neutral"
+        SOMEWHAT_NEGATIVE = -1, "Somewhat Negative"
+        VERY_NEGATIVE = -2, "Very Negative"
+
+    class AgeGroups(models.IntegerChoices):
+        ELEMENTARY = 0, "Elementary School (K-5)"
+        MIDDLE = 1, "Middle School (6-8)"
+        HIGH = 2, "High School (9-12)"
+        UNDERGRAD = 3, "Undergraduate"
+        GRADUATE = 4, "Graduate"
+        OTHER = 5, "Other"
+
+    resource = models.ForeignKey(Resource, on_delete=models.CASCADE)
+    elements = models.ManyToManyField(Element, related_name="results")
+    outcomes = models.ManyToManyField(Outcome, related_name="results")
+    rating = models.IntegerField(choices=ResultRatings)
+    age_group = models.IntegerField(choices=AgeGroups)
+    sample_size = models.PositiveIntegerField()
+
+    class Meta:
+        ordering = ["resource__title"]
+
+    def __str__(self):
+        return f"{self.resource.get_citation()} result, {self.rating}, {self.age_group}, {self.sample_size}"
+
+
 model_classes = [
     Author,
     Resource,
     ResourceAuthor,
     Element,
     Outcome,
+    Result,
 ]
