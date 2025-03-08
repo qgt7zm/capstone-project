@@ -67,15 +67,27 @@
             <tr>
                 <th class="col-1">Name</th>
                 <th class="col-4">Description</th>
-                <th class="col-2">Effects</th>
+                <th class="col-2">Outcomes</th>
                 <th class="col-2">Resources</th>
             </tr>
             {% for element in elements %}
             <tr>
                 <td>{{ element.name }}</td>
                 <td>{{ element.description }}</td>
-                <td>[List of Effects]</td>
-                <td>[List of Resources]</td>
+                <td>
+                    <ul>
+                        {% for outcome in element.get_outcomes %}
+                        <li>{{ outcome }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        {% for resource in element.get_resources %}
+                        <li>{{ resource.get_citation }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
             </tr>
             {% endfor %}
         </table>

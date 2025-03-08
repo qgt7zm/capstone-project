@@ -82,6 +82,16 @@ class Element(models.Model):
     class Meta:
         ordering = ["name"]
 
+    def get_outcomes(self) -> list[Resource]:
+        outcome_pks = (Result.objects.filter(elements__in=[self])
+                       .values("outcomes").distinct())
+        return list(Outcome.objects.filter(pk__in=outcome_pks))
+
+    def get_resources(self) -> list[Resource]:
+        resource_pks = (Result.objects.filter(elements__in=[self])
+                        .values("resource").distinct())
+        return list(Resource.objects.filter(pk__in=resource_pks))
+
     def __str__(self):
         return str(self.name)
 
