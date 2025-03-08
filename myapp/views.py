@@ -128,8 +128,12 @@ def resources(request) -> HttpResponse:
 
 
 def resource_view(request, resource_pk: int) -> HttpResponse:
+    resource = get_object_or_404(Resource, pk=resource_pk)
+    results = Result.objects.filter(resource=resource)
+
     context = {
-        "resource": get_object_or_404(Resource, pk=resource_pk)
+        "resource": get_object_or_404(Resource, pk=resource_pk),
+        "results": results,
     }
     return render(
         request,

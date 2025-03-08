@@ -31,9 +31,6 @@ class Resource(models.Model):
     class Meta:
         ordering = ["title"]
 
-    def __str__(self) -> str:
-        return f"{self.get_short_title()} {self.get_citation()}"
-
     def get_short_title(self, max_length: int = 40) -> str:
         title = str(self.title)
         if len(title) <= max_length:
@@ -49,7 +46,7 @@ class Resource(models.Model):
     def get_citation(self) -> str:
         authors = self.get_authors()
         if len(authors) == 0:
-            authors_str = f'"{self.title}"'
+            authors_str = f'"{self.get_short_title()}"'
         elif len(authors) == 1:
             authors_str = authors[0].last_name
         elif len(authors) == 2:
@@ -58,6 +55,9 @@ class Resource(models.Model):
             authors_str = f"{authors[0].last_name} et al."
 
         return f"({authors_str}, {self.year})"
+
+    def __str__(self) -> str:
+        return f"{self.get_short_title()} {self.get_citation()}"
 
 
 class ResourceAuthor(models.Model):
@@ -126,8 +126,20 @@ class Result(models.Model):
     class Meta:
         ordering = ["resource__title"]
 
+    def get_elements(self) -> str:
+        return ", ".join([element.name for element in self.elements.all()])
+
+    def get_outcomes(self) -> str:
+        return ", ".join([outcomes.name for outcomes in self.outcomes.all()])
+
+    def get_rating(self) -> str:
+        return str(Result.ResultRatings(self.rating).label)
+
+    def get_age_group(self) -> str:
+        return str(Result.AgeGroups(self.age_group).label)
+
     def __str__(self):
-        return f"{self.resource.get_citation()} result, {self.rating}, {self.age_group}, {self.sample_size}"
+        return f"{self.resource.get_citation()}, {self.get_rating()}, {self.get_age_group()}, {self.sample_size}"
 
 
 model_classes = [

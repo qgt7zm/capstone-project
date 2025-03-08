@@ -26,13 +26,35 @@
 
     <p><strong>Year:</strong> {{ resource.year }}</p>
     <p><strong>Location:</strong> {{ resource.publisher }}</p>
+    <p><strong>URL:</strong> {{ resource.url }}</p>
 </section>
 
 <section class="my-4">
-    <h2>Additional</h2>
+    <h2>Results</h2>
 
     <p><strong>Summary:</strong> {{ resource.summary }}</p>
-    <p><strong>URL:</strong> {{ resource.url }}</p>
+    <p><strong>Results:</strong></p>
+
+    <div class="table-responsive-lg">
+        <table class="table table-bordered border-secondary">
+            <tr>
+                <th class="col-1">Elements</th>
+                <th class="col-1">Outcomes</th>
+                <th class="col-1">Rating</th>
+                <th class="col-1">Age Group</th>
+                <th class="col-1">Sample Size</th>
+            </tr>
+            {% for result in results %}
+            <tr>
+                <td>{{ result.get_elements }}</td>
+                <td>{{ result.get_outcomes }}</td>
+                <td>{{ result.get_rating }}</td>
+                <td>{{ result.get_age_group }}</td>
+                <td>{{ result.sample_size }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 </section>
 
 <section class="my-4">
