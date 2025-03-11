@@ -143,6 +143,7 @@ def resources(request) -> HttpResponse:
             for i, author in enumerate(authors):
                 ResourceAuthor.objects.create(resource=resource, author=author, order=i)
 
+    # TODO order by citation
     context = {
         "resources": filtered_results
     }
@@ -155,8 +156,45 @@ def resources(request) -> HttpResponse:
 
 def resource_view(request, resource_pk: int) -> HttpResponse:
     resource = get_object_or_404(Resource, pk=resource_pk)
-    results = Result.objects.filter(resource=resource)
 
+    if request.method == "POST":
+        form_action = request.POST.get("action", None)
+        if form_action == "add_result":
+            # Add Result
+            element_names = request.POST.getlist("elements")
+            elements = Element.objects.filter(name__in=element_names)
+            outcome_names = request.POST.getlist("outcomes")
+            outcomes = Outcome.objects.filter(name__in=outcome_names)
+
+            rating_label = request.POST.get("rating")
+            rating = None
+            for val, label in Result.ResultRatings.choices:
+                if rating_label == label:
+                    rating = val
+
+            subject_label = request.POST.get("subject")
+            subject = None
+            for val, label in Result.Subjects.choices:
+                if subject_label == label:
+                    subject = val
+
+            age_group_label = request.POST.get("age_group")
+            age_group = None
+            for val, label in Result.AgeGroups.choices:
+                if age_group_label == label:
+                    age_group = val
+
+            sample_size = request.POST.get("sample_size")
+
+            result = Result.objects.create(
+                resource=resource,
+                rating=rating, subject=subject, age_group=age_group,
+                sample_size=sample_size
+            )
+            result.elements.set(elements)
+            result.outcomes.set(outcomes),
+
+    results = Result.objects.filter(resource=resource)
     context = {
         "resource": resource,
         "results": results,
@@ -169,9 +207,28 @@ def resource_view(request, resource_pk: int) -> HttpResponse:
 
 
 def add_resource(request) -> HttpResponse:
+    # TODO messages
     return render(
         request,
         "myapp/add_resource.html"
+    )
+
+
+def add_result(request, resource_pk: int) -> HttpResponse:
+    # TODO messages
+    resource = get_object_or_404(Resource, pk=resource_pk)
+    context = {
+        "resource": resource,
+        "element_choices": [element.name for element in Element.objects.all()],
+        "outcome_choices": [outcome.name for outcome in Outcome.objects.all()],
+        "rating_choices": Result.ResultRatings.labels,
+        "subject_choices": Result.Subjects.labels,
+        "age_group_choices": Result.AgeGroups.labels,
+    }
+    return render(
+        request,
+        "myapp/add_result.html",
+        context
     )
 
 

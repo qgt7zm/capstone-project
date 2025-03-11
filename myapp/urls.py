@@ -16,6 +16,7 @@ urlpatterns = [
     path("resources", views.resources, name="resources"),
     path("resources/<int:resource_pk>", views.resource_view, name="resource_view"),
     path("resources/add", views.add_resource, name="add_resource"),
+    path("resources/<int:resource_pk>/add_result", views.add_result, name="add_result"),
     path("data", views.data, name="data"),
     path("data/export", views.data_export, name="data_export"),
     path("data/upload", views.data_upload, name="data_upload"),

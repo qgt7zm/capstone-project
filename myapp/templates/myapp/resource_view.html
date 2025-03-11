@@ -43,8 +43,8 @@
             <tr>
                 <th class="col-1">Elements</th>
                 <th class="col-1">Outcomes</th>
-                <th class="col-1">Subject</th>
                 <th class="col-1">Rating</th>
+                <th class="col-1">Subject</th>
                 <th class="col-1">Age Group</th>
                 <th class="col-1">Sample Size</th>
             </tr>
@@ -52,8 +52,8 @@
             <tr>
                 <td>{{ result.get_elements }}</td>
                 <td>{{ result.get_outcomes }}</td>
-                <td>{{ result.get_subject }}</td>
                 <td>{{ result.get_rating }}</td>
+                <td>{{ result.get_subject }}</td>
                 <td>{{ result.get_age_group }}</td>
                 <td>{{ result.sample_size }}</td>
             </tr>
@@ -61,7 +61,7 @@
         </table>
     </div>
 
-    <a class="btn btn-primary" href="#">Add Result</a>
+    <a class="btn btn-primary" href="{% url 'myapp:add_result' resource_pk=resource.pk %}">Add Result</a>
 </section>
 
 <section class="my-4">

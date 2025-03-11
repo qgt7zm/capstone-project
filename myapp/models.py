@@ -139,8 +139,8 @@ class Result(models.Model):
     resource = models.ForeignKey(Resource, on_delete=models.CASCADE)
     elements = models.ManyToManyField(Element, related_name="results")
     outcomes = models.ManyToManyField(Outcome, related_name="results")
-    subject = models.IntegerField(choices=Subjects)
     rating = models.IntegerField(choices=ResultRatings)
+    subject = models.IntegerField(choices=Subjects)
     age_group = models.IntegerField(choices=AgeGroups)
     sample_size = models.PositiveIntegerField()
 
@@ -153,17 +153,18 @@ class Result(models.Model):
     def get_outcomes(self) -> str:
         return ", ".join([outcomes.name for outcomes in self.outcomes.all()])
 
-    def get_subject(self) -> str:
-        return str(Result.Subjects(self.subject).label)
-
     def get_rating(self) -> str:
         return str(Result.ResultRatings(self.rating).label)
+
+    def get_subject(self) -> str:
+        return str(Result.Subjects(self.subject).label)
 
     def get_age_group(self) -> str:
         return str(Result.AgeGroups(self.age_group).label)
 
     def __str__(self):
-        return f"{self.resource.get_citation()}, {self.get_subject()}, {self.get_rating()}, {self.get_age_group()}, {self.sample_size}"
+        return (f"{self.resource.get_citation()}, {self.get_rating()}, "
+                f"{self.get_subject()}, {self.get_age_group()}, {self.sample_size}")
 
 
 model_classes = [
