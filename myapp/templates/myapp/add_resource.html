@@ -1,0 +1,110 @@
+{% extends "myapp/base.html" %}
+
+<!--Metadata-->
+{% block description %}Gamification learning tool add resource{% endblock %}
+{% block title %}Add Resource – Gamification Learning Tool{% endblock %}
+
+<!--Main Content-->
+{% block main %}
+<h1>Add Resource</h1>
+
+<form method="post" action="{% url 'myapp:resources' %}">
+    {% csrf_token %}
+    <input type="hidden" name="action" value="add">
+
+    <section class="my-4">
+        <h2>Overview</h2>
+
+        <div class="mb-3">
+            <label class="form-label" for="title">Title (required):</label>
+            <input class="form-control" type="text" id="title" name="title" required>
+        </div>
+
+        <input type="hidden" id="num_authors" name="num_authors" value="1">
+
+        <div id="author1">
+            <div class="mb-3">
+                <label class="form-label" for="author1_first_name">Author 1 First Name (required):</label>
+                <input class="form-control" type="text" id="author1_first_name" name="author1_first_name" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="author1_last_name">Author 1 Last Name (required):</label>
+                <input class="form-control" type="text" id="author1_last_name" name="author1_last_name" required>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" id="add_author" onclick="addAuthorField()">Add Author</button>
+        <button class="btn btn-danger" id="remove_author" onclick="removeAuthorField()">Remove Author</button>
+
+        <!--Additional authors added here-->
+    </section>
+
+    <section class="my-4">
+        <h2>Publishing</h2>
+
+        <div class="mb-3">
+            <label class="form-label" for="year">Year (required):</label>
+            <input class="form-control" type="number" min="0" id="year" name="year" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="location">Location:</label>
+            <input class="form-control" type="text" id="location" name="location">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="url">URL:</label>
+            <input class="form-control" type="text" id="url" name="url">
+        </div>
+    </section>
+
+    <section class="my-4">
+        <h2>Additional</h2>
+
+        <div class="mb-3">
+            <label class="form-label" for="summary">Summary:</label>
+            <textarea class="form-control" id="summary" name="summary"></textarea>
+        </div>
+    </section>
+
+    <section class="my-4">
+        <button class="btn btn-success" type="submit">Confirm</button>
+        <a class="btn btn-danger" href="{% url 'myapp:resources' %}">Cancel</a>
+    </section>
+</form>
+
+<script>
+    numAuthors = 1;
+
+    // Insert a new author field after before the button
+    function addAuthorField() {
+        numAuthors += 1;
+        document.getElementById("num_authors").setAttribute("value", numAuthors);
+
+        let authorField = document.createElement("div");
+        authorField.id = `author${numAuthors}`;
+        authorField.innerHTML =
+        `<div class="mb-3">
+            <label class="form-label" for="author${numAuthors}_first_name">Author ${numAuthors} First Name (required):</label>
+            <input class="form-control" type="text" id="author${numAuthors}_first_name" name="author${numAuthors}_first_name" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="author${numAuthors}_last_name">Author ${numAuthors} Last Name (required):</label>
+            <input class="form-control" type="text" id="author${numAuthors}_last_name" name="author${numAuthors}_last_name" required>
+        </div>`;
+
+        let button = document.getElementById("add_author");
+        button.parentNode.insertBefore(authorField, button);
+    }
+
+    // Remove the last author field
+    function removeAuthorField() {
+        if (numAuthors == 1) return;
+        document.getElementById(`author${numAuthors}`).remove();
+        numAuthors -= 1;
+    }
+</script>
+
+{% endblock %}

@@ -93,12 +93,12 @@ def resources(request) -> HttpResponse:
 
     # Filter results using form
     if request.method == "POST":
-        is_any = request.POST.get("is_any", None)
-        if is_any == "1":
+        form_action = request.POST.get("action", None)
+        if form_action == "keyword":
             any_filter = request.POST.get("any", None)
             filtered_results = (filtered_results.filter(title__icontains=any_filter) |
                                 filtered_results.filter(summary__icontains=any_filter))
-        elif is_any == "0":
+        elif form_action == "filter":
             summary_filter = request.POST.get("title", None)
             if summary_filter:
                 filtered_results = filtered_results.filter(title__icontains=summary_filter)
@@ -106,7 +106,7 @@ def resources(request) -> HttpResponse:
             author_filter = request.POST.get("author", None)
             if author_filter:
                 filtered_results = ((filtered_results.filter(authors__first_name__icontains=author_filter) |
-                                    filtered_results.filter(authors__last_name__icontains=author_filter))
+                                     filtered_results.filter(authors__last_name__icontains=author_filter))
                                     .distinct())
 
             year = request.POST.get("year", None)
@@ -116,6 +116,32 @@ def resources(request) -> HttpResponse:
             summary_filter = request.POST.get("summary", None)
             if summary_filter:
                 filtered_results = filtered_results.filter(summary__icontains=summary_filter)
+        elif form_action == "add":
+            # Add Resource
+            title = request.POST.get("title")
+            year = request.POST.get("year")
+            location = request.POST.get("location", "")
+            url = request.POST.get("url", "")
+            summary = request.POST.get("summary", "")
+            resource = Resource.objects.create(
+                title=title, year=year, publisher=location, url=url, summary=summary
+            )
+
+            # Add Authors
+            num_authors = int(request.POST.get("num_authors"))
+            authors = []
+            for i in range(1, num_authors + 1):
+                first_name = request.POST.get(f"author{i}_first_name")
+                last_name = request.POST.get(f"author{i}_last_name")
+                existing = Author.objects.filter(first_name=first_name, last_name=last_name)
+                if existing.exists():
+                    continue
+                author = Author.objects.create(first_name=first_name, last_name=last_name)
+                authors.append(author)
+
+            # Add ResourceAuthors
+            for i, author in enumerate(authors):
+                ResourceAuthor.objects.create(resource=resource, author=author, order=i)
 
     context = {
         "resources": filtered_results
@@ -132,13 +158,20 @@ def resource_view(request, resource_pk: int) -> HttpResponse:
     results = Result.objects.filter(resource=resource)
 
     context = {
-        "resource": get_object_or_404(Resource, pk=resource_pk),
+        "resource": resource,
         "results": results,
     }
     return render(
         request,
         "myapp/resource_view.html",
         context
+    )
+
+
+def add_resource(request) -> HttpResponse:
+    return render(
+        request,
+        "myapp/add_resource.html"
     )
 
 

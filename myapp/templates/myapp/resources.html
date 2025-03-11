@@ -9,15 +9,15 @@
 <h1>Resources</h1>
 
 <section class="my-4">
-    <h2>Search Results</h2>
+    <h2>Search Resources</h2>
 
-    <h3>Search for Anything</h3>
+    <h3>Search by Keyword</h3>
     <form method="post" action="#">
         {% csrf_token %}
-        <input type="hidden" name="is_any" value="1">
+        <input type="hidden" name="action" value="keyword">
 
         <div class="mb-3 ">
-            <label class="form-label" for="any">Any:</label>
+            <label class="form-label" for="any">Keyword:</label>
             <input class="form-control" type="text" id="any" name="any">
         </div>
         <div class="mb-3">
@@ -28,7 +28,7 @@
     <h3>Filter by Column</h3>
     <form method="post" action="#">
         {% csrf_token %}
-        <input type="hidden" name="is_any" value="0">
+        <input type="hidden" name="action" value="filter">
 
         <div class="mb-3">
             <label class="form-label" for="title">Title:</label>
@@ -53,7 +53,7 @@
 </section>
 
 <section class="my-4">
-    <h2>Results</h2>
+    <h2>Table of Resources</h2>
 
     <div class="table-responsive-lg">
         <table class="table table-bordered border-secondary">
@@ -83,6 +83,8 @@
             {% endfor %}
         </table>
     </div>
+
+    <a class="btn btn-primary" href="{% url 'myapp:add_resource'%}">Add Resource</a>
 </section>
 
 {% endblock %}
