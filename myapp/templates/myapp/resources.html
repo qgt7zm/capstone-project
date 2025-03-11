@@ -8,6 +8,15 @@
 {% block main %}
 <h1>Resources</h1>
 
+<!--Show messages-->
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} mt-3">
+        <strong>{{ message }}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
+
 <section class="my-4">
     <h2>Search Resources</h2>
 

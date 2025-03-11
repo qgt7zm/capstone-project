@@ -143,6 +143,8 @@ def resources(request) -> HttpResponse:
             for i, author in enumerate(authors):
                 ResourceAuthor.objects.create(resource=resource, author=author, order=i)
 
+            messages.success(request, "Resource created successfully.")
+
     # TODO order by citation
     context = {
         "resources": filtered_results
@@ -192,7 +194,9 @@ def resource_view(request, resource_pk: int) -> HttpResponse:
                 sample_size=sample_size
             )
             result.elements.set(elements)
-            result.outcomes.set(outcomes),
+            result.outcomes.set(outcomes)
+
+            messages.success(request, "Result created successfully.")
 
     results = Result.objects.filter(resource=resource)
     context = {
@@ -207,7 +211,6 @@ def resource_view(request, resource_pk: int) -> HttpResponse:
 
 
 def add_resource(request) -> HttpResponse:
-    # TODO messages
     return render(
         request,
         "myapp/add_resource.html"
@@ -215,7 +218,6 @@ def add_resource(request) -> HttpResponse:
 
 
 def add_result(request, resource_pk: int) -> HttpResponse:
-    # TODO messages
     resource = get_object_or_404(Resource, pk=resource_pk)
     context = {
         "resource": resource,
