@@ -1,10 +1,16 @@
 """
 Models for myapp application.
 
-See also: https://docs.djangoproject.com/en/5.1/ref/models/querysets/
+See also:
+
+- https://docs.djangoproject.com/en/5.1/ref/models/querysets/
+- https://docs.djangoproject.com/en/5.1/ref/models/expressions/
+- https://docs.djangoproject.com/en/5.1/topics/db/aggregation/
 """
 
 from django.db import models
+from django.db.models import QuerySet, OuterRef, Subquery, Value
+from django.db.models.functions import Coalesce
 
 
 class Author(models.Model):
@@ -82,15 +88,15 @@ class Element(models.Model):
     class Meta:
         ordering = ["name"]
 
-    def get_outcomes(self) -> list[Resource]:
+    def get_outcomes(self) -> QuerySet:
         outcome_pks = (Result.objects.filter(elements__in=[self])
                        .values("outcomes").distinct())
-        return list(Outcome.objects.filter(pk__in=outcome_pks))
+        return Outcome.objects.filter(pk__in=outcome_pks)
 
-    def get_resources(self) -> list[Resource]:
+    def get_resources(self) -> QuerySet:
         resource_pks = (Result.objects.filter(elements__in=[self])
                         .values("resource").distinct())
-        return list(Resource.objects.filter(pk__in=resource_pks))
+        return order_by_citation(Resource.objects.filter(pk__in=resource_pks))
 
     def __str__(self):
         return str(self.name)
@@ -103,6 +109,16 @@ class Outcome(models.Model):
 
     class Meta:
         ordering = ["name"]
+
+    def get_elements(self) -> QuerySet:
+        outcome_pks = (Result.objects.filter(outcomes__in=[self])
+                       .values("elements").distinct())
+        return Outcome.objects.filter(pk__in=outcome_pks)
+
+    def get_resources(self) -> QuerySet:
+        resource_pks = (Result.objects.filter(outcomes__in=[self])
+                        .values("resource").distinct())
+        return order_by_citation(Resource.objects.filter(pk__in=resource_pks))
 
     def __str__(self):
         return str(self.name)
@@ -175,3 +191,16 @@ model_classes = [
     Outcome,
     Result,
 ]
+
+
+def order_by_citation(resources: QuerySet[Resource]) -> QuerySet[Resource]:
+    # Sort by last name of first author
+    author1_last_name = ResourceAuthor.objects.filter(
+        resource=OuterRef("pk"),
+        order=0
+    ).values("author__last_name")
+    return resources.annotate(
+        author__last_name=Coalesce(
+            Subquery(author1_last_name), Value("")
+        )
+    ).order_by("author__last_name", "year")

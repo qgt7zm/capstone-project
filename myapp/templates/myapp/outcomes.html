@@ -34,15 +34,19 @@
             <div class="card-body row">
                 <h3 class="card-title fs-5">Filter by Column</h3>
 
-                <div class="col-md-4 mb-3">
+                <div class="col-md-3 mb-3">
                     <label class="form-label" for="name">Name:</label>
                     <input class="form-control" type="text" id="name" name="name">
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-3 mb-3">
                     <label class="form-label" for="description">Description:</label>
                     <input class="form-control" type="text" id="description" name="description">
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-3 mb-3">
+                    <label class="form-label" for="element">Element:</label>
+                    <input class="form-control" type="text" id="element" name="element">
+                </div>
+                <div class="col-md-3 mb-3">
                     <label class="form-label" for="resource">Resource:</label>
                     <input class="form-control" type="text" id="resource" name="resource">
                 </div>
@@ -61,15 +65,33 @@
     <div class="table-responsive-lg">
         <table class="table table-bordered border-secondary">
             <tr>
-                <th class="col-1">Name</th>
-                <th class="col-4">Description</th>
-                <th class="col-2">Resources</th>
+                <th class="col-2">Name</th>
+                <th class="col-5">Description</th>
+                <th class="col-2">Elements</th>
+                <th class="col-3">Resources</th>
             </tr>
             {% for outcome in outcomes %}
             <tr>
-                <td> {{ outcome.name }}</td>
+                <td>{{ outcome.name }}</td>
                 <td>{{ outcome.description }}</td>
-                <td>[List of Resources]</td>
+                <td>
+                    <ul>
+                        {% for element in outcome.get_elements %}
+                        <li>{{ element }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        {% for resource in outcome.get_resources %}
+                        <li>
+                            <a class="text-primary" href="{% url 'myapp:resource_view' resource_pk=resource.pk %}">
+                                {{ resource.get_citation }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </td>
             </tr>
             {% endfor %}
         </table>

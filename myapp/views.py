@@ -1,13 +1,13 @@
 """
 Views for myapp application.
 """
+import json
+
 from django.contrib import messages
 from django.core import serializers
 from django.db.models.functions import Cast
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
-
-import json
 
 from .forms import *
 from .models import *
@@ -27,10 +27,10 @@ def home(request) -> HttpResponse:
 def elements(request) -> HttpResponse:
     filtered_results = Element.objects.all()
 
-    # Filter results using form
     if request.method == "POST":
         action = request.POST.get("action", None)
         if action == "search":
+            # Filter results using form
             any_filter = request.POST.get("any", None)
             filtered_results = (
                     filtered_results.filter(name__icontains=any_filter) |
@@ -58,10 +58,10 @@ def elements(request) -> HttpResponse:
 def outcomes(request) -> HttpResponse:
     filtered_results = Outcome.objects.all()
 
-    # Filter results using form
     if request.method == "POST":
         action = request.POST.get("action", None)
         if action == "search":
+            # Filter results using form
             any_filter = request.POST.get("any", None)
             filtered_results = (
                     filtered_results.filter(name__icontains=any_filter) |
@@ -94,7 +94,7 @@ def scenarios(request) -> HttpResponse:
 
 
 def resources(request) -> HttpResponse:
-    filtered_results = Resource.objects.all()
+    filtered_results = order_by_citation(Resource.objects.all())
 
     # Filter results using form
     if request.method == "POST":
