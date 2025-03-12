@@ -8,10 +8,9 @@
 {% block main %}
 <h1>Add Result</h1>
 
-<form method="post" action="{% url 'myapp:resource_view' resource_pk=resource.pk %}">
+<form method="post" action="{% url 'myapp:add_result_form' resource_pk=resource.pk %}">
     {% csrf_token %}
     <input type="hidden" name="action" value="add_result">
-    <input type="hidden" name="resource_pk" value="{{ resource.pk }}">
 
     <section class="row my-4">
         <h2>Study Design</h2>

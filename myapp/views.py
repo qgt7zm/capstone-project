@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.core import serializers
 from django.db.models.functions import Cast
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import get_object_or_404, redirect, render, reverse
 
 from .forms import *
 from .models import *
@@ -98,8 +98,8 @@ def resources(request) -> HttpResponse:
 
     # Filter results using form
     if request.method == "POST":
-        form_action = request.POST.get("action", None)
-        if form_action == "search":
+        action = request.POST.get("action", None)
+        if action == "search":
             any_filter = request.POST.get("any", None)
             if any_filter:
                 filtered_results = filtered_results.annotate(
@@ -109,7 +109,7 @@ def resources(request) -> HttpResponse:
                         filtered_results.filter(title__icontains=any_filter) |
                         filtered_results.filter(authors__first_name__icontains=any_filter) |
                         filtered_results.filter(authors__last_name__icontains=any_filter) |
-                        filtered_results.filter(year=any_filter) |
+                        filtered_results.filter(year_str=any_filter) |
                         filtered_results.filter(summary__icontains=any_filter)
                 ).distinct()
 
@@ -131,7 +131,43 @@ def resources(request) -> HttpResponse:
             summary_filter = request.POST.get("summary", None)
             if summary_filter:
                 filtered_results = filtered_results.filter(summary__icontains=summary_filter)
-        elif form_action == "add":
+
+    context = {
+        "resources": filtered_results
+    }
+    return render(
+        request,
+        "myapp/resources.html",
+        context
+    )
+
+
+def resource_view(request, resource_pk: int) -> HttpResponse:
+    resource = get_object_or_404(Resource, pk=resource_pk)
+    results = Result.objects.filter(resource=resource)
+
+    context = {
+        "resource": resource,
+        "results": results,
+    }
+    return render(
+        request,
+        "myapp/resource_view.html",
+        context
+    )
+
+
+def add_resource(request) -> HttpResponse:
+    return render(
+        request,
+        "myapp/add_resource.html"
+    )
+
+
+def add_resource_form(request) -> HttpResponse:
+    if request.method == "POST":
+        action = request.POST.get("action", None)
+        if action == "add_resource":
             # Add Resource
             title = request.POST.get("title")
             year = request.POST.get("year")
@@ -161,24 +197,33 @@ def resources(request) -> HttpResponse:
 
             messages.success(request, "Resource created successfully.")
 
-    # TODO order by citation
+    return redirect("myapp:resources")
+
+
+def add_result(request, resource_pk: int) -> HttpResponse:
+    resource = get_object_or_404(Resource, pk=resource_pk)
     context = {
-        "resources": filtered_results
+        "resource": resource,
+        "element_choices": [element.name for element in Element.objects.all()],
+        "outcome_choices": [outcome.name for outcome in Outcome.objects.all()],
+        "rating_choices": Result.ResultRatings.labels,
+        "subject_choices": Result.Subjects.labels,
+        "age_group_choices": Result.AgeGroups.labels,
     }
     return render(
         request,
-        "myapp/resources.html",
+        "myapp/add_result.html",
         context
     )
 
 
-def resource_view(request, resource_pk: int) -> HttpResponse:
-    resource = get_object_or_404(Resource, pk=resource_pk)
-
+def add_result_form(request, resource_pk: int) -> HttpResponse:
     if request.method == "POST":
-        form_action = request.POST.get("action", None)
-        if form_action == "add_result":
+        action = request.POST.get("action", None)
+        if action == "add_result":
             # Add Result
+            resource = get_object_or_404(Resource, pk=resource_pk)
+
             element_names = request.POST.getlist("elements")
             elements = Element.objects.filter(name__in=element_names)
             outcome_names = request.POST.getlist("outcomes")
@@ -214,40 +259,10 @@ def resource_view(request, resource_pk: int) -> HttpResponse:
 
             messages.success(request, "Result created successfully.")
 
-    results = Result.objects.filter(resource=resource)
-    context = {
-        "resource": resource,
-        "results": results,
+    kwargs = {
+        "resource_pk": resource_pk,
     }
-    return render(
-        request,
-        "myapp/resource_view.html",
-        context
-    )
-
-
-def add_resource(request) -> HttpResponse:
-    return render(
-        request,
-        "myapp/add_resource.html"
-    )
-
-
-def add_result(request, resource_pk: int) -> HttpResponse:
-    resource = get_object_or_404(Resource, pk=resource_pk)
-    context = {
-        "resource": resource,
-        "element_choices": [element.name for element in Element.objects.all()],
-        "outcome_choices": [outcome.name for outcome in Outcome.objects.all()],
-        "rating_choices": Result.ResultRatings.labels,
-        "subject_choices": Result.Subjects.labels,
-        "age_group_choices": Result.AgeGroups.labels,
-    }
-    return render(
-        request,
-        "myapp/add_result.html",
-        context
-    )
+    return redirect(reverse("myapp:resource_view", kwargs=kwargs))
 
 
 def data(request) -> HttpResponse:

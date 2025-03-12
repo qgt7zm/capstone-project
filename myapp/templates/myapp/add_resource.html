@@ -8,9 +8,9 @@
 {% block main %}
 <h1>Add Resource</h1>
 
-<form method="post" action="{% url 'myapp:resources' %}">
+<form method="post" action="{% url 'myapp:add_resource_form' %}">
     {% csrf_token %}
-    <input type="hidden" name="action" value="add">
+    <input type="hidden" name="action" value="add_resource">
 
     <section class="my-4">
         <h2>Overview</h2>
