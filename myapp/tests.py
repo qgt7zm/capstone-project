@@ -14,7 +14,7 @@ class ResourceTest(TestCase):
 
         resource1 = Resource.objects.create(year=2025)
 
-        self.assertEqual([], resource1.get_authors())
+        self.assertEqual([], list(resource1.get_authors()))
 
 
     def test_resource_get_authors_single(self):
@@ -24,7 +24,7 @@ class ResourceTest(TestCase):
         resource1 = Resource.objects.create(title="1", year=2025)
         ResourceAuthor.objects.create(resource=resource1, author=author1, order=0)
 
-        self.assertEqual([author1], resource1.get_authors())
+        self.assertEqual([author1], list(resource1.get_authors()))
 
 
     def test_resource_get_authors_multiple(self):
@@ -35,4 +35,4 @@ class ResourceTest(TestCase):
         ResourceAuthor.objects.create(resource=resource1, author=author1, order=0)
         ResourceAuthor.objects.create(resource=resource1, author=author2, order=1)
 
-        self.assertEqual([author1, author2], resource1.get_authors())
+        self.assertEqual([author1, author2], list(resource1.get_authors()))

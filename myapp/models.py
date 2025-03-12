@@ -44,10 +44,12 @@ class Resource(models.Model):
         else:
             return title[:max_length] + "..."
 
-    def get_authors(self) -> list[Author]:
-        return list(Author.objects.prefetch_related("resourceauthor_set")
-                    .filter(resourceauthor__resource=self)
-                    .order_by("resourceauthor__order"))
+    def get_authors(self) -> QuerySet:
+        return (
+            Author.objects.prefetch_related("resourceauthor_set")
+            .filter(resourceauthor__resource=self)
+            .order_by("resourceauthor__order")
+        )
 
     def get_citation(self) -> str:
         authors = self.get_authors()
@@ -88,14 +90,18 @@ class Element(models.Model):
     class Meta:
         ordering = ["name"]
 
-    def get_outcomes(self) -> QuerySet:
-        outcome_pks = (Result.objects.filter(elements__in=[self])
-                       .values("outcomes").distinct())
+    def get_outcomes(self) -> QuerySet['Outcome']:
+        outcome_pks = (
+            Result.objects.filter(elements__in=[self])
+            .values("outcomes").distinct()
+        )
         return Outcome.objects.filter(pk__in=outcome_pks)
 
-    def get_resources(self) -> QuerySet:
-        resource_pks = (Result.objects.filter(elements__in=[self])
-                        .values("resource").distinct())
+    def get_resources(self) -> QuerySet[Resource]:
+        resource_pks = (
+            Result.objects.filter(elements__in=[self])
+            .values("resource").distinct()
+        )
         return order_by_citation(Resource.objects.filter(pk__in=resource_pks))
 
     def __str__(self):
@@ -110,12 +116,12 @@ class Outcome(models.Model):
     class Meta:
         ordering = ["name"]
 
-    def get_elements(self) -> QuerySet:
+    def get_elements(self) -> QuerySet[Element]:
         outcome_pks = (Result.objects.filter(outcomes__in=[self])
                        .values("elements").distinct())
         return Outcome.objects.filter(pk__in=outcome_pks)
 
-    def get_resources(self) -> QuerySet:
+    def get_resources(self) -> QuerySet[Resource]:
         resource_pks = (Result.objects.filter(outcomes__in=[self])
                         .values("resource").distinct())
         return order_by_citation(Resource.objects.filter(pk__in=resource_pks))
@@ -126,7 +132,6 @@ class Outcome(models.Model):
 
 class Result(models.Model):
     """The result of a gamification study."""
-
     class ResultRatings(models.IntegerChoices):
         VERY_POSITIVE = 2, "Very Positive"
         SOMEWHAT_POSITIVE = 1, "Somewhat Positive"
