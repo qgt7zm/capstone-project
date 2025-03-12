@@ -8,10 +8,15 @@ from django import forms
 class UploadDataForm(forms.Form):
     # Upload JSON file containing models
     # Source: https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/
+    confirm_upload = forms.CharField(widget=forms.CheckboxInput())
     file = forms.FileField(required=True)
 
     def clean(self):
-        file = self.cleaned_data.get('file')
+        confirm_upload = self.cleaned_data.get("confirm_upload")
+        if not confirm_upload:
+            raise forms.ValidationError("Please confirm upload.")
+
+        file = self.cleaned_data.get("file")
         if not file:
             raise forms.ValidationError("Please upload a file.")
         else:
@@ -23,10 +28,10 @@ class UploadDataForm(forms.Form):
 
 class DeleteDataForm(forms.Form):
     # Delete models from database
-    confirm = forms.CharField(widget=forms.HiddenInput())
+    confirm_delete = forms.CharField(widget=forms.CheckboxInput())
 
     def clean(self):
-        confirm = self.cleaned_data.get('confirm')
-        if confirm != "1":
+        confirm_delete = self.cleaned_data.get("confirm_delete")
+        if not confirm_delete:
             raise forms.ValidationError("Please confirm delete.")
-        return confirm
+        return confirm_delete

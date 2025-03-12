@@ -13,59 +13,85 @@
     <p>
         All the data on this website is stored locally in an SQLite database.
         If you are using this site on your own machine, you can upload a custom
-        version of the data to tune the scenario designer, own download a backup
-        of your data. All imported and exported data is stored in JSON format.
+        version of the data to tune the scenario designer or download a backup
+        of your data. All imported and exported data is stored in Django's JSON
+        format.
     </p>
 
-    <div class="grid gap-3 mb-3">
-        <a class="btn btn-success" href="{% url 'myapp:data_export' %}">Export Data</a>
-        <a class="btn btn-primary" href="#uploadCollapse"
-           data-bs-toggle="collapse" role="button">Upload Data</a>
-        <a class="btn btn-danger" href="#deleteCollapse"
-           data-bs-toggle="collapse" role="button">Delete Data</a>
-    </div>
-
-    <!--Collapsible upload section-->
-    <div class="collapse mt-3" id="uploadCollapse">
-        <div class="card card-body">
-            <form method="post" action="{% url 'myapp:data_upload' %}"
-                  enctype="multipart/form-data">
-                {% csrf_token %}
-
-                <p>
-                    This action may overwrite some data in this application.
-                    Backing up the database beforehand is strongly recommended.
-                </p>
-
-                <div class="mb-3">
-                    <label for="file" class="mr-2">Select File:</label>
-                    <input type="file" id="file" name="file" accept=".json">
-                </div>
-
-                <div>
-                    <button type="submit" class="btn btn-primary">Confirm Upload</button>
-                </div>
-            </form>
+    <div class="row">
+        <div class="card col-md-4 mb-3">
+            <div class="card-body">
+                <h5 class="fs-5">Export Data</h5>
+                <p>Open a JSON file containing all the records in the database.</p>
+                <a class="btn btn-success float-left"
+                   href="{% url 'myapp:data_export' %}">Confirm Export</a>
+            </div>
         </div>
-    </div>
 
-    <!--Collapsible delete section-->
-    <div class="collapse mt-3" id="deleteCollapse">
-        <div class="card card-body">
-            <form method="post" action="{% url 'myapp:data_delete' %}">
-                {% csrf_token %}
+        <div class="card col-md-4 mb-3">
+            <div class="card-body">
+                <h5 class="fs-5">Upload Data</h5>
+                <form method="post" action="{% url 'myapp:data_upload' %}"
+                      enctype="multipart/form-data">
+                    {% csrf_token %}
 
-                <p>
-                    This action will delete all data in this application.
-                    Backing up the database beforehand is strongly recommended.
-                </p>
+                    <p>
+                        Overwrite the data in this application with a earlier backup.
+                        Backing up the database beforehand is strongly recommended.
+                        You may want to use the <a href="{% url 'myapp:add_resource' %}">
+                        add resource</a> feature instead.
+                    </p>
 
-                <input type="hidden" name="confirm" value="1">
+                    <div class="mb-3">
+                        <label for="file" class="mr-2">Select File:</label>
+                        <input type="file" id="file" name="file" accept=".json">
+                    </div>
 
-                <div>
-                    <button type="submit" class="btn btn-danger">Confirm Deletion</button>
-                </div>
-            </form>
+                    <div class="mb-3">
+                        <input class="form-check-input" type="checkbox"
+                               name="confirm_upload" value="1" id="confirm_upload"
+                               required>
+                        <label class="form-check-label" for="confirm_upload">
+                            I understand that I may lose data
+                        </label>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="btn btn-primary">
+                            Confirm Upload
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card col-md-4 mb-3">
+            <div class="card-body">
+                <h5 class="fs-5">Delete Data</h5>
+                <form method="post" action="{% url 'myapp:data_delete' %}">
+                    {% csrf_token %}
+
+                    <p>
+                        Delete all data from this application.
+                        Backing up the database beforehand is strongly recommended.
+                    </p>
+
+                    <div class="mb-3">
+                        <input class="form-check-input" type="checkbox"
+                               name="confirm_delete" value="1" id="confirm_delete"
+                               required>
+                        <label class="form-check-label" for="confirm_delete">
+                            I understand that I may lose data
+                        </label>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="btn btn-danger">
+                            Confirm Deletion
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
