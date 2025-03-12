@@ -293,24 +293,21 @@ def data_upload(request) -> HttpResponse:
             try:
                 # Import data from json
                 # Must be a json array
-                file = request.FILES["file"]
+                file = form.cleaned_data.get("file")
                 model_data = serializers.deserialize("json", file)
                 for model_obj in model_data:
                     model_obj.object.save()
-
                 messages.success(request, "Data uploaded successfully.")
             except serializers.base.DeserializationError:
-                messages.warning(request, "Please use the Django models .json format.")
+                messages.error(request, "Please use the Django models .json format.")
         else:
-            messages.warning(request, "Please select a .json file.")
-        return redirect("myapp:data")
+            messages.error(request, "Please select a .json file.")
 
     return redirect("myapp:data")
 
 
 def data_delete(request) -> HttpResponse:
     if request.method == "POST":
-        print(request.POST)
         form = DeleteDataForm(request.POST)
         if form.is_valid():
             # DANGER: Delete all data
@@ -319,8 +316,7 @@ def data_delete(request) -> HttpResponse:
 
             messages.success(request, "Data deleted successfully.")
         else:
-            messages.warning(request, "Please use the button to delete data.")
-        return redirect("myapp:data")
+            messages.error(request, "Please use the button to delete data.")
 
     return redirect("myapp:data")
 

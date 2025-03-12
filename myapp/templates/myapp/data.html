@@ -44,7 +44,7 @@
 
                     <div class="mb-3">
                         <label for="file" class="mr-2">Select File:</label>
-                        <input type="file" id="file" name="file" accept=".json">
+                        <input type="file" id="file" name="file" accept=".json" required>
                     </div>
 
                     <div class="mb-3">
@@ -98,9 +98,19 @@
     <!--Show messages-->
     {% if messages %}
     {% for message in messages %}
-    <div class="alert alert-{{ message.tags }} mt-3">
+
+    {% if message.tags == 'success' %}
+    <div class="alert alert-success mt-3">
         <strong>{{ message }}</strong>
     </div>
+    {% endif %}
+
+    {% if message.tags == 'error' %}
+    <div class="alert alert-danger mt-3">
+        <strong>{{ message }}</strong>
+    </div>
+    {% endif %}
+
     {% endfor %}
     {% endif %}
 </section>
