@@ -15,45 +15,48 @@
 <section class="my-4">
     <h2>Search Results</h2>
 
-    <h3>Search for Anything</h3>
-    <form method="post" action="#">
+    <form method="post" action="{% url 'myapp:outcomes'%}">
         {% csrf_token %}
-        <input type="hidden" name="is_any" value="1">
+        <input type="hidden" name="action" value="search">
 
-        <div class="mb-3 ">
-            <label class="form-label" for="any">Any:</label>
-            <input class="form-control" type="text" id="any" name="any">
-        </div>
-        <div class="mb-3">
-            <button class="btn btn-secondary" type="submit">Submit</button>
-        </div>
-    </form>
+        <div class="card mb-3">
+            <div class="card-body">
+                <h3 class="card-title fs-5">Search for Anything</h3>
 
-    <h3>Filter by Column</h3>
-    <form method="post" action="#">
-        {% csrf_token %}
-        <input type="hidden" name="is_any" value="0">
+                <div class="mb-3 ">
+                    <label class="form-label" for="any">Search Term:</label>
+                    <input class="form-control" type="text" id="any" name="any">
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-body row">
+                <h3 class="card-title fs-5">Filter by Column</h3>
+
+                <div class="col-md-4 mb-3">
+                    <label class="form-label" for="name">Name:</label>
+                    <input class="form-control" type="text" id="name" name="name">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label" for="description">Description:</label>
+                    <input class="form-control" type="text" id="description" name="description">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label" for="resource">Resource:</label>
+                    <input class="form-control" type="text" id="resource" name="resource">
+                </div>
+            </div>
+        </div>
 
         <div class="mb-3">
-            <label class="form-label" for="name">Name:</label>
-            <input class="form-control" type="text" id="name" name="name">
-        </div>
-        <div class="mb-3">
-            <label class="form-label" for="description">Description:</label>
-            <input class="form-control" type="text" id="description" name="description">
-        </div>
-        <div class="mb-3">
-            <label class="form-label" for="resource">Resource:</label>
-            <input class="form-control" type="text" id="resource" name="resource">
-        </div>
-        <div class="mb-3">
-            <button class="btn btn-secondary" type="submit">Submit</button>
+            <button class="btn btn-secondary" type="submit">Search</button>
         </div>
     </form>
 </section>
 
 <section class="my-4">
-    <h2>Results</h2>
+    <h2>Search Results</h2>
 
     <div class="table-responsive-lg">
         <table class="table table-bordered border-secondary">

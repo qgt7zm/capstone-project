@@ -3,6 +3,7 @@ Views for myapp application.
 """
 from django.contrib import messages
 from django.core import serializers
+from django.db.models.functions import Cast
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 
@@ -28,12 +29,14 @@ def elements(request) -> HttpResponse:
 
     # Filter results using form
     if request.method == "POST":
-        is_any = request.POST.get("is_any", None)
-        if is_any == "1":
+        action = request.POST.get("action", None)
+        if action == "search":
             any_filter = request.POST.get("any", None)
-            filtered_results = (filtered_results.filter(name__icontains=any_filter) |
-                                filtered_results.filter(description__icontains=any_filter))
-        elif is_any == "0":
+            filtered_results = (
+                    filtered_results.filter(name__icontains=any_filter) |
+                    filtered_results.filter(description__icontains=any_filter)
+            )
+
             name_filter = request.POST.get("name", None)
             if name_filter:
                 filtered_results = filtered_results.filter(name__icontains=name_filter)
@@ -57,12 +60,14 @@ def outcomes(request) -> HttpResponse:
 
     # Filter results using form
     if request.method == "POST":
-        is_any = request.POST.get("is_any", None)
-        if is_any == "1":
+        action = request.POST.get("action", None)
+        if action == "search":
             any_filter = request.POST.get("any", None)
-            filtered_results = (filtered_results.filter(name__icontains=any_filter) |
-                                filtered_results.filter(description__icontains=any_filter))
-        elif is_any == "0":
+            filtered_results = (
+                    filtered_results.filter(name__icontains=any_filter) |
+                    filtered_results.filter(description__icontains=any_filter)
+            )
+
             name_filter = request.POST.get("name", None)
             if name_filter:
                 filtered_results = filtered_results.filter(name__icontains=name_filter)
@@ -94,20 +99,30 @@ def resources(request) -> HttpResponse:
     # Filter results using form
     if request.method == "POST":
         form_action = request.POST.get("action", None)
-        if form_action == "keyword":
+        if form_action == "search":
             any_filter = request.POST.get("any", None)
-            filtered_results = (filtered_results.filter(title__icontains=any_filter) |
-                                filtered_results.filter(summary__icontains=any_filter))
-        elif form_action == "filter":
+            if any_filter:
+                filtered_results = filtered_results.annotate(
+                    year_str=Cast("year", output_field=models.CharField(max_length=100))
+                )
+                filtered_results = (
+                        filtered_results.filter(title__icontains=any_filter) |
+                        filtered_results.filter(authors__first_name__icontains=any_filter) |
+                        filtered_results.filter(authors__last_name__icontains=any_filter) |
+                        filtered_results.filter(year=any_filter) |
+                        filtered_results.filter(summary__icontains=any_filter)
+                ).distinct()
+
             summary_filter = request.POST.get("title", None)
             if summary_filter:
                 filtered_results = filtered_results.filter(title__icontains=summary_filter)
 
             author_filter = request.POST.get("author", None)
             if author_filter:
-                filtered_results = ((filtered_results.filter(authors__first_name__icontains=author_filter) |
-                                     filtered_results.filter(authors__last_name__icontains=author_filter))
-                                    .distinct())
+                filtered_results = (
+                        filtered_results.filter(authors__first_name__icontains=author_filter) |
+                        filtered_results.filter(authors__last_name__icontains=author_filter)
+                ).distinct()
 
             year = request.POST.get("year", None)
             if year:
@@ -120,6 +135,7 @@ def resources(request) -> HttpResponse:
             # Add Resource
             title = request.POST.get("title")
             year = request.POST.get("year")
+            # TODO prevent duplicate title + year
             location = request.POST.get("location", "")
             url = request.POST.get("url", "")
             summary = request.POST.get("summary", "")

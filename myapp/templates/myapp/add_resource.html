@@ -22,14 +22,16 @@
 
         <input type="hidden" id="num_authors" name="num_authors" value="1">
 
-        <div id="author1">
-            <div class="mb-3">
-                <label class="form-label" for="author1_first_name">Author 1 First Name (required):</label>
+        <div class="row" id="author1">
+            <p class="form-label">Author 1</p>
+
+            <div class="col-md-6 mb-3">
+                <label class="form-label" for="author1_first_name">First Name (required):</label>
                 <input class="form-control" type="text" id="author1_first_name" name="author1_first_name" required>
             </div>
 
-            <div class="mb-3">
-                <label class="form-label" for="author1_last_name">Author 1 Last Name (required):</label>
+            <div class="col-md-6 mb-3">
+                <label class="form-label" for="author1_last_name">Last Name (required):</label>
                 <input class="form-control" type="text" id="author1_last_name" name="author1_last_name" required>
             </div>
         </div>
@@ -40,15 +42,15 @@
         <!--Additional authors added here-->
     </section>
 
-    <section class="my-4">
+    <section class="row my-4">
         <h2>Publishing</h2>
 
-        <div class="mb-3">
+        <div class="col-md-6 mb-3">
             <label class="form-label" for="year">Year (required):</label>
             <input class="form-control" type="number" min="0" id="year" name="year" required>
         </div>
 
-        <div class="mb-3">
+        <div class="col-md-6 mb-3">
             <label class="form-label" for="location">Location:</label>
             <input class="form-control" type="text" id="location" name="location">
         </div>
@@ -84,14 +86,17 @@
 
         let authorField = document.createElement("div");
         authorField.id = `author${numAuthors}`;
+        authorField.className = "row";
         authorField.innerHTML =
-        `<div class="mb-3">
-            <label class="form-label" for="author${numAuthors}_first_name">Author ${numAuthors} First Name (required):</label>
+        `<p class="form-label">Author ${numAuthors}</p>
+
+        <div class="col-md-6 mb-3">
+            <label class="form-label" for="author${numAuthors}_first_name">First Name (required):</label>
             <input class="form-control" type="text" id="author${numAuthors}_first_name" name="author${numAuthors}_first_name" required>
         </div>
 
-        <div class="mb-3">
-            <label class="form-label" for="author${numAuthors}_last_name">Author ${numAuthors} Last Name (required):</label>
+        <div class="col-md-6 mb-3">
+            <label class="form-label" for="author${numAuthors}_last_name">Last Name (required):</label>
             <input class="form-control" type="text" id="author${numAuthors}_last_name" name="author${numAuthors}_last_name" required>
         </div>`;
 
