@@ -10,7 +10,7 @@ See also:
 
 from django.db import models
 from django.db.models import QuerySet, OuterRef, Subquery, Value
-from django.db.models.functions import Coalesce
+from django.db.models.functions import Cast, Coalesce
 
 
 class Author(models.Model):
@@ -136,6 +136,7 @@ class Outcome(models.Model):
 
 class Result(models.Model):
     """The result of a gamification study."""
+
     class ResultRatings(models.IntegerChoices):
         VERY_POSITIVE = 2, "Very Positive"
         SOMEWHAT_POSITIVE = 1, "Somewhat Positive"
@@ -202,17 +203,19 @@ model_classes = [
 ]
 
 
+# Model Helper Methods
+
+
 def order_by_citation(resources: QuerySet[Resource]) -> QuerySet[Resource]:
     # Sort by last name of first author
     author1_last_name = ResourceAuthor.objects.filter(
-        resource=OuterRef("pk"),
-        order=0
+        resource=OuterRef("pk"), order=0
     ).values("author__last_name")
     return resources.annotate(
-        author__last_name=Coalesce(
+        author1__last_name=Coalesce(
             Subquery(author1_last_name), Value("")
         )
-    ).order_by("author__last_name", "year")
+    ).order_by("author1__last_name", "year")
 
 
 def filter_by_author_name(resources: QuerySet[Resource], author_name: str) -> QuerySet[Resource]:
@@ -223,19 +226,39 @@ def filter_by_author_name(resources: QuerySet[Resource], author_name: str) -> Qu
     )
 
 
+def filter_by_year_str(resources: QuerySet[Resource], year: str) -> QuerySet[Resource]:
+    # Filter resources by year string
+    cast_resources = resources.annotate(
+        year_str=Cast("year", output_field=models.CharField(max_length=100))
+    )
+    return cast_resources.filter(year_str=year)
+
+
 def filter_by_element_name(elements: QuerySet[Outcome], element_name: str) -> QuerySet[Outcome]:
     # Filter outcomes by element name
     element_pks = Element.objects.filter(name__icontains=element_name).values("pk")
-    outcome_pks = (
-        Result.objects.filter(elements__in=element_pks).values("outcomes").distinct()
-    )
+    element_results = Result.objects.filter(elements__in=element_pks)
+    outcome_pks = element_results.values("outcomes").distinct()
     return elements.filter(pk__in=outcome_pks)
 
 
 def filter_by_outcome_name(outcomes: QuerySet[Element], outcome_name: str) -> QuerySet[Element]:
-    # Filter elements ts by outcome name
+    # Filter elements by outcome name
     outcome_pks = Outcome.objects.filter(name__icontains=outcome_name).values("pk")
-    element_pks = (
-        Result.objects.filter(outcomes__in=outcome_pks).values("elements").distinct()
-    )
+    outcome_results = Result.objects.filter(outcomes__in=outcome_pks)
+    element_pks = outcome_results.values("elements").distinct()
     return outcomes.filter(pk__in=element_pks)
+
+
+def filter_by_resource_citation(
+        objects: QuerySet[Element | Outcome], citation: str, model_name: str
+) -> QuerySet[Element | Outcome]:
+    # Filter outcomes by resource authors and year
+    filtered_resources = Resource.objects.all()
+    filtered_resources = (
+            filter_by_author_name(filtered_resources, citation) |
+            filter_by_year_str(filtered_resources, citation)
+    )
+    resource_results = Result.objects.filter(resource__in=filtered_resources)
+    outcome_pks = resource_results.values(model_name).distinct()
+    return objects.filter(pk__in=outcome_pks)

@@ -5,7 +5,6 @@ import json
 
 from django.contrib import messages
 from django.core import serializers
-from django.db.models.functions import Cast
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 
@@ -36,7 +35,8 @@ def elements(request) -> HttpResponse:
                 filtered_results = (
                         filtered_results.filter(name__icontains=any_filter) |
                         filtered_results.filter(description__icontains=any_filter) |
-                        filter_by_outcome_name(filtered_results, any_filter)
+                        filter_by_outcome_name(filtered_results, any_filter) |
+                        filter_by_resource_citation(filtered_results, any_filter, "outcomes")
                 )
 
             name_filter = request.POST.get("name", None)
@@ -50,6 +50,11 @@ def elements(request) -> HttpResponse:
             outcome_filter = request.POST.get("outcome", None)
             if outcome_filter:
                 filtered_results = filter_by_outcome_name(filtered_results, outcome_filter)
+
+            resource_filter = request.POST.get("resource", None)
+            print("resource = " + resource_filter)
+            if resource_filter:
+                filtered_results = filter_by_resource_citation(filtered_results, resource_filter, "outcomes")
 
     context = {
         "elements": filtered_results,
@@ -73,7 +78,8 @@ def outcomes(request) -> HttpResponse:
                 filtered_results = (
                         filtered_results.filter(name__icontains=any_filter) |
                         filtered_results.filter(description__icontains=any_filter) |
-                        filter_by_element_name(filtered_results, any_filter)
+                        filter_by_element_name(filtered_results, any_filter) |
+                        filter_by_resource_citation(filtered_results, any_filter, "outcomes")
                 )
 
             name_filter = request.POST.get("name", None)
@@ -87,6 +93,10 @@ def outcomes(request) -> HttpResponse:
             element_filter = request.POST.get("element", None)
             if element_filter:
                 filtered_results = filter_by_element_name(filtered_results, element_filter)
+
+            resource_filter = request.POST.get("resource", None)
+            if resource_filter:
+                filtered_results = filter_by_resource_citation(filtered_results, resource_filter, "outcomes")
 
     context = {
         "outcomes": filtered_results,
@@ -114,13 +124,10 @@ def resources(request) -> HttpResponse:
         if action == "search":
             any_filter = request.POST.get("any", None)
             if any_filter:
-                filtered_results = filtered_results.annotate(
-                    year_str=Cast("year", output_field=models.CharField(max_length=100))
-                )
                 filtered_results = (
                         filtered_results.filter(title__icontains=any_filter) |
                         filter_by_author_name(filtered_results, any_filter) |
-                        filtered_results.filter(year_str=any_filter) |
+                        filter_by_year_str(filtered_results, any_filter) |
                         filtered_results.filter(summary__icontains=any_filter)
                 ).distinct()
 
