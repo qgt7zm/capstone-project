@@ -205,6 +205,12 @@ model_classes = [
 
 # Model Helper Methods
 
+def get_choice_from_label(choices_cls: type, choice_label: str) -> models.IntegerChoices | None:
+    for val, label in choices_cls.choices:
+        if label == choice_label:
+            return val
+    return None
+
 
 def order_by_citation(resources: QuerySet[Resource]) -> QuerySet[Resource]:
     # Sort by last name of first author

@@ -246,22 +246,13 @@ def add_result_form(request, resource_pk: int) -> HttpResponse:
             resource = get_object_or_404(Resource, pk=resource_pk)
 
             rating_label = request.POST.get("rating")
-            rating = None
-            for val, label in Result.ResultRatings.choices:
-                if rating_label == label:
-                    rating = val
+            rating = get_choice_from_label(Result.ResultRatings, rating_label)
 
             subject_label = request.POST.get("subject")
-            subject = None
-            for val, label in Result.Subjects.choices:
-                if subject_label == label:
-                    subject = val
+            subject = get_choice_from_label(Result.Subjects, subject_label)
 
             age_group_label = request.POST.get("age_group")
-            age_group = None
-            for val, label in Result.AgeGroups.choices:
-                if age_group_label == label:
-                    age_group = val
+            age_group = get_choice_from_label(Result.AgeGroups, age_group_label)
 
             sample_size = request.POST.get("sample_size")
 
@@ -271,7 +262,7 @@ def add_result_form(request, resource_pk: int) -> HttpResponse:
                 sample_size=sample_size
             )
 
-            # Set many-to-many fields
+            # Set elements and outcomes
             element_names = request.POST.getlist("elements")
             result_elements = Element.objects.filter(name__in=element_names)
             outcome_names = request.POST.getlist("outcomes")
