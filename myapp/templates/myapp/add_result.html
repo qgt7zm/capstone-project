@@ -8,13 +8,14 @@
 {% block main %}
 <h1>Add Result</h1>
 
+<p><strong>Resource:</strong> {{ resource.get_citation }}</p>
+
 <form method="post" action="{% url 'myapp:add_result_form' resource_pk=resource.pk %}">
     {% csrf_token %}
     <input type="hidden" name="action" value="add_result">
 
     <section class="row my-4">
         <h2>Study Design</h2>
-        <p><strong>Resource:</strong> {{ resource.get_citation }}</p>
 
         <div class="col-md-6 mb-3">
             <label class="form-label" for="elements">Elements (at least one):</label>

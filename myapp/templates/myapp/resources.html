@@ -11,11 +11,36 @@
 <!--Show messages-->
 {% if messages %}
 {% for message in messages %}
-<div class="alert alert-{{ message.tags }} mt-3">
+
+{% if message.tags == 'success' %}
+<div class="alert alert-success mt-3">
     <strong>{{ message }}</strong>
 </div>
+{% endif %}
+
+{% if message.tags == 'error' %}
+<div class="alert alert-danger mt-3">
+    <strong>{{ message }}</strong>
+</div>
+{% endif %}
+
 {% endfor %}
 {% endif %}
+
+<section class="my-4">
+    <p>
+        The following resources describe studies done on gamification or how to
+        integrate it into current teaching practices.
+        Click on the title of a resource to learn about its results and where to
+        access the resource.
+    </p>
+    <p>
+        Adding results to resources allows the scenario designer to make more
+        accurate recommendations.
+    </p>
+
+    <a class="btn btn-primary" href="{% url 'myapp:add_resource'%}">Add Resource</a>
+</section>
 
 <section class="my-4">
     <h2>Search</h2>
