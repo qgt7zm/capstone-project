@@ -32,10 +32,12 @@ def elements(request) -> HttpResponse:
         if action == "search":
             # Filter results using form
             any_filter = request.POST.get("any", None)
-            filtered_results = (
-                    filtered_results.filter(name__icontains=any_filter) |
-                    filtered_results.filter(description__icontains=any_filter)
-            )
+            if any_filter:
+                filtered_results = (
+                        filtered_results.filter(name__icontains=any_filter) |
+                        filtered_results.filter(description__icontains=any_filter) |
+                        filter_by_outcome_name(filtered_results, any_filter)
+                )
 
             name_filter = request.POST.get("name", None)
             if name_filter:
@@ -44,6 +46,10 @@ def elements(request) -> HttpResponse:
             description_filter = request.POST.get("description", None)
             if description_filter:
                 filtered_results = filtered_results.filter(description__icontains=description_filter)
+
+            outcome_filter = request.POST.get("outcome", None)
+            if outcome_filter:
+                filtered_results = filter_by_outcome_name(filtered_results, outcome_filter)
 
     context = {
         "elements": filtered_results,
@@ -63,10 +69,12 @@ def outcomes(request) -> HttpResponse:
         if action == "search":
             # Filter results using form
             any_filter = request.POST.get("any", None)
-            filtered_results = (
-                    filtered_results.filter(name__icontains=any_filter) |
-                    filtered_results.filter(description__icontains=any_filter)
-            )
+            if any_filter:
+                filtered_results = (
+                        filtered_results.filter(name__icontains=any_filter) |
+                        filtered_results.filter(description__icontains=any_filter) |
+                        filter_by_element_name(filtered_results, any_filter)
+                )
 
             name_filter = request.POST.get("name", None)
             if name_filter:
@@ -75,6 +83,10 @@ def outcomes(request) -> HttpResponse:
             description_filter = request.POST.get("description", None)
             if description_filter:
                 filtered_results = filtered_results.filter(description__icontains=description_filter)
+
+            element_filter = request.POST.get("element", None)
+            if element_filter:
+                filtered_results = filter_by_element_name(filtered_results, element_filter)
 
     context = {
         "outcomes": filtered_results,
@@ -107,22 +119,18 @@ def resources(request) -> HttpResponse:
                 )
                 filtered_results = (
                         filtered_results.filter(title__icontains=any_filter) |
-                        filtered_results.filter(authors__first_name__icontains=any_filter) |
-                        filtered_results.filter(authors__last_name__icontains=any_filter) |
+                        filter_by_author_name(filtered_results, any_filter) |
                         filtered_results.filter(year_str=any_filter) |
                         filtered_results.filter(summary__icontains=any_filter)
                 ).distinct()
 
-            summary_filter = request.POST.get("title", None)
+            summary_filter = request.POST.get("summary", None)
             if summary_filter:
-                filtered_results = filtered_results.filter(title__icontains=summary_filter)
+                filtered_results = filtered_results.filter(summary__icontains=summary_filter)
 
-            author_filter = request.POST.get("author", None)
-            if author_filter:
-                filtered_results = (
-                        filtered_results.filter(authors__first_name__icontains=author_filter) |
-                        filtered_results.filter(authors__last_name__icontains=author_filter)
-                ).distinct()
+            name_filter = request.POST.get("name", None)
+            if name_filter:
+                filtered_results = filter_by_author_name(filtered_results, any_filter)
 
             year = request.POST.get("year", None)
             if year:

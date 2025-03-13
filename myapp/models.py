@@ -117,13 +117,17 @@ class Outcome(models.Model):
         ordering = ["name"]
 
     def get_elements(self) -> QuerySet[Element]:
-        outcome_pks = (Result.objects.filter(outcomes__in=[self])
-                       .values("elements").distinct())
-        return Outcome.objects.filter(pk__in=outcome_pks)
+        element_pks = (
+            Result.objects.filter(outcomes__in=[self])
+            .values("elements").distinct()
+        )
+        return Element.objects.filter(pk__in=element_pks)
 
     def get_resources(self) -> QuerySet[Resource]:
-        resource_pks = (Result.objects.filter(outcomes__in=[self])
-                        .values("resource").distinct())
+        resource_pks = (
+            Result.objects.filter(outcomes__in=[self])
+            .values("resource").distinct()
+        )
         return order_by_citation(Resource.objects.filter(pk__in=resource_pks))
 
     def __str__(self):
@@ -209,3 +213,29 @@ def order_by_citation(resources: QuerySet[Resource]) -> QuerySet[Resource]:
             Subquery(author1_last_name), Value("")
         )
     ).order_by("author__last_name", "year")
+
+
+def filter_by_author_name(resources: QuerySet[Resource], author_name: str) -> QuerySet[Resource]:
+    # Filter resources by author name
+    return (
+            resources.filter(authors__first_name__icontains=author_name) |
+            resources.filter(authors__last_name__icontains=author_name)
+    )
+
+
+def filter_by_element_name(elements: QuerySet[Outcome], element_name: str) -> QuerySet[Outcome]:
+    # Filter outcomes by element name
+    element_pks = Element.objects.filter(name__icontains=element_name).values("pk")
+    outcome_pks = (
+        Result.objects.filter(elements__in=element_pks).values("outcomes").distinct()
+    )
+    return elements.filter(pk__in=outcome_pks)
+
+
+def filter_by_outcome_name(outcomes: QuerySet[Element], outcome_name: str) -> QuerySet[Element]:
+    # Filter elements ts by outcome name
+    outcome_pks = Outcome.objects.filter(name__icontains=outcome_name).values("pk")
+    element_pks = (
+        Result.objects.filter(outcomes__in=outcome_pks).values("elements").distinct()
+    )
+    return outcomes.filter(pk__in=element_pks)
