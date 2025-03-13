@@ -168,10 +168,15 @@ def add_resource_form(request) -> HttpResponse:
     if request.method == "POST":
         action = request.POST.get("action", None)
         if action == "add_resource":
-            # Add Resource
+            # Add resource
             title = request.POST.get("title")
             year = request.POST.get("year")
-            # TODO prevent duplicate title + year
+            existing_resource = Resource.objects.filter(title=title, year=year)
+            if existing_resource.exists():
+                # Resource already exists
+                messages.error(request, "A resource with that title and year already exists.")
+                return redirect("myapp:resources")
+
             location = request.POST.get("location", "")
             url = request.POST.get("url", "")
             summary = request.POST.get("summary", "")
@@ -179,19 +184,20 @@ def add_resource_form(request) -> HttpResponse:
                 title=title, year=year, publisher=location, url=url, summary=summary
             )
 
-            # Add Authors
+            # Add authors
             num_authors = int(request.POST.get("num_authors"))
             authors = []
             for i in range(1, num_authors + 1):
                 first_name = request.POST.get(f"author{i}_first_name")
                 last_name = request.POST.get(f"author{i}_last_name")
-                existing = Author.objects.filter(first_name=first_name, last_name=last_name)
-                if existing.exists():
+                existing_author = Author.objects.filter(first_name=first_name, last_name=last_name)
+                if existing_author.exists():
+                    # Author already exists
                     continue
                 author = Author.objects.create(first_name=first_name, last_name=last_name)
                 authors.append(author)
 
-            # Add ResourceAuthors
+            # Link authors to resources
             for i, author in enumerate(authors):
                 ResourceAuthor.objects.create(resource=resource, author=author, order=i)
 
@@ -221,13 +227,8 @@ def add_result_form(request, resource_pk: int) -> HttpResponse:
     if request.method == "POST":
         action = request.POST.get("action", None)
         if action == "add_result":
-            # Add Result
+            # Add result
             resource = get_object_or_404(Resource, pk=resource_pk)
-
-            element_names = request.POST.getlist("elements")
-            elements = Element.objects.filter(name__in=element_names)
-            outcome_names = request.POST.getlist("outcomes")
-            outcomes = Outcome.objects.filter(name__in=outcome_names)
 
             rating_label = request.POST.get("rating")
             rating = None
@@ -254,8 +255,14 @@ def add_result_form(request, resource_pk: int) -> HttpResponse:
                 rating=rating, subject=subject, age_group=age_group,
                 sample_size=sample_size
             )
-            result.elements.set(elements)
-            result.outcomes.set(outcomes)
+
+            # Set many-to-many fields
+            element_names = request.POST.getlist("elements")
+            result_elements = Element.objects.filter(name__in=element_names)
+            outcome_names = request.POST.getlist("outcomes")
+            result_outcomes = Outcome.objects.filter(name__in=outcome_names)
+            result.elements.set(result_elements)
+            result.outcomes.set(result_outcomes)
 
             messages.success(request, "Result created successfully.")
 
