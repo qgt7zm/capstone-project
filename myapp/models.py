@@ -193,6 +193,25 @@ class Result(models.Model):
                 f"{self.get_subject()}, {self.get_age_group()}, {self.sample_size}")
 
 
+class Scenario(models.Model):
+    """A gamified classroom plan with needs and recommendations."""
+    name = models.CharField(max_length=200)
+    created_at = models.DateTimeField(auto_now_add=True)
+    outcomes = models.ManyToManyField(Outcome)
+    subject = models.IntegerField(choices=Result.Subjects, null=True, blank=True)
+    age_group = models.IntegerField(choices=Result.AgeGroups, null=True, blank=True)
+
+    class Meta:
+        unique_together = ["name"]
+        ordering = ["created_at", "name"]
+
+    def get_created_at(self) -> str:
+        return self.created_at.strftime("%b %d, %Y, %H:%M %p")
+
+    def __str__(self):
+        return f"{self.name}"
+
+
 model_classes = [
     Author,
     Resource,
@@ -200,6 +219,7 @@ model_classes = [
     Element,
     Outcome,
     Result,
+    Scenario,
 ]
 
 

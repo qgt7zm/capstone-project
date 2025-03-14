@@ -79,25 +79,21 @@
             <tr>
                 <th class="col-2">Name</th>
                 <th class="col-2">Created</th>
-                <th class="col-4">Outcomes</th>
+                <th class="col-4">Needs</th>
                 <th class="col-4">Elements</th>
             </tr>
+            {% for scenario in scenarios %}
             <tr>
                 <td>
-                    <a href="{% url 'myapp:scenarios'%}">My Scenario 1</a>
+                    <a href="{% url 'myapp:scenarios'%}">
+                        {{ scenario.name }}
+                    </a>
                 </td>
-                <td>[Date and time]</td>
+                <td>{{ scenario.get_created_at }}</td>
                 <td>[List of Outcomes]</td>
                 <td>[List of Elements]</td>
             </tr>
-            <tr>
-                <td>
-                    <a href="{% url 'myapp:scenarios'%}">My Scenario 2</a>
-                </td>
-                <td>[Date and time]</td>
-                <td>[List of Outcomes]</td>
-                <td>[List of Elements]</td>
-            </tr>
+            {% endfor %}
         </table>
     </div>
 </section>

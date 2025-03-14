@@ -272,9 +272,15 @@ def add_result_form(request, resource_pk: int) -> HttpResponse:
 
 
 def scenarios(request) -> HttpResponse:
+    filtered_results = Scenario.objects.all()
+
+    context = {
+        "scenarios": filtered_results,
+    }
     return render(
         request,
-        "myapp/scenarios.html"
+        "myapp/scenarios.html",
+        context
     )
 
 
