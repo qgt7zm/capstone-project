@@ -108,13 +108,6 @@ def outcomes(request) -> HttpResponse:
     )
 
 
-def scenarios(request) -> HttpResponse:
-    return render(
-        request,
-        "myapp/scenarios.html"
-    )
-
-
 def resources(request) -> HttpResponse:
     filtered_results = order_by_citation(Resource.objects.all())
 
@@ -278,6 +271,13 @@ def add_result_form(request, resource_pk: int) -> HttpResponse:
     return redirect(reverse("myapp:resource_view", kwargs=kwargs))
 
 
+def scenarios(request) -> HttpResponse:
+    return render(
+        request,
+        "myapp/scenarios.html"
+    )
+
+
 def data(request) -> HttpResponse:
     return render(
         request,
@@ -296,6 +296,7 @@ def data_export(request) -> HttpResponse:
         # Exports to json array
         json_str = serializers.serialize("json", model_data)
         all_data += json.loads(json_str)
+
     return JsonResponse(all_data, safe=False)  # Need to export array
 
 

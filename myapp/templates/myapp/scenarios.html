@@ -1,54 +1,72 @@
 {% extends "myapp/base.html" %}
 
 <!--Metadata-->
-{% block description %}Gamification learning tool game elements{% endblock %}
-{% block title %}Elements – Gamification Learning Tool{% endblock %}
+{% block description %}Gamification learning tool scenarios{% endblock %}
+{% block title %}Scenarios – Gamification Learning Tool{% endblock %}
 
 <!--Main Content-->
 {% block main %}
 <h1>Scenario Designer</h1>
 
-<p>
-    Scenarios describe different situations in which an instructor wants to gamify
-    a classroom. When you design a new scenario, input your classroom requirements
-    and desired learning outcome, and the website will make the best recommendations
-    for you. Click on the name of a past scenario to view the needs and results.
-</p>
+<!--Show messages-->
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} mt-3">
+    <strong>{{ message }}</strong>
+</div>
+{% endfor %}
+{% endif %}
 
-<a class="btn btn-primary" href="#">Create Scenario</a>
+<section class="my-4">
+    <p>
+        Scenarios describe different situations in which an instructor wants to gamify
+        a classroom. When you design a new scenario, input your classroom requirements
+        and desired learning outcomes, and the website will make the best recommendations
+        for you. Click on the name of a past scenario to view the needs and results.
+    </p>
+
+    <a class="btn btn-primary" href="#">Create Scenario</a>
+</section>
 
 <section class="my-4">
     <h2>Search Scenarios</h2>
 
-    <p>Search for Anything:</p>
+    <form method="post" action="{% url 'myapp:scenarios'%}">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="search">
 
-    <form>
-        <div>
-            <label for="any">Any:</label>
-            <input type="text" id="any" name="any">
-        </div>
-        <div>
-            <input type="submit" value="Submit">
-        </div>
-    </form>
+        <div class="card mb-3">
+            <div class="card-body">
+                <h3 class="card-title fs-5">Search for Anything</h3>
 
-    <p>Filter by Column:</p>
+                <div class="mb-3 ">
+                    <label class="form-label" for="any">Search Term:</label>
+                    <input class="form-control" type="text" id="any" name="any">
+                </div>
+            </div>
+        </div>
 
-    <form>
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name">
+        <div class="card mb-3">
+            <div class="card-body row">
+                <h3 class="card-title fs-5">Filter by Column</h3>
+
+                <div class="col-md-4 mb-3">
+                    <label class="form-label" for="name">Name:</label>
+                    <input class="form-control" type="text" id="name" name="name">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label" for="need">Need:</label>
+                    <input class="form-control" type="text" id="need" name="need">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label" for="element">Element:</label>
+                    <input class="form-control" type="text" id="element" name="element">
+                </div>
+            </div>
         </div>
-        <div>
-            <label for="need">Need:</label>
-            <input type="text" id="need" name="need">
-        </div>
-        <div>
-            <label for="effect">Effect:</label>
-            <input type="text" id="effect" name="effect">
-        </div>
-        <div>
-            <input type="submit" value="Submit">
+
+        <div class="mb-3">
+            <button class="btn btn-secondary" type="submit">Search</button>
         </div>
     </form>
 </section>
@@ -56,22 +74,35 @@
 <section class="my-4">
     <h2>Search Results</h2>
 
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Needs</th>
-            <th>Elements</th>
-        </tr>
-        <tr>
-            <td>My Scenario 1</td>
-            <td>[List of Needs]</td>
-            <td>[List of Elements]</td>
-        </tr>
-        <tr>
-            <td>My Scenario 2</td>
-            <td>[List of Needs]</td>
-            <td>[List of Elements]</td>
-        </tr>
-    </table>
+    <div class="table-responsive-lg">
+        <table class="table table-bordered border-secondary">
+            <tr>
+                <th class="col-2">Name</th>
+                <th class="col-2">Created</th>
+                <th class="col-4">Outcomes</th>
+                <th class="col-4">Elements</th>
+            </tr>
+            <tr>
+                <td>
+                    <a href="{% url 'myapp:scenarios'%}">My Scenario 1</a>
+                </td>
+                <td>[Date and time]</td>
+                <td>[List of Outcomes]</td>
+                <td>[List of Elements]</td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="{% url 'myapp:scenarios'%}">My Scenario 2</a>
+                </td>
+                <td>[Date and time]</td>
+                <td>[List of Outcomes]</td>
+                <td>[List of Elements]</td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section class="my-4">
+    <a class="btn btn-primary" href="{% url 'myapp:scenarios'%}">Create Scenario</a>
 </section>
 {% endblock %}
