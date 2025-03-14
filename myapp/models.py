@@ -208,6 +208,16 @@ class Scenario(models.Model):
     def get_created_at(self) -> str:
         return self.created_at.strftime("%b %d, %Y, %H:%M %p")
 
+    def get_subject(self) -> str:
+        if self.subject is None:
+            return "N/A"
+        return str(Result.Subjects(self.subject).label)
+
+    def get_age_group(self) -> str:
+        if self.age_group is None:
+            return "N/A"
+        return str(Result.AgeGroups(self.age_group).label)
+
     def __str__(self):
         return f"{self.name}"
 

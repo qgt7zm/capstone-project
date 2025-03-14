@@ -284,6 +284,19 @@ def scenarios(request) -> HttpResponse:
     )
 
 
+def scenario_view(request, scenario_pk: int) -> HttpResponse:
+    scenario = get_object_or_404(Scenario, pk=scenario_pk)
+
+    context = {
+        "scenario": scenario,
+    }
+    return render(
+        request,
+        "myapp/scenario_view.html",
+        context
+    )
+
+
 def data(request) -> HttpResponse:
     return render(
         request,

@@ -19,6 +19,7 @@ urlpatterns = [
     path("resources/<int:resource_pk>/add_result", views.add_result, name="add_result"),
     path("resources/<int:resource_pk>/add_result/form", views.add_result_form, name="add_result_form"),
     path("scenarios", views.scenarios, name="scenarios"),
+    path("scenarios/<int:scenario_pk>", views.scenario_view, name="scenario_view"),
     path("data", views.data, name="data"),
     path("data/export", views.data_export, name="data_export"),
     path("data/upload", views.data_upload, name="data_upload"),

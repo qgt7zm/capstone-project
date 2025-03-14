@@ -1,0 +1,43 @@
+{% extends "myapp/base.html" %}
+
+<!--Metadata-->
+{% block description %}Gamification learning tool scenario info{% endblock %}
+{% block title %}Scenario Info – Gamification Learning Tool{% endblock %}
+
+<!--Main Content-->
+{% block main %}
+<h1>Scenario Information</h1>
+
+<section class="my-4">
+    <a class="btn btn-secondary" href="{% url 'myapp:scenarios'%}">Back to Scenarios</a>
+</section>
+
+<section class="my-4">
+    <h2>Overview</h2>
+
+    <p><strong>Name:</strong> {{ scenario.name }}</p>
+    <p><strong>Created:</strong> {{ scenario.get_created_at }}</p>
+</section>
+
+<section class="my-4">
+    <h2>Design</h2>
+
+    <p><strong>Subject:</strong> {{ scenario.get_subject }}</p>
+    <p><strong>Age Group:</strong> {{ scenario.get_age_group }}</p>
+    <p><strong>Outcomes:</strong></p>
+    <ul>
+        {% for outcome in scenario.get_outcomes %}
+        <li>{{ outcome }}</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section class="my-4">
+    <h2>Recommendations</h2>
+</section>
+
+<section class="my-4">
+    <a class="btn btn-secondary" href="{% url 'myapp:scenarios'%}">Back to Scenarios</a>
+</section>
+
+{% endblock %}
