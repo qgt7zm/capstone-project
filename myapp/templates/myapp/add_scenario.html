@@ -1,0 +1,64 @@
+{% extends "myapp/base.html" %}
+
+<!--Metadata-->
+{% block description %}Gamification learning tool add scenario{% endblock %}
+{% block title %}Add Scenario – Gamification Learning Tool{% endblock %}
+
+<!--Main Content-->
+{% block main %}
+<h1>Add Scenario</h1>
+
+<form method="post" action="{% url 'myapp:add_scenario_form' %}">
+    {% csrf_token %}
+    <input type="hidden" name="action" value="add_scenario">
+
+    <section class="row my-4">
+        <h2>Overview</h2>
+
+        <div class="mb-3">
+            <label class="form-label" for="name">Name (required):</label>
+            <input class="form-control" type="text" id="name" name="name"
+                   value="New Scenario" required>
+        </div>
+    </section>
+
+    <section class="row my-4">
+        <h2>Scenario Design</h2>
+
+        <div class="col-md-12 mb-3">
+            <label class="form-label" for="outcomes">Outcomes (at least one):</label>
+            <select class="form-select" id="outcomes" name="outcomes" multiple required>
+                {% for outcomes in outcome_choices %}
+                <option value="{{ outcomes }}">{{ outcomes }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label class="form-label" for="subject">Subject (required):</label>
+            <select class="form-select" id="subject" name="subject">
+                <option value="" selected>N/A</option>
+                {% for subject in subject_choices %}
+                <option value="{{ subject }}">{{ subject }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label class="form-label" for="age_group">Age Group (required):</label>
+            <select class="form-select" id="age_group" name="age_group">
+                <option value="" selected>N/A</option>
+                {% for age_group in age_group_choices %}
+                <option value="{{ age_group }}">{{ age_group }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </section>
+
+    <section class="my-4">
+        <button class="btn btn-success" type="submit">Confirm</button>
+        <a class="btn btn-danger" href="{% url 'myapp:scenarios' %}">Cancel</a>
+    </section>
+</form>
+
+{% endblock %}

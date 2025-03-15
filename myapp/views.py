@@ -339,6 +339,54 @@ def scenario_view(request, scenario_pk: int) -> HttpResponse:
     )
 
 
+def add_scenario(request) -> HttpResponse:
+    context = {
+        "outcome_choices": [outcome.name for outcome in Outcome.objects.all()],
+        "subject_choices": Result.Subjects.labels,
+        "age_group_choices": Result.AgeGroups.labels,
+    }
+
+    return render(
+        request,
+        "myapp/add_scenario.html",
+        context
+    )
+
+
+def add_scenario_form(request) -> HttpResponse:
+    if request.method == "POST":
+        action = request.POST.get("action", None)
+        if action == "add_scenario":
+            name = request.POST.get("name")
+            existing_scenario = Scenario.objects.filter(name=name)
+
+            new_name = name
+            counter = 1
+            while existing_scenario.exists():
+                # Scenario already exists
+                new_name = f"{name} ({counter})"
+                existing_scenario = Scenario.objects.filter(name=new_name)
+                counter += 1
+
+            outcome_names = request.POST.getlist("outcomes")
+            scenario_outcomes = Outcome.objects.filter(name__in=outcome_names)
+
+            subject_label = request.POST.get("subject", None)
+            subject = get_choice_from_label(Result.Subjects, subject_label)
+            age_group_label = request.POST.get("age_group", None)
+            age_group = get_choice_from_label(Result.AgeGroups, age_group_label)
+
+            # Create Scenario
+            scenario = Scenario.objects.create(
+                name=new_name, subject=subject, age_group=age_group
+            )
+            scenario.outcomes.set(scenario_outcomes)
+
+            messages.success(request, f'Scenario "{new_name}" created successfully.')
+
+    return redirect("myapp:scenarios")
+
+
 def data(request) -> HttpResponse:
     return render(
         request,
