@@ -10,6 +10,7 @@ from django.shortcuts import get_object_or_404, redirect, render, reverse
 
 from .forms import *
 from .models import *
+from .recommender import get_recommendations_individual
 
 
 def index(request) -> HttpResponse:
@@ -325,9 +326,11 @@ def scenarios(request) -> HttpResponse:
 
 def scenario_view(request, scenario_pk: int) -> HttpResponse:
     scenario = get_object_or_404(Scenario, pk=scenario_pk)
+    recommendations = get_recommendations_individual(scenario)
 
     context = {
         "scenario": scenario,
+        "recommendations": recommendations,
     }
     return render(
         request,

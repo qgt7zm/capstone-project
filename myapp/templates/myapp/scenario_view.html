@@ -24,7 +24,7 @@
 
     <p><strong>Subject:</strong> {{ scenario.get_subject }}</p>
     <p><strong>Age Group:</strong> {{ scenario.get_age_group }}</p>
-    <p><strong>Outcomes:</strong></p>
+    <p><strong>Desired Outcomes:</strong></p>
     <ul>
         {% for outcome in scenario.get_outcomes %}
         <li>{{ outcome }}</li>
@@ -34,6 +34,26 @@
 
 <section class="my-4">
     <h2>Recommendations</h2>
+
+    {% for outcome, recs in recommendations.items %}
+    <h3 class="fs-5">For outcome {{ outcome }}</h3>
+
+    <p><strong>Elements:</strong></p>
+    {% for element in recs.elements %}
+    <ul>
+        <li>{{ element.name }} (Score = {{ element.score }})</li>
+    </ul>
+    {% endfor %}
+
+    <p><strong>Resources:</strong></p>
+    {% for resource in recs.resources %}
+    <ul>
+        <li>
+            <a href="{% url 'myapp:resource_view' resource_pk=resource.pk %}">{{ resource }}</a>
+        </li>
+    </ul>
+    {% endfor %}
+    {% endfor %}
 </section>
 
 <section class="my-4">
