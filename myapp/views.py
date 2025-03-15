@@ -221,9 +221,9 @@ def add_result(request, resource_pk: int) -> HttpResponse:
         "resource": resource,
         "element_choices": [element.name for element in Element.objects.all()],
         "outcome_choices": [outcome.name for outcome in Outcome.objects.all()],
-        "rating_choices": Result.ResultRatings.labels,
-        "subject_choices": Result.Subjects.labels,
-        "age_group_choices": Result.AgeGroups.labels,
+        "rating_choices": ResultRatings.labels,
+        "subject_choices": Subjects.labels,
+        "age_group_choices": AgeGroups.labels,
     }
     return render(
         request,
@@ -240,13 +240,13 @@ def add_result_form(request, resource_pk: int) -> HttpResponse:
             resource = get_object_or_404(Resource, pk=resource_pk)
 
             rating_label = request.POST.get("rating")
-            rating = get_choice_from_label(Result.ResultRatings, rating_label)
+            rating = get_choice_from_label(ResultRatings, rating_label)
 
             subject_label = request.POST.get("subject")
-            subject = get_choice_from_label(Result.Subjects, subject_label)
+            subject = get_choice_from_label(Subjects, subject_label)
 
             age_group_label = request.POST.get("age_group")
-            age_group = get_choice_from_label(Result.AgeGroups, age_group_label)
+            age_group = get_choice_from_label(AgeGroups, age_group_label)
 
             sample_size = request.POST.get("sample_size")
 
@@ -285,11 +285,11 @@ def scenarios(request) -> HttpResponse:
                         filtered_results.filter(name__icontains=any_filter) |
                         filtered_results.filter(
                             subject=
-                            get_choice_from_label_icontains(Result.Subjects, any_filter)
+                            get_choice_from_label_icontains(Subjects, any_filter)
                         ) |
                         filtered_results.filter(
                             age_group=
-                            get_choice_from_label_icontains(Result.AgeGroups, any_filter)
+                            get_choice_from_label_icontains(AgeGroups, any_filter)
                         ) |
                         filtered_results.filter(outcomes__name__icontains=any_filter)
                 ).distinct()
@@ -300,12 +300,12 @@ def scenarios(request) -> HttpResponse:
 
             subject_filter = request.POST.get("subject", None)
             if subject_filter:
-                subject_filter = get_choice_from_label(Result.Subjects, subject_filter)
+                subject_filter = get_choice_from_label(Subjects, subject_filter)
                 filtered_results = filtered_results.filter(subject=subject_filter)
 
             age_group_filter = request.POST.get("age_group", None)
             if age_group_filter:
-                age_group_filter = get_choice_from_label(Result.AgeGroups, age_group_filter)
+                age_group_filter = get_choice_from_label(AgeGroups, age_group_filter)
                 filtered_results = filtered_results.filter(age_group=age_group_filter)
 
             outcome_filter = request.POST.get("outcome", None)
@@ -314,8 +314,8 @@ def scenarios(request) -> HttpResponse:
 
     context = {
         "scenarios": filtered_results,
-        "subject_choices": Result.Subjects.labels,
-        "age_group_choices": Result.AgeGroups.labels,
+        "subject_choices": Subjects.labels,
+        "age_group_choices": AgeGroups.labels,
     }
     return render(
         request,
@@ -342,8 +342,8 @@ def scenario_view(request, scenario_pk: int) -> HttpResponse:
 def add_scenario(request) -> HttpResponse:
     context = {
         "outcome_choices": [outcome.name for outcome in Outcome.objects.all()],
-        "subject_choices": Result.Subjects.labels,
-        "age_group_choices": Result.AgeGroups.labels,
+        "subject_choices": Subjects.labels,
+        "age_group_choices": AgeGroups.labels,
     }
 
     return render(
@@ -372,9 +372,9 @@ def add_scenario_form(request) -> HttpResponse:
             scenario_outcomes = Outcome.objects.filter(name__in=outcome_names)
 
             subject_label = request.POST.get("subject", None)
-            subject = get_choice_from_label(Result.Subjects, subject_label)
+            subject = get_choice_from_label(Subjects, subject_label)
             age_group_label = request.POST.get("age_group", None)
-            age_group = get_choice_from_label(Result.AgeGroups, age_group_label)
+            age_group = get_choice_from_label(AgeGroups, age_group_label)
 
             # Create Scenario
             scenario = Scenario.objects.create(

@@ -4,9 +4,10 @@ Recommendation algorithm for myapp application.
 from math import sqrt
 
 from django.db import models
-from django.db.models import Count, Avg, Case, When, Value, Q
+from django.db.models import Avg, Case, Count, Q, Value, When
 
-from myapp.models import Element, Resource, Result, order_by_citation
+from myapp.models import Element, Resource, Result, ResultRatings
+from myapp.models import order_by_citation
 
 
 def get_recommendations_individual(scenario):
@@ -39,7 +40,7 @@ def get_recommendations_individual(scenario):
 
             # Evaluate element score
             aggregation = element_results.aggregate(
-                avg_rating=Avg("rating", default=Result.ResultRatings.NEUTRAL.value),
+                avg_rating=Avg("rating", default=ResultRatings.NEUTRAL.value),
                 count_results=Count("pk"),
                 avg_count_elements=Avg("count_elements"),
                 subject_similarity=Avg(Case(
@@ -114,9 +115,9 @@ def get_recommendations_combined(scenario):
 
         # Evaluate element score
         aggregation = element_results.aggregate(
-            avg_rating=Avg("rating", default=Result.ResultRatings.NEUTRAL.value),
+            avg_rating=Avg("rating", default=ResultRatings.NEUTRAL.value),
             count_results=Count("pk"),
-            prop_outcomes_desired = scenario.outcomes.count() / Avg("count_outcomes_desired"),
+            prop_outcomes_desired=scenario.outcomes.count() / Avg("count_outcomes_desired"),
             avg_count_elements=Avg("count_elements"),
             subject_similarity=Avg(Case(
                 When(subject=scenario.subject, then=Value(1.1)),

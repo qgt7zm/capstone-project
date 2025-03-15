@@ -17,6 +17,38 @@ from django.db.models.functions import Cast, Coalesce
 MAX_PREVIEW_AUTHORS = 4
 
 
+# Enum Classes
+
+class ResultRatings(models.IntegerChoices):
+    VERY_POSITIVE = 2, "Very Positive"
+    SOMEWHAT_POSITIVE = 1, "Somewhat Positive"
+    NEUTRAL = 0, "Neutral"
+    SOMEWHAT_NEGATIVE = -1, "Somewhat Negative"
+    VERY_NEGATIVE = -2, "Very Negative"
+
+
+class AgeGroups(models.IntegerChoices):
+    ELEMENTARY = 0, "Elementary School (K-5)"
+    MIDDLE = 1, "Middle School (6-8)"
+    HIGH = 2, "High School (9-12)"
+    UNDERGRAD = 3, "Undergraduate"
+    GRADUATE = 4, "Graduate"
+    OTHER = 5, "Other"
+
+
+class Subjects(models.IntegerChoices):
+    COMPUTING = 0, "Computing"
+    ENGINEERING = 1, "Engineering"
+    MATH = 2, "Mathematics"
+    SCIENCE = 3, "Sciences"
+    MEDICINE = 4, "Medicine"
+    LANGUAGE = 5, "Languages"
+    HUMANITIES = 6, "Humanities"
+    OTHER = 10, "Other"
+
+
+# Model Classes
+
 class Author(models.Model):
     """A subject-matter expert."""
     first_name = models.CharField(max_length=200)
@@ -148,32 +180,6 @@ class Outcome(models.Model):
 
 class Result(models.Model):
     """The result of a gamification study."""
-
-    class ResultRatings(models.IntegerChoices):
-        VERY_POSITIVE = 2, "Very Positive"
-        SOMEWHAT_POSITIVE = 1, "Somewhat Positive"
-        NEUTRAL = 0, "Neutral"
-        SOMEWHAT_NEGATIVE = -1, "Somewhat Negative"
-        VERY_NEGATIVE = -2, "Very Negative"
-
-    class AgeGroups(models.IntegerChoices):
-        ELEMENTARY = 0, "Elementary School (K-5)"
-        MIDDLE = 1, "Middle School (6-8)"
-        HIGH = 2, "High School (9-12)"
-        UNDERGRAD = 3, "Undergraduate"
-        GRADUATE = 4, "Graduate"
-        OTHER = 5, "Other"
-
-    class Subjects(models.IntegerChoices):
-        COMPUTING = 0, "Computing"
-        ENGINEERING = 1, "Engineering"
-        MATH = 2, "Mathematics"
-        SCIENCE = 3, "Sciences"
-        MEDICINE = 4, "Medicine"
-        LANGUAGE = 5, "Languages"
-        HUMANITIES = 6, "Humanities"
-        OTHER = 10, "Other"
-
     resource = models.ForeignKey(Resource, on_delete=models.CASCADE)
     elements = models.ManyToManyField(Element, related_name="results")
     outcomes = models.ManyToManyField(Outcome, related_name="results")
@@ -192,13 +198,13 @@ class Result(models.Model):
         return ", ".join([outcomes.name for outcomes in self.outcomes.all()])
 
     def get_rating(self) -> str:
-        return str(Result.ResultRatings(self.rating).label)
+        return str(ResultRatings(self.rating).label)
 
     def get_subject(self) -> str:
-        return str(Result.Subjects(self.subject).label)
+        return str(Subjects(self.subject).label)
 
     def get_age_group(self) -> str:
-        return str(Result.AgeGroups(self.age_group).label)
+        return str(AgeGroups(self.age_group).label)
 
     def __str__(self):
         return (f"{self.resource.get_citation()}, {self.get_rating()}, "
@@ -210,8 +216,8 @@ class Scenario(models.Model):
     name = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     outcomes = models.ManyToManyField(Outcome)
-    subject = models.IntegerField(choices=Result.Subjects, null=True, blank=True)
-    age_group = models.IntegerField(choices=Result.AgeGroups, null=True, blank=True)
+    subject = models.IntegerField(choices=Subjects, null=True, blank=True)
+    age_group = models.IntegerField(choices=AgeGroups, null=True, blank=True)
 
     class Meta:
         unique_together = ["name"]
@@ -226,12 +232,12 @@ class Scenario(models.Model):
     def get_subject(self) -> str:
         if self.subject is None:
             return "N/A"
-        return str(Result.Subjects(self.subject).label)
+        return str(Subjects(self.subject).label)
 
     def get_age_group(self) -> str:
         if self.age_group is None:
             return "N/A"
-        return str(Result.AgeGroups(self.age_group).label)
+        return str(AgeGroups(self.age_group).label)
 
     def __str__(self):
         return f"{self.name}"
@@ -248,7 +254,7 @@ model_classes = [
 ]
 
 
-# Model Helper Methods
+# Choice Helper Methods
 
 def get_choice_from_label(choices_cls: type, choice_label: str) -> models.IntegerChoices | None:
     for val, label in choices_cls.choices:
@@ -263,6 +269,8 @@ def get_choice_from_label_icontains(choices_cls: type, choice_label: str) -> mod
             return val
     return -1
 
+
+# Model Helper Methods
 
 def order_by_citation(resources: QuerySet[Resource]) -> QuerySet[Resource]:
     # Sort by last name of first author
