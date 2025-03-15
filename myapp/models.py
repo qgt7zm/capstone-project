@@ -12,6 +12,10 @@ from django.db import models
 from django.db.models import QuerySet, OuterRef, Subquery, Value
 from django.db.models.functions import Cast, Coalesce
 
+# Constants
+
+MAX_PREVIEW_AUTHORS = 4
+
 
 class Author(models.Model):
     """A subject-matter expert."""
@@ -44,12 +48,20 @@ class Resource(models.Model):
         else:
             return title[:max_length] + "..."
 
-    def get_authors(self) -> QuerySet:
+    def get_authors(self) -> QuerySet[Author]:
         return (
             Author.objects.prefetch_related("resourceauthor_set")
             .filter(resourceauthor__resource=self)
             .order_by("resourceauthor__order")
         )
+
+    def get_short_authors(self) -> list[str]:
+        authors = [str(author) for author in self.get_authors()]
+        num_authors = len(authors)
+        if num_authors > MAX_PREVIEW_AUTHORS:
+            authors = authors[:MAX_PREVIEW_AUTHORS - 1]
+            authors.append(f"+ {num_authors - (MAX_PREVIEW_AUTHORS - 1)} more")
+        return authors
 
     def get_citation(self) -> str:
         authors = self.get_authors()
