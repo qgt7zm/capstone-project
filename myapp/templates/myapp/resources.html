@@ -45,8 +45,7 @@
 <section class="my-4">
     <h2>Search Resources</h2>
 
-    <form method="post" action="{% url 'myapp:resources'%}">
-        {% csrf_token %}
+    <form method="get" action="{% url 'myapp:resources'%}">
         <input type="hidden" name="action" value="search">
 
         <div class="card mb-3">
@@ -85,12 +84,13 @@
 
         <div class="mb-3">
             <button class="btn btn-secondary" type="submit">Search</button>
+            <a class="btn btn-secondary" href="{% url 'myapp:resources'%}">Clear Filters</a>
         </div>
     </form>
 </section>
 
 <section class="my-4">
-    <h2>Search Results</h2>
+    <h2>Search Results ({{ resources|length }})</h2>
 
     <div class="table-responsive-lg">
         <table class="table table-bordered border-secondary">

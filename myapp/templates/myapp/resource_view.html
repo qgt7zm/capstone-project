@@ -38,7 +38,11 @@
 
     <p><strong>Year:</strong> {{ resource.year }}</p>
     <p><strong>Location:</strong> {{ resource.publisher }}</p>
-    <p><strong>URL:</strong> {{ resource.url }}</p>
+    <p><strong>Citation:</strong> {{ resource.get_citation }}</p>
+    <p>
+        <strong>URL:</strong>
+        <a href="{{ resource.url }}">{{ resource.url }}</a>
+    </p>
 </section>
 
 <section class="my-4">

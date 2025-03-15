@@ -31,8 +31,7 @@
 <section class="my-4">
     <h2>Search Scenarios</h2>
 
-    <form method="post" action="{% url 'myapp:scenarios'%}">
-        {% csrf_token %}
+    <form method="get" action="{% url 'myapp:scenarios'%}">
         <input type="hidden" name="action" value="search">
 
         <div class="card mb-3">
@@ -81,12 +80,13 @@
 
         <div class="mb-3">
             <button class="btn btn-secondary" type="submit">Search</button>
+            <a class="btn btn-secondary" href="{% url 'myapp:scenarios'%}">Clear Filters</a>
         </div>
     </form>
 </section>
 
 <section class="my-4">
-    <h2>Search Results</h2>
+    <h2>Search Results ({{ scenarios|length }})</h2>
 
     <div class="table-responsive-lg">
         <table class="table table-bordered border-secondary">
@@ -100,7 +100,7 @@
             {% for scenario in scenarios %}
             <tr>
                 <td>
-                    <a href="{% url 'myapp:scenario_view' scenario_pk=scenario.pk%}">
+                    <a class="text-primary" href="{% url 'myapp:scenario_view' scenario_pk=scenario.pk%}">
                         {{ scenario.name }}
                     </a>
                 </td>

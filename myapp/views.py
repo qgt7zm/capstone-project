@@ -27,11 +27,11 @@ def home(request) -> HttpResponse:
 def elements(request) -> HttpResponse:
     filtered_results = Element.objects.all()
 
-    if request.method == "POST":
-        action = request.POST.get("action", None)
+    if request.method == "GET":
+        action = request.GET.get("action", None)
         if action == "search":
             # Filter results using form
-            any_filter = request.POST.get("any", None)
+            any_filter = request.GET.get("any", None)
             if any_filter:
                 filtered_results = (
                         filtered_results.filter(name__icontains=any_filter) |
@@ -40,20 +40,19 @@ def elements(request) -> HttpResponse:
                         filter_by_resource_citation(filtered_results, any_filter, "outcomes")
                 )
 
-            name_filter = request.POST.get("name", None)
+            name_filter = request.GET.get("name", None)
             if name_filter:
                 filtered_results = filtered_results.filter(name__icontains=name_filter)
 
-            description_filter = request.POST.get("description", None)
+            description_filter = request.GET.get("description", None)
             if description_filter:
                 filtered_results = filtered_results.filter(description__icontains=description_filter)
 
-            outcome_filter = request.POST.get("outcome", None)
+            outcome_filter = request.GET.get("outcome", None)
             if outcome_filter:
                 filtered_results = filter_by_outcome_name(filtered_results, outcome_filter)
 
-            resource_filter = request.POST.get("resource", None)
-            print("resource = " + resource_filter)
+            resource_filter = request.GET.get("resource", None)
             if resource_filter:
                 filtered_results = filter_by_resource_citation(filtered_results, resource_filter, "outcomes")
 
@@ -70,11 +69,11 @@ def elements(request) -> HttpResponse:
 def outcomes(request) -> HttpResponse:
     filtered_results = Outcome.objects.all()
 
-    if request.method == "POST":
-        action = request.POST.get("action", None)
+    if request.method == "GET":
+        action = request.GET.get("action", None)
         if action == "search":
             # Filter results using form
-            any_filter = request.POST.get("any", None)
+            any_filter = request.GET.get("any", None)
             if any_filter:
                 filtered_results = (
                         filtered_results.filter(name__icontains=any_filter) |
@@ -83,19 +82,19 @@ def outcomes(request) -> HttpResponse:
                         filter_by_resource_citation(filtered_results, any_filter, "outcomes")
                 )
 
-            name_filter = request.POST.get("name", None)
+            name_filter = request.GET.get("name", None)
             if name_filter:
                 filtered_results = filtered_results.filter(name__icontains=name_filter)
 
-            description_filter = request.POST.get("description", None)
+            description_filter = request.GET.get("description", None)
             if description_filter:
                 filtered_results = filtered_results.filter(description__icontains=description_filter)
 
-            element_filter = request.POST.get("element", None)
+            element_filter = request.GET.get("element", None)
             if element_filter:
                 filtered_results = filter_by_element_name(filtered_results, element_filter)
 
-            resource_filter = request.POST.get("resource", None)
+            resource_filter = request.GET.get("resource", None)
             if resource_filter:
                 filtered_results = filter_by_resource_citation(filtered_results, resource_filter, "outcomes")
 
@@ -113,10 +112,10 @@ def resources(request) -> HttpResponse:
     filtered_results = order_by_citation(Resource.objects.all())
 
     # Filter results using form
-    if request.method == "POST":
-        action = request.POST.get("action", None)
+    if request.method == "GET":
+        action = request.GET.get("action", None)
         if action == "search":
-            any_filter = request.POST.get("any", None)
+            any_filter = request.GET.get("any", None)
             if any_filter:
                 filtered_results = (
                         filtered_results.filter(title__icontains=any_filter) |
@@ -125,19 +124,19 @@ def resources(request) -> HttpResponse:
                         filtered_results.filter(summary__icontains=any_filter)
                 ).distinct()
 
-            summary_filter = request.POST.get("summary", None)
+            summary_filter = request.GET.get("summary", None)
             if summary_filter:
                 filtered_results = filtered_results.filter(summary__icontains=summary_filter)
 
-            name_filter = request.POST.get("name", None)
+            name_filter = request.GET.get("name", None)
             if name_filter:
                 filtered_results = filter_by_author_name(filtered_results, any_filter)
 
-            year = request.POST.get("year", None)
+            year = request.GET.get("year", None)
             if year:
                 filtered_results = filtered_results.filter(year=year)
 
-            summary_filter = request.POST.get("summary", None)
+            summary_filter = request.GET.get("summary", None)
             if summary_filter:
                 filtered_results = filtered_results.filter(summary__icontains=summary_filter)
 
@@ -210,7 +209,7 @@ def add_resource_form(request) -> HttpResponse:
             for i, author in enumerate(authors):
                 ResourceAuthor.objects.create(resource=resource, author=author, order=i)
 
-            messages.success(request, "Resource created successfully.")
+            messages.success(request, f'Resource {resource} created successfully.')
 
     return redirect("myapp:resources")
 
@@ -275,11 +274,11 @@ def add_result_form(request, resource_pk: int) -> HttpResponse:
 def scenarios(request) -> HttpResponse:
     filtered_results = Scenario.objects.all()
 
-    if request.method == "POST":
-        action = request.POST.get("action", None)
+    if request.method == "GET":
+        action = request.GET.get("action", None)
         if action == "search":
             # Filter results using form
-            any_filter = request.POST.get("any", None)
+            any_filter = request.GET.get("any", None)
             if any_filter:
                 filtered_results = (
                         filtered_results.filter(name__icontains=any_filter) |
@@ -294,21 +293,21 @@ def scenarios(request) -> HttpResponse:
                         filtered_results.filter(outcomes__name__icontains=any_filter)
                 ).distinct()
 
-            name_filter = request.POST.get("name", None)
+            name_filter = request.GET.get("name", None)
             if name_filter:
                 filtered_results = filtered_results.filter(name__icontains=name_filter)
 
-            subject_filter = request.POST.get("subject", None)
+            subject_filter = request.GET.get("subject", None)
             if subject_filter:
                 subject_filter = get_choice_from_label(Subjects, subject_filter)
                 filtered_results = filtered_results.filter(subject=subject_filter)
 
-            age_group_filter = request.POST.get("age_group", None)
+            age_group_filter = request.GET.get("age_group", None)
             if age_group_filter:
                 age_group_filter = get_choice_from_label(AgeGroups, age_group_filter)
                 filtered_results = filtered_results.filter(age_group=age_group_filter)
 
-            outcome_filter = request.POST.get("outcome", None)
+            outcome_filter = request.GET.get("outcome", None)
             if outcome_filter:
                 filtered_results = filtered_results.filter(outcomes__name__icontains=outcome_filter)
 
