@@ -35,24 +35,20 @@
 <section class="my-4">
     <h2>Recommendations</h2>
 
-    {% for outcome, recs in recommendations.items %}
-    <h3 class="fs-5">For outcome {{ outcome }}</h3>
-
     <p><strong>Elements:</strong></p>
-    {% for element in recs.elements %}
+    {% for element in recommendations.elements %}
     <ul>
         <li>{{ element.name }} (Score = {{ element.score }})</li>
     </ul>
     {% endfor %}
 
     <p><strong>Resources:</strong></p>
-    {% for resource in recs.resources %}
+    {% for resource in recommendations.resources %}
     <ul>
         <li>
             <a href="{% url 'myapp:resource_view' resource_pk=resource.pk %}">{{ resource }}</a>
         </li>
     </ul>
-    {% endfor %}
     {% endfor %}
 </section>
 
