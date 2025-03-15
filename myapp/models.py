@@ -208,6 +208,9 @@ class Scenario(models.Model):
     def get_created_at(self) -> str:
         return self.created_at.strftime("%b %d, %Y, %H:%M %p")
 
+    def get_outcomes(self) -> QuerySet[Outcome]:
+        return self.outcomes.all()
+
     def get_subject(self) -> str:
         if self.subject is None:
             return "N/A"
@@ -240,6 +243,13 @@ def get_choice_from_label(choices_cls: type, choice_label: str) -> models.Intege
         if label == choice_label:
             return val
     return None
+
+
+def get_choice_from_label_icontains(choices_cls: type, choice_label: str) -> models.IntegerChoices | int:
+    for val, label in choices_cls.choices:
+        if choice_label.lower() in label.lower():
+            return val
+    return -1
 
 
 def order_by_citation(resources: QuerySet[Resource]) -> QuerySet[Resource]:

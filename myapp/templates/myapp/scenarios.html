@@ -50,17 +50,31 @@
             <div class="card-body row">
                 <h3 class="card-title fs-5">Filter by Column</h3>
 
-                <div class="col-md-4 mb-3">
+                <div class="col-md-3 mb-3">
                     <label class="form-label" for="name">Name:</label>
                     <input class="form-control" type="text" id="name" name="name">
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-3 mb-3">
+                    <label class="form-label" for="subject">Subject:</label>
+                    <select class="form-select" id="subject" name="subject">
+                        <option value="" selected></option>
+                        {% for subject in subject_choices %}
+                        <option value="{{ subject }}">{{ subject }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label" for="age_Group">Age Group:</label>
+                    <select class="form-select" id="age_group" name="age_group">
+                        <option value="" selected></option>
+                        {% for age_group in age_group_choices %}
+                        <option value="{{ age_group }}">{{ age_group }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
                     <label class="form-label" for="outcome">Outcome:</label>
                     <input class="form-control" type="text" id="outcome" name="outcome">
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label class="form-label" for="element">Element:</label>
-                    <input class="form-control" type="text" id="element" name="element">
                 </div>
             </div>
         </div>
@@ -82,7 +96,6 @@
                 <th class="col-2">Subject</th>
                 <th class="col-2">Age Group</th>
                 <th class="col-2">Outcomes</th>
-                <th class="col-2">Elements</th>
             </tr>
             {% for scenario in scenarios %}
             <tr>
@@ -94,8 +107,13 @@
                 <td>{{ scenario.get_created_at }}</td>
                 <td>{{ scenario.get_subject }}</td>
                 <td>{{ scenario.get_age_group }}</td>
-                <td>[List of Outcomes]</td>
-                <td>[List of Elements]</td>
+                <td>
+                    <ul>
+                        {% for outcome in scenario.get_outcomes %}
+                        <li>{{ outcome }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
             </tr>
             {% endfor %}
         </table>

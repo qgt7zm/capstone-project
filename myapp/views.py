@@ -274,8 +274,47 @@ def add_result_form(request, resource_pk: int) -> HttpResponse:
 def scenarios(request) -> HttpResponse:
     filtered_results = Scenario.objects.all()
 
+    if request.method == "POST":
+        action = request.POST.get("action", None)
+        if action == "search":
+            # Filter results using form
+            any_filter = request.POST.get("any", None)
+            if any_filter:
+                filtered_results = (
+                        filtered_results.filter(name__icontains=any_filter) |
+                        filtered_results.filter(
+                            subject=
+                            get_choice_from_label_icontains(Result.Subjects, any_filter)
+                        ) |
+                        filtered_results.filter(
+                            age_group=
+                            get_choice_from_label_icontains(Result.AgeGroups, any_filter)
+                        ) |
+                        filtered_results.filter(outcomes__name__icontains=any_filter)
+                ).distinct()
+
+            name_filter = request.POST.get("name", None)
+            if name_filter:
+                filtered_results = filtered_results.filter(name__icontains=name_filter)
+
+            subject_filter = request.POST.get("subject", None)
+            if subject_filter:
+                subject_filter = get_choice_from_label(Result.Subjects, subject_filter)
+                filtered_results = filtered_results.filter(subject=subject_filter)
+
+            age_group_filter = request.POST.get("age_group", None)
+            if age_group_filter:
+                age_group_filter = get_choice_from_label(Result.AgeGroups, age_group_filter)
+                filtered_results = filtered_results.filter(age_group=age_group_filter)
+
+            outcome_filter = request.POST.get("outcome", None)
+            if outcome_filter:
+                filtered_results = filtered_results.filter(outcomes__name__icontains=outcome_filter)
+
     context = {
         "scenarios": filtered_results,
+        "subject_choices": Result.Subjects.labels,
+        "age_group_choices": Result.AgeGroups.labels,
     }
     return render(
         request,
