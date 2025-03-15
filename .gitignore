@@ -8,6 +8,7 @@ media
 
 # Environment Files
 .venv/
+.env
 
 # IDE Files
 .idea/
