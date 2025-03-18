@@ -11,7 +11,7 @@ user-friendly interface created in the Django web framework.
 Simply input your classroom needs, and the website will recommend a solution for you, 
 backed by results from published and peer-reviewed scientific studies.
 
-Created for BSCS Capstone project at UVA.
+Created as a capstone project for the BS in Computer Science at UVA.
 
 ## Instructions
 
@@ -40,3 +40,14 @@ Created for BSCS Capstone project at UVA.
 2. Access the website on a web browser at http://127.0.0.1:8000/.
 3. (_Optional_) Import the [starter dataset](starter_data.json) by visiting
    [the data management page](http://127.0.0.1:8000/data).
+
+## Licensing
+
+This tool and the starter dataset are distributed under the permissive MIT license.
+Users are free to run, modify, and share this software for their purposes. 
+
+Resources for the dataset were accessed from online databases such as the [ACM Digital Library](https://dl.acm.org),
+[ScienceDirect](https://www.sciencedirect.com/), and [IEEE Xplore](https://ieeexplore.ieee.org/Xplore/home.jsp)
+under the access of the UVA library.
+All descriptions and summaries in the dataset are original work, and no text has been
+knowingly copied from their respective sources.
