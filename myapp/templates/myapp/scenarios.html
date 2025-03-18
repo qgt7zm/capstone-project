@@ -40,7 +40,10 @@
 
                 <div class="mb-3 ">
                     <label class="form-label" for="any">Search Term:</label>
-                    <input class="form-control" type="text" id="any" name="any">
+                    <input
+                            class="form-control" type="text" id="any"
+                            name="any" value="{{ form_fields.any }}"
+                    >
                 </div>
             </div>
         </div>
@@ -51,29 +54,55 @@
 
                 <div class="col-md-3 mb-3">
                     <label class="form-label" for="name">Name:</label>
-                    <input class="form-control" type="text" id="name" name="name">
+                    <input
+                            class="form-control" type="text" id="name"
+                            name="name" value="{{ form_fields.name }}"
+                    >
                 </div>
                 <div class="col-md-3 mb-3">
                     <label class="form-label" for="subject">Subject:</label>
                     <select class="form-select" id="subject" name="subject">
+                        <!--Set selected based on previous search-->
+                        {% if not form_fields.subject %}
                         <option value="" selected>N/A</option>
+                        {% else %}
+                        <option value="">N/A</option>
+                        {% endif %}
+
                         {% for subject in subject_choices %}
+                        {% if subject == form_fields.subject %}
+                        <option value="{{ subject }}" selected>{{ subject }}</option>
+                        {% else %}
                         <option value="{{ subject }}">{{ subject }}</option>
+                        {% endif %}
                         {% endfor %}
                     </select>
                 </div>
                 <div class="col-md-3 mb-3">
                     <label class="form-label" for="age_Group">Age Group:</label>
                     <select class="form-select" id="age_group" name="age_group">
+                        <!--Set selected based on previous search-->
+                        {% if not form_fields.age_group %}
                         <option value="" selected>N/A</option>
+                        {% else %}
+                        <option value="">N/A</option>
+                        {% endif %}
+
                         {% for age_group in age_group_choices %}
+                        {% if age_group == form_fields.age_group %}
+                        <option value="{{ age_group }}" selected>{{ age_group }}</option>
+                        {% else %}
                         <option value="{{ age_group }}">{{ age_group }}</option>
+                        {% endif %}
                         {% endfor %}
                     </select>
                 </div>
                 <div class="col-md-3 mb-3">
                     <label class="form-label" for="outcome">Outcome:</label>
-                    <input class="form-control" type="text" id="outcome" name="outcome">
+                    <input
+                            class="form-control" type="text" id="outcome"
+                            name="outcome" value="{{ form_fields.outcome }}"
+                    >
                 </div>
             </div>
         </div>

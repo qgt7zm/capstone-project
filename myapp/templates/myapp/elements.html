@@ -26,7 +26,8 @@
 
                 <div class="mb-3 ">
                     <label class="form-label" for="any">Search Term:</label>
-                    <input class="form-control" type="text" id="any" name="any">
+                    <input class="form-control" type="text" id="any"
+                           name="any" value="{{ form_fields.any }}">
                 </div>
             </div>
         </div>
@@ -37,19 +38,31 @@
 
                 <div class="col-md-3 mb-3">
                     <label class="form-label" for="name">Name:</label>
-                    <input class="form-control" type="text" id="name" name="name">
+                    <input
+                            class="form-control" type="text" id="name"
+                            name="name" value="{{ form_fields.name }}"
+                    >
                 </div>
                 <div class="col-md-3 mb-3">
                     <label class="form-label" for="description">Description:</label>
-                    <input class="form-control" type="text" id="description" name="description">
+                    <input
+                            class="form-control" type="text" id="description"
+                            name="description" value="{{ form_fields.description }}"
+                    >
                 </div>
                 <div class="col-md-3 mb-3">
                     <label class="form-label" for="outcome">Outcome:</label>
-                    <input class="form-control" type="text" id="outcome" name="outcome">
+                    <input
+                            class="form-control" type="text" id="outcome"
+                            name="outcome" value="{{ form_fields.outcome }}"
+                    >
                 </div>
                 <div class="col-md-3 mb-3">
                     <label class="form-label" for="resource">Resource:</label>
-                    <input class="form-control" type="text" id="resource" name="resource">
+                    <input
+                            class="form-control" type="text" id="resource"
+                            name="resource" value="{{ form_fields.resource }}"
+                    >
                 </div>
             </div>
         </div>
