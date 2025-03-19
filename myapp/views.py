@@ -10,7 +10,6 @@ from django.shortcuts import get_object_or_404, redirect, render, reverse
 
 from .forms import *
 from .models import *
-from .modelutils import *
 from .recommender import get_recommendations_combined
 from .viewutils import *
 

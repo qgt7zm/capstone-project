@@ -10,12 +10,28 @@ from myapp.models import Element, Resource, Result, ResultRatings
 from myapp.models import order_by_citation
 
 
+def get_score_label(score: float) -> str:
+    """Get a categorical description of a numerical score."""
+    if score >= 1.25:
+        return "Excellent"
+    elif score >= 1.0:
+        return "Great"
+    elif score >= 0.75:
+        return "Good"
+    elif score >= 0.5:
+        return "OK"
+    elif score >= 0.0:
+        return "Poor"
+    else:
+        return "Awful"
+
+
+# Unused, but may be helpful in future
 def get_recommendations_individual(scenario):
-    """Recommend elements for each outcome"""
+    """Recommend elements for each outcome."""
     scenario_outcomes = scenario.get_outcomes()
     recommendations = {}
     for outcome in scenario_outcomes:
-        print(outcome)
         outcome_recommendations = {}
 
         # Get resources and  results for outcome
@@ -27,7 +43,7 @@ def get_recommendations_individual(scenario):
 
         outcome_resources = order_by_citation(outcome_resources)
         outcome_recommendations["resources"] = outcome_resources
-        outcome_results = outcome_results.annotate(count_elements=Count("elements"))
+        outcome_results = outcome_results.annotate(count_elements=Count("elements", distinct=True))
 
         # Get elements for outcome
         element_pks = outcome_results.values("elements").distinct()
@@ -59,7 +75,8 @@ def get_recommendations_individual(scenario):
                     aggregation["avg_rating"] *
                     sqrt(aggregation["count_results"]) /
                     sqrt(aggregation["avg_count_elements"]) *
-                    aggregation["subject_similarity"] * aggregation["age_group_similarity"]
+                    aggregation["subject_similarity"] *
+                    aggregation["age_group_similarity"]
             )
             element_score = round(element_score, 2)
 
@@ -91,13 +108,12 @@ def get_recommendations_combined(scenario):
         recommendations["resources"] = outcome_resources
 
     scenario_results = scenario_results.annotate(
-        count_elements=Count("elements"),
-        count_outcomes_desired=Count("outcomes", filter=Q(
+        count_elements=Count("elements", distinct=True),  # Number of elements tested
+        count_outcomes=Count("outcomes", distinct=True),  # Number of outcomes measured
+        count_outcomes_desired=Count("outcomes", distinct=True, filter=Q(
             outcomes__in=scenario.outcomes.all()
-        )),
+        )),  # Number of outcomes we want
     )
-    for result in scenario_results:
-        print(result.outcomes.all(), result.count_outcomes_desired)
 
     # Get resources for all outcomes
     resource_pks = scenario_results.values("resource").distinct()
@@ -113,17 +129,16 @@ def get_recommendations_combined(scenario):
     for element in scenario_elements:
         element_results = scenario_results.filter(pk__in=element.results.values("pk"))
 
-        # Evaluate element score
         aggregation = element_results.aggregate(
             avg_rating=Avg("rating", default=ResultRatings.NEUTRAL.value),
-            count_results=Count("pk"),
-            prop_outcomes_desired=scenario.outcomes.count() / Avg("count_outcomes_desired"),
-            avg_count_elements=Avg("count_elements"),
+            count_results=Count("pk"),  # How many results support this element
+            avg_count_elements=Avg("count_elements"),  # How "controlled" the experiment is
+            prop_outcomes_desired=Avg("count_outcomes_desired") / Avg("count_outcomes"),
             subject_similarity=Avg(Case(
                 When(subject=scenario.subject, then=Value(1.1)),
                 default=Value(0.9),
                 output_field=models.IntegerField()
-            )),
+            )),  # How well we can generalize the results
             age_group_similarity=Avg(Case(
                 When(age_group=scenario.age_group, then=Value(1.1)),
                 default=Value(0.9),
@@ -132,18 +147,21 @@ def get_recommendations_combined(scenario):
         )
         print(aggregation)
 
+        # Evaluate element score
         element_score = (
                 aggregation["avg_rating"] *
                 sqrt(aggregation["count_results"]) /
                 sqrt(aggregation["avg_count_elements"]) *
                 sqrt(aggregation["prop_outcomes_desired"]) *
-                aggregation["subject_similarity"] * aggregation["age_group_similarity"]
+                aggregation["subject_similarity"] *
+                aggregation["age_group_similarity"]
         )
         element_score = round(element_score, 2)
 
         element_scores.append({
             "name": element,
             "score": element_score,
+            "label": get_score_label(element_score)
         })
         element_scores.sort(key=lambda x: x["score"], reverse=True)
 

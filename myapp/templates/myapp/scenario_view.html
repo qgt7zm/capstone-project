@@ -38,7 +38,9 @@
     <p><strong>Elements:</strong></p>
     {% for element in recommendations.elements %}
     <ul>
-        <li>{{ element.name }} (Score = {{ element.score }})</li>
+        <li>
+            {{ element.name }} (Score = {{ element.score }}) ({{ element.label }})
+        </li>
     </ul>
     {% endfor %}
 
@@ -46,7 +48,9 @@
     {% for resource in recommendations.resources %}
     <ul>
         <li>
-            <a href="{% url 'myapp:resource_view' resource_pk=resource.pk %}">{{ resource }}</a>
+            <a href="{% url 'myapp:resource_view' resource_pk=resource.pk %}">
+                {{ resource }}
+            </a>
         </li>
     </ul>
     {% endfor %}
