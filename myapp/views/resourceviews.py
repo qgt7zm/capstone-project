@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
 from myapp.models import order_by_citation, Resource, Result, Author, ResourceAuthor
-from myapp.viewutils import filter_resources
+from .viewutils import filter_resources
 
 
 def resources(request) -> HttpResponse:

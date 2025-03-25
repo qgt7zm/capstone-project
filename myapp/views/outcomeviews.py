@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 from myapp.models import Outcome
-from myapp.viewutils import filter_outcomes
+from .viewutils import filter_outcomes
 
 
 def outcomes(request) -> HttpResponse:

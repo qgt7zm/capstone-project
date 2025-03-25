@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 from myapp.models import Element
-from myapp.viewutils import filter_elements
+from .viewutils import filter_elements
 
 
 def elements(request) -> HttpResponse:
