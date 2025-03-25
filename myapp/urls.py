@@ -4,14 +4,14 @@ URL configuration for myapp application.
 
 from django.urls import path
 
-from . import dataviews, resourceviews, resultviews, scenarioviews, views
+from . import elementviews, dataviews, outcomeviews, resourceviews, resultviews, scenarioviews, views
 
 app_name = "myapp"
 urlpatterns = [
     path("", views.index, name="index"),
     path("home", views.home, name="home"),
-    path("elements", views.elements, name="elements"),
-    path("outcomes", views.outcomes, name="outcomes"),
+    path("elements", elementviews.elements, name="elements"),
+    path("outcomes", outcomeviews.outcomes, name="outcomes"),
     path("resources", resourceviews.resources, name="resources"),
     path("resources/<int:resource_pk>", resourceviews.resource_view, name="resource_view"),
     path("resources/add", resourceviews.add_resource, name="add_resource"),
