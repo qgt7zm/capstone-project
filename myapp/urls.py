@@ -4,7 +4,7 @@ URL configuration for myapp application.
 
 from django.urls import path
 
-from . import resourceviews, scenarioviews, views
+from . import resourceviews, resultviews, scenarioviews, views
 
 app_name = "myapp"
 urlpatterns = [
@@ -16,8 +16,8 @@ urlpatterns = [
     path("resources/<int:resource_pk>", resourceviews.resource_view, name="resource_view"),
     path("resources/add", resourceviews.add_resource, name="add_resource"),
     path("resources/add/form", resourceviews.add_resource_form, name="add_resource_form"),
-    path("resources/<int:resource_pk>/add_result", views.add_result, name="add_result"),
-    path("resources/<int:resource_pk>/add_result/form", views.add_result_form, name="add_result_form"),
+    path("resources/<int:resource_pk>/add_result", resultviews.add_result, name="add_result"),
+    path("resources/<int:resource_pk>/add_result/form", resultviews.add_result_form, name="add_result_form"),
     path("scenarios", scenarioviews.scenarios, name="scenarios"),
     path("scenarios/<int:scenario_pk>", scenarioviews.scenario_view, name="scenario_view"),
     path("scenarios/add", scenarioviews.add_scenario, name="add_scenario"),
