@@ -100,7 +100,7 @@
                     <ul>
                         {% for resource in element.get_resources %}
                         <li>
-                            <a class="text-primary" href="{% url 'myapp:resource_view' resource_pk=resource.pk %}">
+                            <a href="{% url 'myapp:resource_view' resource_pk=resource.pk %}">
                                 {{ resource.get_citation }}
                             </a>
                         </li>

@@ -129,7 +129,7 @@
             {% for scenario in scenarios %}
             <tr>
                 <td>
-                    <a class="text-primary" href="{% url 'myapp:scenario_view' scenario_pk=scenario.pk%}">
+                    <a href="{% url 'myapp:scenario_view' scenario_pk=scenario.pk%}">
                         {{ scenario.name }}
                     </a>
                 </td>
