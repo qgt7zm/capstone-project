@@ -106,6 +106,9 @@ class Resource(models.Model):
 
         return f"({authors_str}, {self.year})"
 
+    def get_results(self) -> QuerySet['Result']:
+        return Result.objects.filter(resource=self)
+
     def __str__(self) -> str:
         return f"{self.get_short_title()} {self.get_citation()}"
 

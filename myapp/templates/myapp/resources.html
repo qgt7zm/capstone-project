@@ -114,6 +114,7 @@
                 <th class="col-2">Authors</th>
                 <th class="col-1">Year</th>
                 <th class="col-4">Summary</th>
+                <th class="col-1">Results</th>
             </tr>
             {% for resource in resources %}
             <tr>
@@ -131,6 +132,7 @@
                 </td>
                 <td>{{ resource.year }}</td>
                 <td>{{ resource.summary }}</td>
+                <td>{{ resource.get_results|length }}</td>
             </tr>
             {% endfor %}
         </table>

@@ -33,11 +33,10 @@ def resources(request) -> HttpResponse:
 
 def resource_view(request, resource_pk: int) -> HttpResponse:
     resource = get_object_or_404(Resource, pk=resource_pk)
-    results = Result.objects.filter(resource=resource)
 
     context = {
         "resource": resource,
-        "results": results,
+        "results": resource.get_results(),
     }
     return render(
         request,
