@@ -11,11 +11,10 @@
     <!--Bootstrap CSS-->
     {% load django_bootstrap5 %}
     {% bootstrap_css %}
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-    </style>
+
+    <!--Static CSS-->
+    {% load static %}
+    <link href="{% static 'myapp/styles/main.css' %}" rel="stylesheet">
 </head>
 
 <body>
@@ -69,7 +68,6 @@
         </footer>
     </div>
 </div>
-
 
 <!--Bootstrap JS-->
 {% bootstrap_javascript %}
