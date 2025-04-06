@@ -7,6 +7,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 
 from myapp.models import *
+from myapp.models import ResultRatings, AgeGroups, Subjects
 
 
 def add_result(request, resource_pk: int) -> HttpResponse:

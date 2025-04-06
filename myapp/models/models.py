@@ -10,39 +10,11 @@ from django.db import models
 from django.db.models import QuerySet, OuterRef, Subquery, Value
 from django.db.models.functions import Coalesce
 
+from .modelenums import ResultRatings, AgeGroups, Subjects
+
 # Constants
 
 MAX_PREVIEW_AUTHORS = 4
-
-
-# Enum Classes
-
-class ResultRatings(models.IntegerChoices):
-    VERY_POSITIVE = 2, "Very Positive"
-    SOMEWHAT_POSITIVE = 1, "Somewhat Positive"
-    NEUTRAL = 0, "Neutral"
-    SOMEWHAT_NEGATIVE = -1, "Somewhat Negative"
-    VERY_NEGATIVE = -2, "Very Negative"
-
-
-class AgeGroups(models.IntegerChoices):
-    ELEMENTARY = 0, "Elementary School (K-5)"
-    MIDDLE = 1, "Middle School (6-8)"
-    HIGH = 2, "High School (9-12)"
-    UNDERGRAD = 3, "Undergraduate"
-    GRADUATE = 4, "Graduate"
-    OTHER = 5, "Other"
-
-
-class Subjects(models.IntegerChoices):
-    COMPUTING = 0, "Computing"
-    ENGINEERING = 1, "Engineering"
-    MATH = 2, "Mathematics"
-    SCIENCE = 3, "Sciences"
-    MEDICINE = 4, "Medicine"
-    LANGUAGE = 5, "Languages"
-    HUMANITIES = 6, "Humanities"
-    OTHER = 10, "Other"
 
 
 # Model Classes
@@ -242,17 +214,6 @@ class Scenario(models.Model):
 
     def __str__(self):
         return f"{self.name}"
-
-
-model_classes = [
-    Author,
-    Resource,
-    ResourceAuthor,
-    Element,
-    Outcome,
-    Result,
-    Scenario,
-]
 
 
 # Model Helper Methods

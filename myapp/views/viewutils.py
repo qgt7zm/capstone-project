@@ -2,6 +2,7 @@
 Helper methods for myapp views.
 """
 from myapp.models import *
+from myapp.models import AgeGroups, Subjects
 
 
 def filter_elements(request, filtered_elements, form_fields):
