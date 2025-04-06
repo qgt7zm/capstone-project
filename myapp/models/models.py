@@ -188,6 +188,7 @@ class Scenario(models.Model):
     """A gamified classroom plan with needs and recommendations."""
     name = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
+    description = models.TextField(blank=True)
     outcomes = models.ManyToManyField(Outcome)
     subject = models.IntegerField(choices=Subjects, null=True, blank=True)
     age_group = models.IntegerField(choices=AgeGroups, null=True, blank=True)

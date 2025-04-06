@@ -78,6 +78,7 @@ def add_scenario_form(request) -> HttpResponse:
                 existing_scenario = Scenario.objects.filter(name=new_name)
                 counter += 1
 
+            description = request.POST.get("description", "")
             outcome_names = request.POST.getlist("outcomes")
             scenario_outcomes = Outcome.objects.filter(name__in=outcome_names)
 
@@ -88,7 +89,7 @@ def add_scenario_form(request) -> HttpResponse:
 
             # Create Scenario
             scenario = Scenario.objects.create(
-                name=new_name, subject=subject, age_group=age_group
+                name=new_name, description=description, subject=subject, age_group=age_group
             )
             scenario.outcomes.set(scenario_outcomes)
 
