@@ -11,11 +11,10 @@ from django.db import models
 from django.db.models import QuerySet
 from django.db.models.functions import Cast
 
-from myapp.models import Resource, Outcome, Element, Result
+from .models import Resource, Outcome, Element, Result
 
 
 # Choice Helper Methods
-
 
 def get_choice_from_label(choices_cls: type, choice_label: str) -> models.IntegerChoices | None:
     """Filter choices by label name."""

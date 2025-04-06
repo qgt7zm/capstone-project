@@ -1,5 +1,5 @@
 """
-Models for myapp application.
+Model classes for myapp application.
 
 See also:
 
@@ -257,6 +257,7 @@ model_classes = [
 
 # Model Helper Methods
 
+# Can't move due to circular import
 def order_by_citation(resources: QuerySet[Resource]) -> QuerySet[Resource]:
     """Sort resources by last name of first author."""
     author1_last_name = ResourceAuthor.objects.filter(

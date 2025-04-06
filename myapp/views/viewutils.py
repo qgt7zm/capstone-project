@@ -1,8 +1,7 @@
 """
 Helper methods for myapp views.
 """
-from myapp.models import Subjects, AgeGroups
-from myapp.modelutils import *
+from myapp.models import *
 
 
 def filter_elements(request, filtered_elements, form_fields):

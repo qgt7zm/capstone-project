@@ -5,8 +5,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
-from myapp.models import Scenario, Subjects, AgeGroups, Outcome
-from myapp.modelutils import get_choice_from_label
+from myapp.models import Scenario, Subjects, AgeGroups, Outcome, get_choice_from_label
 from myapp.recommender import get_recommendations_combined
 from .viewutils import filter_scenarios
 

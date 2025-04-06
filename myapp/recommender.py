@@ -6,8 +6,7 @@ from math import sqrt
 from django.db import models
 from django.db.models import Avg, Case, Count, Q, Value, When
 
-from myapp.models import Element, Resource, Result, ResultRatings
-from myapp.models import order_by_citation
+from myapp.models import Element, Resource, Result, ResultRatings, order_by_citation
 
 
 def get_score_label(score: float) -> str:

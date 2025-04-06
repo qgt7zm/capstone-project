@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
-from myapp.models import order_by_citation, Resource, Result, Author, ResourceAuthor
+from myapp.models import order_by_citation, Resource, Author, ResourceAuthor
 from .viewutils import filter_resources
 
 

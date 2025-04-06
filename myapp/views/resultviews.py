@@ -6,8 +6,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 
-from myapp.models import Resource, Element, Outcome, ResultRatings, Subjects, AgeGroups, Result
-from myapp.modelutils import get_choice_from_label
+from myapp.models import *
 
 
 def add_result(request, resource_pk: int) -> HttpResponse:
