@@ -523,7 +523,7 @@
       "year": 2023,
       "publisher": "Association for Computing Machinery",
       "url": "https://doi.org/10.1145/3626641.3626675",
-      "summary": "Points, badges, and leaderboards significantly improve student grades due to increased motivation and curiosity."
+      "summary": "Points, badges, and leaderboards significantly improve student grades in programming classes due to increased motivation and curiosity."
     }
   },
   {
@@ -534,7 +534,7 @@
       "year": 2022,
       "publisher": "ACM Transactions on Computing Education",
       "url": "https://doi.org/10.1145/3485732",
-      "summary": "Gamification positively affects students' achievement, with gender playing a significant role, ruling out a one-size-fits-all (OSFA) approach. Students who practice more regardless of gamification perform better."
+      "summary": "A mixture of competition and collaboration through narrative positive affects student's academic achievement. Gender plays a significant role in how well students perform, ruling out a one-size-fits-all (OSFA) approach. Students who practice more regardless of gamification perform better."
     }
   },
   {
@@ -983,7 +983,7 @@
     "pk": 1,
     "fields": {
       "name": "Badges",
-      "description": "A trophy awarded for reaching a certain milestone. Also known as Achievements. Commonly grouped into Points, Badges, and Leaderbaords (PBL)."
+      "description": "A trophy awarded for reaching a certain milestone. Also known as Achievements. Commonly grouped into Points, Badges, and Leaderboards (PBL)."
     }
   },
   {
@@ -991,7 +991,7 @@
     "pk": 2,
     "fields": {
       "name": "Leaderboards",
-      "description": "A list of players in order of how much they have achieved. Also known as Rankings or Scoreboards. Commonly grouped into Points, Badges, and Leaderbaords (PBL)."
+      "description": "A list of players in order of how much they have achieved. Also known as Rankings or Scoreboards. Commonly grouped into Points, Badges, and Leaderboards (PBL)."
     }
   },
   {
@@ -999,7 +999,7 @@
     "pk": 3,
     "fields": {
       "name": "Points",
-      "description": "A numerical counter of achievement, gained or lost by actions. Also known as Score or Experience Points (XP). Commonly grouped into Points, Badges, and Leaderbaords (PBL)."
+      "description": "A numerical counter of achievement, gained or lost by actions. Also known as Score or Experience Points (XP). Commonly grouped into Points, Badges, and Leaderboards (PBL)."
     }
   },
   {
@@ -1040,6 +1040,14 @@
     "fields": {
       "name": "Roleplaying",
       "description": "Allows players to imagine themselves as a fictional character in a story. Players may specialize into character classes with predefined actions."
+    }
+  },
+  {
+    "model": "myapp.element",
+    "pk": 9,
+    "fields": {
+      "name": "Teamwork",
+      "description": "Students collaborate together to achieve a common objective, rather than competing against each other."
     }
   },
   {
@@ -1096,6 +1104,14 @@
     "fields": {
       "name": "Perceived Competence",
       "description": "How much students believe they are succeeding with learning. Also known as learner empowerment."
+    }
+  },
+  {
+    "model": "myapp.outcome",
+    "pk": 8,
+    "fields": {
+      "name": "Autonomy",
+      "description": "Students feel more independence and control over their own actions."
     }
   },
   {
@@ -1367,6 +1383,7 @@
     "fields": {
       "name": "Test Scenario 1",
       "created_at": "2025-03-14T10:44:50.022Z",
+      "description": "A test scenario with two outcomes and a selected subject/age group.",
       "subject": 0,
       "age_group": 3,
       "outcomes": [
@@ -1381,6 +1398,7 @@
     "fields": {
       "name": "Test Scenario 2",
       "created_at": "2025-03-14T10:46:00.789Z",
+      "description": "A test scenario with two outcomes and a selected subject/age group.",
       "subject": 2,
       "age_group": 1,
       "outcomes": [
@@ -1395,6 +1413,7 @@
     "fields": {
       "name": "Test Scenario 3",
       "created_at": "2025-03-15T16:41:35.982Z",
+      "description": "A test scenario with one outcome and no subject/age group.",
       "subject": null,
       "age_group": null,
       "outcomes": [
@@ -1408,10 +1427,25 @@
     "fields": {
       "name": "Test Scenario 4",
       "created_at": "2025-03-15T16:41:51.272Z",
+      "description": "A test scenario with one outcome and no subject/age group.",
       "subject": null,
       "age_group": null,
       "outcomes": [
         5
+      ]
+    }
+  },
+  {
+    "model": "myapp.scenario",
+    "pk": 5,
+    "fields": {
+      "name": "Test Scenario 5",
+      "created_at": "2025-04-05T22:55:17.089Z",
+      "description": "A test scenario with one outcome and a selected subject but no age group.",
+      "subject": 0,
+      "age_group": null,
+      "outcomes": [
+        4
       ]
     }
   }
