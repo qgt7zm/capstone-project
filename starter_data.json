@@ -384,6 +384,262 @@
     }
   },
   {
+    "model": "myapp.author",
+    "pk": 49,
+    "fields": {
+      "first_name": "Sebastian",
+      "last_name": "Deterding"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 50,
+    "fields": {
+      "first_name": "Dan",
+      "last_name": "Dixon"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 51,
+    "fields": {
+      "first_name": "Rilla",
+      "last_name": "Khaled"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 52,
+    "fields": {
+      "first_name": "Lennart",
+      "last_name": "Nacke"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 53,
+    "fields": {
+      "first_name": "Joey",
+      "last_name": "Lee"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 54,
+    "fields": {
+      "first_name": "Jessica",
+      "last_name": "Hammer"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 55,
+    "fields": {
+      "first_name": "Elisa D.",
+      "last_name": "Mekler"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 56,
+    "fields": {
+      "first_name": "Florian",
+      "last_name": "Brühlmann"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 57,
+    "fields": {
+      "first_name": "Alexandre N.",
+      "last_name": "Tuch"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 58,
+    "fields": {
+      "first_name": "Klaus",
+      "last_name": "Opwis"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 59,
+    "fields": {
+      "first_name": "Shurui",
+      "last_name": "Bai"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 60,
+    "fields": {
+      "first_name": "Khe Foon",
+      "last_name": "Hew"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 61,
+    "fields": {
+      "first_name": "Biyun",
+      "last_name": "Huang"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 62,
+    "fields": {
+      "first_name": "Katie",
+      "last_name": "Davis"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 63,
+    "fields": {
+      "first_name": "Eve",
+      "last_name": "Klein"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 64,
+    "fields": {
+      "first_name": "César",
+      "last_name": "Morillas Barrio"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 65,
+    "fields": {
+      "first_name": "Mario",
+      "last_name": "Muñoz-Organero"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 66,
+    "fields": {
+      "first_name": "Joaquín",
+      "last_name": "Sánchez Soriano"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 67,
+    "fields": {
+      "first_name": "Thomas",
+      "last_name": "Bjørner"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 68,
+    "fields": {
+      "first_name": "Andreas Jin",
+      "last_name": "Sum"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 69,
+    "fields": {
+      "first_name": "Nicolai Lind",
+      "last_name": "Bouquin"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 70,
+    "fields": {
+      "first_name": "Frederik Darling",
+      "last_name": "Larsen"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 71,
+    "fields": {
+      "first_name": "Ulrik",
+      "last_name": "Kampel"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 72,
+    "fields": {
+      "first_name": "Katheryn R.",
+      "last_name": "Christy"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 73,
+    "fields": {
+      "first_name": "Andika Y.",
+      "last_name": "Utomo"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 74,
+    "fields": {
+      "first_name": "Afifa",
+      "last_name": "Amirani"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 75,
+    "fields": {
+      "first_name": "Alham F.",
+      "last_name": "Aji"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 76,
+    "fields": {
+      "first_name": "Fatin R. N.",
+      "last_name": "Wahidah"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 77,
+    "fields": {
+      "first_name": "Kasiyah M.",
+      "last_name": "Junus"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 78,
+    "fields": {
+      "first_name": "Lydia",
+      "last_name": "Velázquez-García"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 79,
+    "fields": {
+      "first_name": "Antonio",
+      "last_name": "Cedillo-Hernández"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 80,
+    "fields": {
+      "first_name": "Eduardo Antonio",
+      "last_name": "Cendejas-Castro"
+    }
+  },
+  {
     "model": "myapp.resource",
     "pk": 1,
     "fields": {
@@ -535,6 +791,116 @@
       "publisher": "ACM Transactions on Computing Education",
       "url": "https://doi.org/10.1145/3485732",
       "summary": "A mixture of competition and collaboration through narrative positive affects student's academic achievement. Gender plays a significant role in how well students perform, ruling out a one-size-fits-all (OSFA) approach. Students who practice more regardless of gamification perform better."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 17,
+    "fields": {
+      "title": "From Game Design Elements to Gamefulness:  Defining “Gamification”",
+      "year": 2011,
+      "publisher": "15th Mindtrek Conference",
+      "url": "https://doi.org/10.1145/2181037.2181040",
+      "summary": "A foundational paper defining gamification as \"the use of game design elements in non-game contexts.\""
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 18,
+    "fields": {
+      "title": "Gamification in Education: What, How, Why Bother?",
+      "year": 2011,
+      "publisher": "Academic Exchange Quarterly",
+      "url": "https://api.semanticscholar.org/CorpusID:220866115",
+      "summary": "Lists the potential benefits and risks of gamification."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 19,
+    "fields": {
+      "title": "Towards understanding the effects of individual gamification elements on intrinsic motivation and performance",
+      "year": 2017,
+      "publisher": "Computers in Human Behavior",
+      "url": "https://doi.org/10.1016/j.chb.2015.08.048",
+      "summary": "Points, leaderboards, and levels increase intrinsic motivation, competence, and autonomy in subjects, satisfying humans' three needs for motivation according to self-determination theory (SDT). The experiment was not specifically geared towards education."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 20,
+    "fields": {
+      "title": "Does gamification improve student learning outcome? Evidence from a meta-analysis and synthesis of qualitative data in educational contexts",
+      "year": 2020,
+      "publisher": "Educational Research Review",
+      "url": "https://doi.org/10.1016/j.edurev.2020.100322",
+      "summary": "A meta analysis of 24 publications showing gamification improves student performance and enthusiasm, as well as highlighting the need for greater scientific rigor."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 21,
+    "fields": {
+      "title": "Investigating High School Students’ Perceptions of Digital Badges in Afterschool Learning",
+      "year": 2015,
+      "publisher": "Association for Computing Machinery",
+      "url": "https://doi.org/10.1145/2702123.2702413",
+      "summary": "Badges in online gamified environments created opportunities for student empowerment but risked making students self-conscious of their achievements."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 22,
+    "fields": {
+      "title": "Can Gamification Improve the Benefits of Student Response Systems in Learning? An Experimental Study",
+      "year": 2016,
+      "publisher": "IEEE Transactions on Emerging Topics in Computing",
+      "url": "https://ieeexplore.ieee.org/document/7317765",
+      "summary": "Students who attended lectures using gamified student response systems (SRSes) exhibited greater motivation, attention, and learning performance."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 23,
+    "fields": {
+      "title": "Making homework fun: The effect of game-based learning on reading engagement",
+      "year": 2022,
+      "publisher": "Association for Computing Machinery",
+      "url": "https://doi.org/10.1145/3524458.3547263",
+      "summary": "Game-based learning using immersive 3D environments motivated students to read assigned readings more closely and complete homework more often."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 24,
+    "fields": {
+      "title": "Leaderboards in a virtual classroom: A test of stereotype threat and social comparison explanations for women's math performance",
+      "year": 2014,
+      "publisher": "Computers & Education",
+      "url": "https://doi.org/10.1016/j.compedu.2014.05.005",
+      "summary": "Female students performed better on math tests when virtual leaderboards were male-dominated, but worse when leaderboards were female-dominated."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 25,
+    "fields": {
+      "title": "Gamifìed E-Learning model based on Community of Inquiry",
+      "year": 2014,
+      "publisher": "IEEE Xplore",
+      "url": "https://ieeexplore.ieee.org/document/7065830",
+      "summary": "A gamified e-learning model based on a community of inquiry allowed students to be more socially active in learning, contributing to greater student engagement."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 26,
+    "fields": {
+      "title": "Gamification in higher education: learning computer science with an escape room",
+      "year": 2024,
+      "publisher": "Association for Computing Machinery",
+      "url": "https://doi.org/10.1145/3629296.3629308",
+      "summary": "A virtual escape room provided students with a interesting and challenging way to practice their skills, improving knowledge retention and learning performance."
     }
   },
   {
@@ -979,6 +1345,303 @@
     }
   },
   {
+    "model": "myapp.resourceauthor",
+    "pk": 52,
+    "fields": {
+      "resource": 17,
+      "author": 49,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 53,
+    "fields": {
+      "resource": 17,
+      "author": 50,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 54,
+    "fields": {
+      "resource": 17,
+      "author": 51,
+      "order": 2
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 55,
+    "fields": {
+      "resource": 17,
+      "author": 52,
+      "order": 3
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 56,
+    "fields": {
+      "resource": 18,
+      "author": 53,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 57,
+    "fields": {
+      "resource": 18,
+      "author": 54,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 58,
+    "fields": {
+      "resource": 19,
+      "author": 55,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 59,
+    "fields": {
+      "resource": 19,
+      "author": 56,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 60,
+    "fields": {
+      "resource": 19,
+      "author": 57,
+      "order": 2
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 61,
+    "fields": {
+      "resource": 19,
+      "author": 58,
+      "order": 3
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 62,
+    "fields": {
+      "resource": 20,
+      "author": 59,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 63,
+    "fields": {
+      "resource": 20,
+      "author": 60,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 64,
+    "fields": {
+      "resource": 20,
+      "author": 61,
+      "order": 2
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 65,
+    "fields": {
+      "resource": 21,
+      "author": 62,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 66,
+    "fields": {
+      "resource": 21,
+      "author": 63,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 67,
+    "fields": {
+      "resource": 22,
+      "author": 64,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 68,
+    "fields": {
+      "resource": 22,
+      "author": 65,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 69,
+    "fields": {
+      "resource": 22,
+      "author": 66,
+      "order": 2
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 70,
+    "fields": {
+      "resource": 23,
+      "author": 67,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 71,
+    "fields": {
+      "resource": 23,
+      "author": 68,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 72,
+    "fields": {
+      "resource": 23,
+      "author": 69,
+      "order": 2
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 73,
+    "fields": {
+      "resource": 23,
+      "author": 70,
+      "order": 3
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 74,
+    "fields": {
+      "resource": 23,
+      "author": 71,
+      "order": 4
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 75,
+    "fields": {
+      "resource": 24,
+      "author": 72,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 76,
+    "fields": {
+      "resource": 24,
+      "author": 24,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 77,
+    "fields": {
+      "resource": 25,
+      "author": 73,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 78,
+    "fields": {
+      "resource": 25,
+      "author": 74,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 79,
+    "fields": {
+      "resource": 25,
+      "author": 75,
+      "order": 2
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 80,
+    "fields": {
+      "resource": 25,
+      "author": 76,
+      "order": 3
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 81,
+    "fields": {
+      "resource": 25,
+      "author": 77,
+      "order": 4
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 82,
+    "fields": {
+      "resource": 26,
+      "author": 78,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 83,
+    "fields": {
+      "resource": 26,
+      "author": 79,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 84,
+    "fields": {
+      "resource": 26,
+      "author": 80,
+      "order": 2
+    }
+  },
+  {
     "model": "myapp.element",
     "pk": 1,
     "fields": {
@@ -1210,7 +1873,8 @@
       "sample_size": 32,
       "elements": [
         5,
-        8
+        8,
+        9
       ],
       "outcomes": [
         5,
@@ -1374,6 +2038,222 @@
       "outcomes": [
         1,
         4
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 15,
+    "fields": {
+      "resource": 16,
+      "rating": 2,
+      "subject": 0,
+      "age_group": 3,
+      "sample_size": 399,
+      "elements": [
+        1,
+        5,
+        9
+      ],
+      "outcomes": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 16,
+    "fields": {
+      "resource": 19,
+      "rating": 1,
+      "subject": 10,
+      "age_group": 5,
+      "sample_size": 273,
+      "elements": [
+        2,
+        6,
+        3
+      ],
+      "outcomes": [
+        8,
+        4,
+        7
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 17,
+    "fields": {
+      "resource": 21,
+      "rating": 0,
+      "subject": 3,
+      "age_group": 2,
+      "sample_size": 10,
+      "elements": [
+        1
+      ],
+      "outcomes": [
+        4,
+        7
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 18,
+    "fields": {
+      "resource": 22,
+      "rating": 1,
+      "subject": 1,
+      "age_group": 3,
+      "sample_size": 38,
+      "elements": [
+        2,
+        3
+      ],
+      "outcomes": [
+        5,
+        1,
+        4
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 19,
+    "fields": {
+      "resource": 22,
+      "rating": 1,
+      "subject": 6,
+      "age_group": 3,
+      "sample_size": 38,
+      "elements": [
+        2,
+        3
+      ],
+      "outcomes": [
+        5,
+        1,
+        4
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 20,
+    "fields": {
+      "resource": 22,
+      "rating": 1,
+      "subject": 0,
+      "age_group": 2,
+      "sample_size": 55,
+      "elements": [
+        2,
+        3
+      ],
+      "outcomes": [
+        5,
+        1,
+        4
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 21,
+    "fields": {
+      "resource": 23,
+      "rating": 2,
+      "subject": 6,
+      "age_group": 2,
+      "sample_size": 42,
+      "elements": [
+        5,
+        8
+      ],
+      "outcomes": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 22,
+    "fields": {
+      "resource": 23,
+      "rating": 1,
+      "subject": 6,
+      "age_group": 2,
+      "sample_size": 42,
+      "elements": [
+        5,
+        8
+      ],
+      "outcomes": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 23,
+    "fields": {
+      "resource": 24,
+      "rating": 0,
+      "subject": 2,
+      "age_group": 3,
+      "sample_size": 80,
+      "elements": [
+        4,
+        2
+      ],
+      "outcomes": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 24,
+    "fields": {
+      "resource": 25,
+      "rating": 1,
+      "subject": 10,
+      "age_group": 2,
+      "sample_size": 38,
+      "elements": [
+        1,
+        2,
+        3
+      ],
+      "outcomes": [
+        5,
+        4,
+        3
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 25,
+    "fields": {
+      "resource": 26,
+      "rating": 2,
+      "subject": 0,
+      "age_group": 3,
+      "sample_size": 92,
+      "elements": [
+        1,
+        2,
+        3,
+        8,
+        9
+      ],
+      "outcomes": [
+        1,
+        4,
+        6
       ]
     }
   },
