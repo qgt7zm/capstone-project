@@ -1,0 +1,2332 @@
+[
+  {
+    "model": "myapp.author",
+    "pk": 1,
+    "fields": {
+      "first_name": "Jane",
+      "last_name": "McGonigal"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 2,
+    "fields": {
+      "first_name": "Robin",
+      "last_name": "Hunicke"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 3,
+    "fields": {
+      "first_name": "Mark",
+      "last_name": "LeBlanc"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 4,
+    "fields": {
+      "first_name": "Robert",
+      "last_name": "Zubek"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 5,
+    "fields": {
+      "first_name": "Daria",
+      "last_name": "Dicheva"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 6,
+    "fields": {
+      "first_name": "Christo",
+      "last_name": "Dichev"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 7,
+    "fields": {
+      "first_name": "Gennady",
+      "last_name": "Agre"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 8,
+    "fields": {
+      "first_name": "Galia",
+      "last_name": "Angelova"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 9,
+    "fields": {
+      "first_name": "Matthew",
+      "last_name": "Koehler"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 10,
+    "fields": {
+      "first_name": "Punya",
+      "last_name": "Mishra"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 11,
+    "fields": {
+      "first_name": "Yigal",
+      "last_name": "Attali"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 12,
+    "fields": {
+      "first_name": "Meirav",
+      "last_name": "Arieli-Attali"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 13,
+    "fields": {
+      "first_name": "Tapio",
+      "last_name": "Auvinen"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 14,
+    "fields": {
+      "first_name": "Lasse",
+      "last_name": "Hakulinen"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 15,
+    "fields": {
+      "first_name": "Lauri",
+      "last_name": "Malmi"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 16,
+    "fields": {
+      "first_name": "Ivica",
+      "last_name": "Boticki"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 17,
+    "fields": {
+      "first_name": "Jelena",
+      "last_name": "Baksa"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 18,
+    "fields": {
+      "first_name": "Peter",
+      "last_name": "Seow"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 19,
+    "fields": {
+      "first_name": "Chee-Kit",
+      "last_name": "Looi"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 20,
+    "fields": {
+      "first_name": "Chen",
+      "last_name": "Cao"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 21,
+    "fields": {
+      "first_name": "Xin",
+      "last_name": "Zhao"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 22,
+    "fields": {
+      "first_name": "Frank",
+      "last_name": "Hopfgartner"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 23,
+    "fields": {
+      "first_name": "Michael",
+      "last_name": "Hanus"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 24,
+    "fields": {
+      "first_name": "Jesse",
+      "last_name": "Fox"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 25,
+    "fields": {
+      "first_name": "Markus",
+      "last_name": "Krause"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 26,
+    "fields": {
+      "first_name": "Marc",
+      "last_name": "Mogalle"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 27,
+    "fields": {
+      "first_name": "Henning",
+      "last_name": "Pohl"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 28,
+    "fields": {
+      "first_name": "Joseph Jay",
+      "last_name": "Williams"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 29,
+    "fields": {
+      "first_name": "Lais Z.",
+      "last_name": "Pedro"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 30,
+    "fields": {
+      "first_name": "Aparecida M. Z.",
+      "last_name": "Lopes"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 31,
+    "fields": {
+      "first_name": "Bruno G.",
+      "last_name": "Prates"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 32,
+    "fields": {
+      "first_name": "Julita",
+      "last_name": "Vassileva"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 33,
+    "fields": {
+      "first_name": "Seiji",
+      "last_name": "Isotani"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 34,
+    "fields": {
+      "first_name": "Fajar ",
+      "last_name": "Pradana"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 35,
+    "fields": {
+      "first_name": "Punaji",
+      "last_name": "Setyosari"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 36,
+    "fields": {
+      "first_name": "Saida",
+      "last_name": "Ulfa"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 37,
+    "fields": {
+      "first_name": "Tsukasa",
+      "last_name": "Hirashima"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 38,
+    "fields": {
+      "first_name": "Faizatul",
+      "last_name": "Amalia"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 39,
+    "fields": {
+      "first_name": "Luiz",
+      "last_name": "Rodrigues"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 40,
+    "fields": {
+      "first_name": "Filipe",
+      "last_name": "Pereira"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 41,
+    "fields": {
+      "first_name": "Armando",
+      "last_name": "Toda"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 42,
+    "fields": {
+      "first_name": "Paula",
+      "last_name": "Palomino"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 43,
+    "fields": {
+      "first_name": "Wilk",
+      "last_name": "Oliveira"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 44,
+    "fields": {
+      "first_name": "Marcela",
+      "last_name": "Pessoa"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 45,
+    "fields": {
+      "first_name": "Leandro",
+      "last_name": "Carvalho"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 46,
+    "fields": {
+      "first_name": "David",
+      "last_name": "Oliveria"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 47,
+    "fields": {
+      "first_name": "Elaine",
+      "last_name": "Oliveira"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 48,
+    "fields": {
+      "first_name": "Alexandra",
+      "last_name": "Cristea"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 49,
+    "fields": {
+      "first_name": "Sebastian",
+      "last_name": "Deterding"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 50,
+    "fields": {
+      "first_name": "Dan",
+      "last_name": "Dixon"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 51,
+    "fields": {
+      "first_name": "Rilla",
+      "last_name": "Khaled"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 52,
+    "fields": {
+      "first_name": "Lennart",
+      "last_name": "Nacke"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 53,
+    "fields": {
+      "first_name": "Joey",
+      "last_name": "Lee"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 54,
+    "fields": {
+      "first_name": "Jessica",
+      "last_name": "Hammer"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 55,
+    "fields": {
+      "first_name": "Elisa D.",
+      "last_name": "Mekler"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 56,
+    "fields": {
+      "first_name": "Florian",
+      "last_name": "Brühlmann"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 57,
+    "fields": {
+      "first_name": "Alexandre N.",
+      "last_name": "Tuch"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 58,
+    "fields": {
+      "first_name": "Klaus",
+      "last_name": "Opwis"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 59,
+    "fields": {
+      "first_name": "Shurui",
+      "last_name": "Bai"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 60,
+    "fields": {
+      "first_name": "Khe Foon",
+      "last_name": "Hew"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 61,
+    "fields": {
+      "first_name": "Biyun",
+      "last_name": "Huang"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 62,
+    "fields": {
+      "first_name": "Katie",
+      "last_name": "Davis"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 63,
+    "fields": {
+      "first_name": "Eve",
+      "last_name": "Klein"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 64,
+    "fields": {
+      "first_name": "César",
+      "last_name": "Morillas Barrio"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 65,
+    "fields": {
+      "first_name": "Mario",
+      "last_name": "Muñoz-Organero"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 66,
+    "fields": {
+      "first_name": "Joaquín",
+      "last_name": "Sánchez Soriano"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 67,
+    "fields": {
+      "first_name": "Thomas",
+      "last_name": "Bjørner"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 68,
+    "fields": {
+      "first_name": "Andreas Jin",
+      "last_name": "Sum"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 69,
+    "fields": {
+      "first_name": "Nicolai Lind",
+      "last_name": "Bouquin"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 70,
+    "fields": {
+      "first_name": "Frederik Darling",
+      "last_name": "Larsen"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 71,
+    "fields": {
+      "first_name": "Ulrik",
+      "last_name": "Kampel"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 72,
+    "fields": {
+      "first_name": "Katheryn R.",
+      "last_name": "Christy"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 73,
+    "fields": {
+      "first_name": "Andika Y.",
+      "last_name": "Utomo"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 74,
+    "fields": {
+      "first_name": "Afifa",
+      "last_name": "Amirani"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 75,
+    "fields": {
+      "first_name": "Alham F.",
+      "last_name": "Aji"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 76,
+    "fields": {
+      "first_name": "Fatin R. N.",
+      "last_name": "Wahidah"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 77,
+    "fields": {
+      "first_name": "Kasiyah M.",
+      "last_name": "Junus"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 78,
+    "fields": {
+      "first_name": "Lydia",
+      "last_name": "Velázquez-García"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 79,
+    "fields": {
+      "first_name": "Antonio",
+      "last_name": "Cedillo-Hernández"
+    }
+  },
+  {
+    "model": "myapp.author",
+    "pk": 80,
+    "fields": {
+      "first_name": "Eduardo Antonio",
+      "last_name": "Cendejas-Castro"
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 1,
+    "fields": {
+      "title": "Reality is Broken: Why Games Make Us Better and How They Can Change the World",
+      "year": 2011,
+      "publisher": "Penguin Books",
+      "url": "https://legacy.iftf.org/our-work/featured-books/reality-is-broken/",
+      "summary": "Describes how gamification can improve daily life and explores some applications."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 2,
+    "fields": {
+      "title": "MDA: A Formal Approach to Game Design and Game Research",
+      "year": 2004,
+      "publisher": "",
+      "url": "https://www.researchgate.net/publication/228884866_MDA_A_Formal_Approach_to_Game_Design_and_Game_Research",
+      "summary": "Introduces the Mechanics, Dynamics, and Aesthetics (MDA) framework for designing and analyzing games."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 3,
+    "fields": {
+      "title": "Gamifying education: what is known, what is believed and what remains uncertain: a critical review",
+      "year": 2017,
+      "publisher": "International Journal of Educational Technology in Higher Education",
+      "url": "https://doi.org/10.1186/s41239-017-0042-5",
+      "summary": "Another literature review examining the game elements tested in past studies and their outcomes."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 4,
+    "fields": {
+      "title": "Gamification in Education: A Systematic Mapping Study",
+      "year": 2015,
+      "publisher": "Educational Technology & Society",
+      "url": "https://www.researchgate.net/publication/270273830_Gamification_in_Education_A_Systematic_Mapping_Study",
+      "summary": "A literature review examining the game elements tested in past studies and their outcomes."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 5,
+    "fields": {
+      "title": "What Happens When Teachers Design Educational Technology? The Development of Technological Pedagogical Content Knowledge",
+      "year": 2005,
+      "publisher": "Journal of Educational Computing Research",
+      "url": "https://doi.org/10.2190/0EW7-01WB-BKHL-QDYV",
+      "summary": "Introduces the Technological, Pedagogical, and Content Knowledge (TPACK) framework for developing educational skills."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 6,
+    "fields": {
+      "title": "Gamification in assessment: Do points affect test performance?",
+      "year": 2015,
+      "publisher": "Computers & Education",
+      "url": "https://doi.org/10.1016/j.compedu.2014.12.012",
+      "summary": "Points manipulation had no effect on accuracy and only a small effect on speed for adults and children."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 7,
+    "fields": {
+      "title": "Increasing Students’ Awareness of Their  Behavior in Online Learning Environments with  Visualizations and Achievement Badges",
+      "year": 2015,
+      "publisher": "IEEE Transactions on Learning Technologies",
+      "url": "https://doi.org/10.1109/TLT.2015.2441718",
+      "summary": "Badges and heatmap visualizations improved speed, accuracy, and grades in high-performing students but decrease those outcomes in low-performing students."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 9,
+    "fields": {
+      "title": "Usage of a mobile social learning platform with virtual badges in a primary school",
+      "year": 2015,
+      "publisher": "Computers & Education",
+      "url": "https://doi.org/10.1016/j.compedu.2015.02.015",
+      "summary": "Badges can occasionally motivate students to participate in self-directed and collaborative learning more frequently and spontaneously, but frequent teacher encouragement is needed."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 10,
+    "fields": {
+      "title": "Enhancing Chinese International Students’ Motivation and Engagement in a STEM Subject in UK Higher Education: A Case of Gamification in Programming",
+      "year": 2023,
+      "publisher": "Association for Computing Machinery",
+      "url": "https://doi.org/10.1145/3572549.3572551",
+      "summary": "Story and teamwork elements greatly motivated international university students and improved their engagement and performance."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 11,
+    "fields": {
+      "title": "Assessing the effects of gamification in the classroom: A longitudinal study on intrinsic motivation, social comparison, satisfaction, effort, and academic performance",
+      "year": 2015,
+      "publisher": "Computers & Education",
+      "url": "https://doi.org/10.1016/j.compedu.2014.08.019",
+      "summary": "External rewards such as leaderboards, badges, and coins caused students to lose existing motivation over time, resulting in lower test scores."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 13,
+    "fields": {
+      "title": "A Playful Game Changer: Fostering Student Retention in Online Education with Social Gamification",
+      "year": 2015,
+      "publisher": "Association for Computing Machinery",
+      "url": "",
+      "summary": "Badges and points led to higher student retention and grades in massive online open courses (MOOCs), with competitive elements enhancing their effects."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 14,
+    "fields": {
+      "title": "Does Gamification Work for Boys and Girls? An Exploratory Study with a Virtual Learning Environment",
+      "year": 2015,
+      "publisher": "Association for Computing Machinery",
+      "url": "https://doi.org/10.1145/2695664.2695752",
+      "summary": "Points and badges affected perceived competence and learning performance differently in males and females."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 15,
+    "fields": {
+      "title": "The Effect of Gamification-based Programming E-Learning Platform on Students’ Achievement",
+      "year": 2023,
+      "publisher": "Association for Computing Machinery",
+      "url": "https://doi.org/10.1145/3626641.3626675",
+      "summary": "Points, badges, and leaderboards significantly improve student grades in programming classes due to increased motivation and curiosity."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 16,
+    "fields": {
+      "title": "Are They Learning or Playing? Moderator Conditions of Gamification’s Success in Programming Classrooms",
+      "year": 2022,
+      "publisher": "ACM Transactions on Computing Education",
+      "url": "https://doi.org/10.1145/3485732",
+      "summary": "A mixture of competition and collaboration through narrative positive affects student's academic achievement. Gender plays a significant role in how well students perform, ruling out a one-size-fits-all (OSFA) approach. Students who practice more regardless of gamification perform better."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 17,
+    "fields": {
+      "title": "From Game Design Elements to Gamefulness:  Defining “Gamification”",
+      "year": 2011,
+      "publisher": "15th Mindtrek Conference",
+      "url": "https://doi.org/10.1145/2181037.2181040",
+      "summary": "A foundational paper defining gamification as \"the use of game design elements in non-game contexts.\""
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 18,
+    "fields": {
+      "title": "Gamification in Education: What, How, Why Bother?",
+      "year": 2011,
+      "publisher": "Academic Exchange Quarterly",
+      "url": "https://api.semanticscholar.org/CorpusID:220866115",
+      "summary": "Lists the potential benefits and risks of gamification."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 19,
+    "fields": {
+      "title": "Towards understanding the effects of individual gamification elements on intrinsic motivation and performance",
+      "year": 2017,
+      "publisher": "Computers in Human Behavior",
+      "url": "https://doi.org/10.1016/j.chb.2015.08.048",
+      "summary": "Points, leaderboards, and levels increase intrinsic motivation, competence, and autonomy in subjects, satisfying humans' three needs for motivation according to self-determination theory (SDT). The experiment was not specifically geared towards education."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 20,
+    "fields": {
+      "title": "Does gamification improve student learning outcome? Evidence from a meta-analysis and synthesis of qualitative data in educational contexts",
+      "year": 2020,
+      "publisher": "Educational Research Review",
+      "url": "https://doi.org/10.1016/j.edurev.2020.100322",
+      "summary": "A meta analysis of 24 publications showing gamification improves student performance and enthusiasm, as well as highlighting the need for greater scientific rigor."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 21,
+    "fields": {
+      "title": "Investigating High School Students’ Perceptions of Digital Badges in Afterschool Learning",
+      "year": 2015,
+      "publisher": "Association for Computing Machinery",
+      "url": "https://doi.org/10.1145/2702123.2702413",
+      "summary": "Badges in online gamified environments created opportunities for student empowerment but risked making students self-conscious of their achievements."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 22,
+    "fields": {
+      "title": "Can Gamification Improve the Benefits of Student Response Systems in Learning? An Experimental Study",
+      "year": 2016,
+      "publisher": "IEEE Transactions on Emerging Topics in Computing",
+      "url": "https://ieeexplore.ieee.org/document/7317765",
+      "summary": "Students who attended lectures using gamified student response systems (SRSes) exhibited greater motivation, attention, and learning performance."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 23,
+    "fields": {
+      "title": "Making homework fun: The effect of game-based learning on reading engagement",
+      "year": 2022,
+      "publisher": "Association for Computing Machinery",
+      "url": "https://doi.org/10.1145/3524458.3547263",
+      "summary": "Game-based learning using immersive 3D environments motivated students to read assigned readings more closely and complete homework more often."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 24,
+    "fields": {
+      "title": "Leaderboards in a virtual classroom: A test of stereotype threat and social comparison explanations for women's math performance",
+      "year": 2014,
+      "publisher": "Computers & Education",
+      "url": "https://doi.org/10.1016/j.compedu.2014.05.005",
+      "summary": "Female students performed better on math tests when virtual leaderboards were male-dominated, but worse when leaderboards were female-dominated."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 25,
+    "fields": {
+      "title": "Gamifìed E-Learning model based on Community of Inquiry",
+      "year": 2014,
+      "publisher": "IEEE Xplore",
+      "url": "https://ieeexplore.ieee.org/document/7065830",
+      "summary": "A gamified e-learning model based on a community of inquiry allowed students to be more socially active in learning, contributing to greater student engagement."
+    }
+  },
+  {
+    "model": "myapp.resource",
+    "pk": 26,
+    "fields": {
+      "title": "Gamification in higher education: learning computer science with an escape room",
+      "year": 2024,
+      "publisher": "Association for Computing Machinery",
+      "url": "https://doi.org/10.1145/3629296.3629308",
+      "summary": "A virtual escape room provided students with a interesting and challenging way to practice their skills, improving knowledge retention and learning performance."
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 1,
+    "fields": {
+      "resource": 1,
+      "author": 1,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 2,
+    "fields": {
+      "resource": 2,
+      "author": 2,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 3,
+    "fields": {
+      "resource": 2,
+      "author": 3,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 5,
+    "fields": {
+      "resource": 3,
+      "author": 6,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 6,
+    "fields": {
+      "resource": 3,
+      "author": 5,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 7,
+    "fields": {
+      "resource": 4,
+      "author": 5,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 8,
+    "fields": {
+      "resource": 4,
+      "author": 6,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 10,
+    "fields": {
+      "resource": 4,
+      "author": 8,
+      "order": 3
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 11,
+    "fields": {
+      "resource": 5,
+      "author": 9,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 12,
+    "fields": {
+      "resource": 5,
+      "author": 10,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 13,
+    "fields": {
+      "resource": 6,
+      "author": 11,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 14,
+    "fields": {
+      "resource": 6,
+      "author": 12,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 15,
+    "fields": {
+      "resource": 7,
+      "author": 13,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 16,
+    "fields": {
+      "resource": 7,
+      "author": 14,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 17,
+    "fields": {
+      "resource": 7,
+      "author": 15,
+      "order": 2
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 18,
+    "fields": {
+      "resource": 9,
+      "author": 16,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 19,
+    "fields": {
+      "resource": 9,
+      "author": 17,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 20,
+    "fields": {
+      "resource": 9,
+      "author": 18,
+      "order": 2
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 21,
+    "fields": {
+      "resource": 9,
+      "author": 19,
+      "order": 3
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 22,
+    "fields": {
+      "resource": 10,
+      "author": 20,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 23,
+    "fields": {
+      "resource": 10,
+      "author": 21,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 24,
+    "fields": {
+      "resource": 10,
+      "author": 22,
+      "order": 2
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 25,
+    "fields": {
+      "resource": 11,
+      "author": 23,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 26,
+    "fields": {
+      "resource": 11,
+      "author": 24,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 27,
+    "fields": {
+      "resource": 13,
+      "author": 25,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 28,
+    "fields": {
+      "resource": 13,
+      "author": 26,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 29,
+    "fields": {
+      "resource": 13,
+      "author": 27,
+      "order": 2
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 30,
+    "fields": {
+      "resource": 13,
+      "author": 28,
+      "order": 3
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 31,
+    "fields": {
+      "resource": 14,
+      "author": 29,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 32,
+    "fields": {
+      "resource": 14,
+      "author": 30,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 33,
+    "fields": {
+      "resource": 14,
+      "author": 31,
+      "order": 2
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 34,
+    "fields": {
+      "resource": 14,
+      "author": 32,
+      "order": 3
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 35,
+    "fields": {
+      "resource": 14,
+      "author": 33,
+      "order": 4
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 36,
+    "fields": {
+      "resource": 15,
+      "author": 34,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 37,
+    "fields": {
+      "resource": 15,
+      "author": 35,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 38,
+    "fields": {
+      "resource": 15,
+      "author": 36,
+      "order": 2
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 39,
+    "fields": {
+      "resource": 15,
+      "author": 37,
+      "order": 3
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 40,
+    "fields": {
+      "resource": 15,
+      "author": 38,
+      "order": 4
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 41,
+    "fields": {
+      "resource": 16,
+      "author": 39,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 42,
+    "fields": {
+      "resource": 16,
+      "author": 40,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 43,
+    "fields": {
+      "resource": 16,
+      "author": 41,
+      "order": 2
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 44,
+    "fields": {
+      "resource": 16,
+      "author": 42,
+      "order": 3
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 45,
+    "fields": {
+      "resource": 16,
+      "author": 43,
+      "order": 4
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 46,
+    "fields": {
+      "resource": 16,
+      "author": 44,
+      "order": 5
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 47,
+    "fields": {
+      "resource": 16,
+      "author": 45,
+      "order": 6
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 48,
+    "fields": {
+      "resource": 16,
+      "author": 46,
+      "order": 7
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 49,
+    "fields": {
+      "resource": 16,
+      "author": 47,
+      "order": 8
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 50,
+    "fields": {
+      "resource": 16,
+      "author": 48,
+      "order": 9
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 51,
+    "fields": {
+      "resource": 2,
+      "author": 4,
+      "order": 2
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 52,
+    "fields": {
+      "resource": 17,
+      "author": 49,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 53,
+    "fields": {
+      "resource": 17,
+      "author": 50,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 54,
+    "fields": {
+      "resource": 17,
+      "author": 51,
+      "order": 2
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 55,
+    "fields": {
+      "resource": 17,
+      "author": 52,
+      "order": 3
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 56,
+    "fields": {
+      "resource": 18,
+      "author": 53,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 57,
+    "fields": {
+      "resource": 18,
+      "author": 54,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 58,
+    "fields": {
+      "resource": 19,
+      "author": 55,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 59,
+    "fields": {
+      "resource": 19,
+      "author": 56,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 60,
+    "fields": {
+      "resource": 19,
+      "author": 57,
+      "order": 2
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 61,
+    "fields": {
+      "resource": 19,
+      "author": 58,
+      "order": 3
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 62,
+    "fields": {
+      "resource": 20,
+      "author": 59,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 63,
+    "fields": {
+      "resource": 20,
+      "author": 60,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 64,
+    "fields": {
+      "resource": 20,
+      "author": 61,
+      "order": 2
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 65,
+    "fields": {
+      "resource": 21,
+      "author": 62,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 66,
+    "fields": {
+      "resource": 21,
+      "author": 63,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 67,
+    "fields": {
+      "resource": 22,
+      "author": 64,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 68,
+    "fields": {
+      "resource": 22,
+      "author": 65,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 69,
+    "fields": {
+      "resource": 22,
+      "author": 66,
+      "order": 2
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 70,
+    "fields": {
+      "resource": 23,
+      "author": 67,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 71,
+    "fields": {
+      "resource": 23,
+      "author": 68,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 72,
+    "fields": {
+      "resource": 23,
+      "author": 69,
+      "order": 2
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 73,
+    "fields": {
+      "resource": 23,
+      "author": 70,
+      "order": 3
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 74,
+    "fields": {
+      "resource": 23,
+      "author": 71,
+      "order": 4
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 75,
+    "fields": {
+      "resource": 24,
+      "author": 72,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 76,
+    "fields": {
+      "resource": 24,
+      "author": 24,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 77,
+    "fields": {
+      "resource": 25,
+      "author": 73,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 78,
+    "fields": {
+      "resource": 25,
+      "author": 74,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 79,
+    "fields": {
+      "resource": 25,
+      "author": 75,
+      "order": 2
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 80,
+    "fields": {
+      "resource": 25,
+      "author": 76,
+      "order": 3
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 81,
+    "fields": {
+      "resource": 25,
+      "author": 77,
+      "order": 4
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 82,
+    "fields": {
+      "resource": 26,
+      "author": 78,
+      "order": 0
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 83,
+    "fields": {
+      "resource": 26,
+      "author": 79,
+      "order": 1
+    }
+  },
+  {
+    "model": "myapp.resourceauthor",
+    "pk": 84,
+    "fields": {
+      "resource": 26,
+      "author": 80,
+      "order": 2
+    }
+  },
+  {
+    "model": "myapp.element",
+    "pk": 1,
+    "fields": {
+      "name": "Badges",
+      "description": "A trophy awarded for reaching a certain milestone. Also known as Achievements. Commonly grouped into Points, Badges, and Leaderboards (PBL)."
+    }
+  },
+  {
+    "model": "myapp.element",
+    "pk": 2,
+    "fields": {
+      "name": "Leaderboards",
+      "description": "A list of players in order of how much they have achieved. Also known as Rankings or Scoreboards. Commonly grouped into Points, Badges, and Leaderboards (PBL)."
+    }
+  },
+  {
+    "model": "myapp.element",
+    "pk": 3,
+    "fields": {
+      "name": "Points",
+      "description": "A numerical counter of achievement, gained or lost by actions. Also known as Score or Experience Points (XP). Commonly grouped into Points, Badges, and Leaderboards (PBL)."
+    }
+  },
+  {
+    "model": "myapp.element",
+    "pk": 4,
+    "fields": {
+      "name": "Avatar",
+      "description": "A customizable user profile picture. Users may equip their avatar with clothing items earned by performing tasks. Users may also give themselves a pseudonym or username."
+    }
+  },
+  {
+    "model": "myapp.element",
+    "pk": 5,
+    "fields": {
+      "name": "Narrative",
+      "description": "A continuous storyline that can persist throughout multiple lessons assignments, often with instructors or students as characters. Also known as Story."
+    }
+  },
+  {
+    "model": "myapp.element",
+    "pk": 6,
+    "fields": {
+      "name": "Levels",
+      "description": "Milestones that players can reach by collecting enough points. Levels may unlock new actions or content for players. Also known as Ranks."
+    }
+  },
+  {
+    "model": "myapp.element",
+    "pk": 7,
+    "fields": {
+      "name": "Currency",
+      "description": "In-game currency that users can collect and exchange for items of value."
+    }
+  },
+  {
+    "model": "myapp.element",
+    "pk": 8,
+    "fields": {
+      "name": "Roleplaying",
+      "description": "Allows players to imagine themselves as a fictional character in a story. Players may specialize into character classes with predefined actions."
+    }
+  },
+  {
+    "model": "myapp.element",
+    "pk": 9,
+    "fields": {
+      "name": "Teamwork",
+      "description": "Students collaborate together to achieve a common objective, rather than competing against each other."
+    }
+  },
+  {
+    "model": "myapp.outcome",
+    "pk": 1,
+    "fields": {
+      "name": "Grades",
+      "description": "Total points earned on assignments or assessments. Also known as accuracy or scores."
+    }
+  },
+  {
+    "model": "myapp.outcome",
+    "pk": 2,
+    "fields": {
+      "name": "Speed",
+      "description": "The time taken to respond to a question."
+    }
+  },
+  {
+    "model": "myapp.outcome",
+    "pk": 3,
+    "fields": {
+      "name": "Social Interaction",
+      "description": "How often students interact with other students."
+    }
+  },
+  {
+    "model": "myapp.outcome",
+    "pk": 4,
+    "fields": {
+      "name": "Motivation",
+      "description": "How willing students are to begin or continue learning. May be intrinsic of extrinsic."
+    }
+  },
+  {
+    "model": "myapp.outcome",
+    "pk": 5,
+    "fields": {
+      "name": "Engagement",
+      "description": "How much students are willing to participate in group or individual learning activities beyond what is necessary. Also known as retention."
+    }
+  },
+  {
+    "model": "myapp.outcome",
+    "pk": 6,
+    "fields": {
+      "name": "Satisfaction",
+      "description": "How much students feel like they enjoy learning."
+    }
+  },
+  {
+    "model": "myapp.outcome",
+    "pk": 7,
+    "fields": {
+      "name": "Perceived Competence",
+      "description": "How much students believe they are succeeding with learning. Also known as learner empowerment."
+    }
+  },
+  {
+    "model": "myapp.outcome",
+    "pk": 8,
+    "fields": {
+      "name": "Autonomy",
+      "description": "Students feel more independence and control over their own actions."
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 1,
+    "fields": {
+      "resource": 6,
+      "rating": 0,
+      "subject": 2,
+      "age_group": 5,
+      "sample_size": 1218,
+      "elements": [
+        3
+      ],
+      "outcomes": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 2,
+    "fields": {
+      "resource": 6,
+      "rating": 1,
+      "subject": 2,
+      "age_group": 5,
+      "sample_size": 1218,
+      "elements": [
+        3
+      ],
+      "outcomes": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 3,
+    "fields": {
+      "resource": 6,
+      "rating": 1,
+      "subject": 2,
+      "age_group": 1,
+      "sample_size": 693,
+      "elements": [
+        3
+      ],
+      "outcomes": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 4,
+    "fields": {
+      "resource": 6,
+      "rating": 1,
+      "subject": 2,
+      "age_group": 1,
+      "sample_size": 693,
+      "elements": [
+        3
+      ],
+      "outcomes": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 5,
+    "fields": {
+      "resource": 9,
+      "rating": 1,
+      "subject": 10,
+      "age_group": 0,
+      "sample_size": 305,
+      "elements": [
+        1
+      ],
+      "outcomes": [
+        4
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 6,
+    "fields": {
+      "resource": 10,
+      "rating": 2,
+      "subject": 0,
+      "age_group": 4,
+      "sample_size": 32,
+      "elements": [
+        5,
+        8,
+        9
+      ],
+      "outcomes": [
+        5,
+        1,
+        4
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 7,
+    "fields": {
+      "resource": 9,
+      "rating": 1,
+      "subject": 10,
+      "age_group": 0,
+      "sample_size": 305,
+      "elements": [
+        1
+      ],
+      "outcomes": [
+        3
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 8,
+    "fields": {
+      "resource": 11,
+      "rating": -1,
+      "subject": 5,
+      "age_group": 3,
+      "sample_size": 80,
+      "elements": [
+        1,
+        7,
+        2
+      ],
+      "outcomes": [
+        1,
+        4,
+        6
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 9,
+    "fields": {
+      "resource": 7,
+      "rating": 1,
+      "subject": 0,
+      "age_group": 3,
+      "sample_size": 254,
+      "elements": [
+        1
+      ],
+      "outcomes": [
+        1,
+        4,
+        7
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 10,
+    "fields": {
+      "resource": 7,
+      "rating": -1,
+      "subject": 0,
+      "age_group": 3,
+      "sample_size": 109,
+      "elements": [
+        2
+      ],
+      "outcomes": [
+        1,
+        4,
+        7
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 11,
+    "fields": {
+      "resource": 13,
+      "rating": 1,
+      "subject": 0,
+      "age_group": 3,
+      "sample_size": 67,
+      "elements": [
+        1,
+        3
+      ],
+      "outcomes": [
+        5,
+        1
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 12,
+    "fields": {
+      "resource": 13,
+      "rating": 2,
+      "subject": 0,
+      "age_group": 3,
+      "sample_size": 68,
+      "elements": [
+        4,
+        1,
+        2,
+        3
+      ],
+      "outcomes": [
+        5,
+        1
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 13,
+    "fields": {
+      "resource": 14,
+      "rating": 0,
+      "subject": 2,
+      "age_group": 1,
+      "sample_size": 16,
+      "elements": [
+        1,
+        2,
+        6,
+        3
+      ],
+      "outcomes": [
+        1,
+        7
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 14,
+    "fields": {
+      "resource": 15,
+      "rating": 2,
+      "subject": 0,
+      "age_group": 3,
+      "sample_size": 109,
+      "elements": [
+        1,
+        2,
+        6,
+        3
+      ],
+      "outcomes": [
+        1,
+        4
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 15,
+    "fields": {
+      "resource": 16,
+      "rating": 2,
+      "subject": 0,
+      "age_group": 3,
+      "sample_size": 399,
+      "elements": [
+        1,
+        5,
+        9
+      ],
+      "outcomes": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 16,
+    "fields": {
+      "resource": 19,
+      "rating": 1,
+      "subject": 10,
+      "age_group": 5,
+      "sample_size": 273,
+      "elements": [
+        2,
+        6,
+        3
+      ],
+      "outcomes": [
+        8,
+        4,
+        7
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 17,
+    "fields": {
+      "resource": 21,
+      "rating": 0,
+      "subject": 3,
+      "age_group": 2,
+      "sample_size": 10,
+      "elements": [
+        1
+      ],
+      "outcomes": [
+        4,
+        7
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 18,
+    "fields": {
+      "resource": 22,
+      "rating": 1,
+      "subject": 1,
+      "age_group": 3,
+      "sample_size": 38,
+      "elements": [
+        2,
+        3
+      ],
+      "outcomes": [
+        5,
+        1,
+        4
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 19,
+    "fields": {
+      "resource": 22,
+      "rating": 1,
+      "subject": 6,
+      "age_group": 3,
+      "sample_size": 38,
+      "elements": [
+        2,
+        3
+      ],
+      "outcomes": [
+        5,
+        1,
+        4
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 20,
+    "fields": {
+      "resource": 22,
+      "rating": 1,
+      "subject": 0,
+      "age_group": 2,
+      "sample_size": 55,
+      "elements": [
+        2,
+        3
+      ],
+      "outcomes": [
+        5,
+        1,
+        4
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 21,
+    "fields": {
+      "resource": 23,
+      "rating": 2,
+      "subject": 6,
+      "age_group": 2,
+      "sample_size": 42,
+      "elements": [
+        5,
+        8
+      ],
+      "outcomes": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 22,
+    "fields": {
+      "resource": 23,
+      "rating": 1,
+      "subject": 6,
+      "age_group": 2,
+      "sample_size": 42,
+      "elements": [
+        5,
+        8
+      ],
+      "outcomes": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 23,
+    "fields": {
+      "resource": 24,
+      "rating": 0,
+      "subject": 2,
+      "age_group": 3,
+      "sample_size": 80,
+      "elements": [
+        4,
+        2
+      ],
+      "outcomes": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 24,
+    "fields": {
+      "resource": 25,
+      "rating": 1,
+      "subject": 10,
+      "age_group": 2,
+      "sample_size": 38,
+      "elements": [
+        1,
+        2,
+        3
+      ],
+      "outcomes": [
+        5,
+        4,
+        3
+      ]
+    }
+  },
+  {
+    "model": "myapp.result",
+    "pk": 25,
+    "fields": {
+      "resource": 26,
+      "rating": 2,
+      "subject": 0,
+      "age_group": 3,
+      "sample_size": 92,
+      "elements": [
+        1,
+        2,
+        3,
+        8,
+        9
+      ],
+      "outcomes": [
+        1,
+        4,
+        6
+      ]
+    }
+  },
+  {
+    "model": "myapp.scenario",
+    "pk": 1,
+    "fields": {
+      "name": "Test Scenario 1",
+      "created_at": "2025-03-14T10:44:50.022Z",
+      "description": "A test scenario with two outcomes and a selected subject/age group.",
+      "subject": 0,
+      "age_group": 3,
+      "outcomes": [
+        5,
+        1
+      ]
+    }
+  },
+  {
+    "model": "myapp.scenario",
+    "pk": 2,
+    "fields": {
+      "name": "Test Scenario 2",
+      "created_at": "2025-03-14T10:46:00.789Z",
+      "description": "A test scenario with two outcomes and a selected subject/age group.",
+      "subject": 2,
+      "age_group": 1,
+      "outcomes": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "myapp.scenario",
+    "pk": 3,
+    "fields": {
+      "name": "Test Scenario 3",
+      "created_at": "2025-03-15T16:41:35.982Z",
+      "description": "A test scenario with one outcome and no subject/age group.",
+      "subject": null,
+      "age_group": null,
+      "outcomes": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "myapp.scenario",
+    "pk": 4,
+    "fields": {
+      "name": "Test Scenario 4",
+      "created_at": "2025-03-15T16:41:51.272Z",
+      "description": "A test scenario with one outcome and no subject/age group.",
+      "subject": null,
+      "age_group": null,
+      "outcomes": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "myapp.scenario",
+    "pk": 5,
+    "fields": {
+      "name": "Test Scenario 5",
+      "created_at": "2025-04-05T22:55:17.089Z",
+      "description": "A test scenario with one outcome and a selected subject but no age group.",
+      "subject": 0,
+      "age_group": null,
+      "outcomes": [
+        4
+      ]
+    }
+  }
+]
