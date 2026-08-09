@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
+from myapp.forms import DeleteDataForm
 from myapp.models import Scenario, Subjects, AgeGroups, Outcome, get_choice_from_label
 from myapp.recommender import get_recommendations_combined
 from .viewutils import filter_scenarios
@@ -145,3 +146,18 @@ def edit_scenario_form(request, scenario_pk: int) -> HttpResponse:
             messages.success(request, f'Scenario "{name}" updated successfully.')
 
     return redirect("myapp:scenario_view", scenario_pk=scenario_pk)
+
+
+def delete_scenario(request, scenario_pk: int) -> HttpResponse:
+    if request.method == "POST":
+        scenario = get_object_or_404(Scenario, pk=scenario_pk)
+        if request.POST.get("confirm_delete", None) == '1':
+            # DANGER: Delete record
+            scenario.delete()
+            messages.success(request, "Scenario deleted successfully.")
+            return redirect("myapp:scenarios")
+        else:
+            messages.error(request, "Please confirm deletion.")
+
+    return redirect("myapp:scenario_view", scenario_pk=scenario_pk)
+

@@ -28,6 +28,7 @@ urlpatterns = [
     path("scenarios/add/form", views.add_scenario_form, name="add_scenario_form"),
     path("scenarios/<int:scenario_pk>/edit", views.edit_scenario, name="edit_scenario"),
     path("scenarios/<int:scenario_pk>/edit/form", views.edit_scenario_form, name="edit_scenario_form"),
+    path("scenarios/<int:scenario_pk>/delete", views.delete_scenario, name="delete_scenario"),
 
     path("data", views.data, name="data"),
     path("data/export", views.data_export, name="data_export"),
