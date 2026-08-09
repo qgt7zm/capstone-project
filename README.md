@@ -43,6 +43,25 @@ report and research paper is available on the UVA Library website.
 3. (_Optional_) Import the [starter dataset](starter_data.json) by visiting
    [the data management page](http://127.0.0.1:8000/data).
 
+## Screenshots
+
+Add papers to the database and filter them by title, citation, and summary.
+
+<img src="screenshots/list_resources.png" alt="List resources screen" width=600>
+
+Add the variables and results of each experiment to provide data for the recommender.
+
+<img src="screenshots/add_result.png" alt="Add result screen" width=600>
+
+Create scenarios to specify needs for gamified learning environments.
+
+<img src="screenshots/add_scenario.png" alt="Create scenario screen" width=600>
+
+View recommendations and their relevant resources based on your entered scenario.
+
+<img src="screenshots/scenario_elements.png" alt="Scenario recommendations list" width=260>
+<img src="screenshots/scenario_resources.png" alt="Scenario resources list" width=340>
+
 ## Future Work
 
 This project is a proof-of-concept for data-driven instruction of gamification to laypersons.
