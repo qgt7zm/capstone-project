@@ -18,9 +18,9 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-md bg-body-tertiary-custom py-4 px-5">
-    <div class="container-fluid">
-        <span class="navbar-brand">Navigation</span>
+<nav class="navbar navbar-expand-md bg-body-tertiary-custom">
+    <div class="container px-5 py-3">
+        <a class="navbar-brand" href="{% url 'myapp:home' %}">Home</a>
         <button class="navbar-toggler" type="button"
                 data-bs-toggle="collapse" data-bs-target="#navbarContent">
             <span class="navbar-toggler-icon"></span>
@@ -29,9 +29,6 @@
         <!--Navbar Links-->
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'myapp:home' %}">Home</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'myapp:elements' %}">Elements</a>
                 </li>
@@ -55,19 +52,17 @@
     </div>
 </nav>
 
-<div class="container px-5 py-4">
-    <main>
-        {% block main %}{% endblock %}
-    </main>
-</div>
+<main class="container px-5 py-4">
+    {% block main %}{% endblock %}
+</main>
 
-<footer class="footer bg-body-tertiary-custom py-4 px-5">
-    <div class="container-fluid">
-        <ul class="nav justify-content-center">
-            <li class="nav-item px-3">
-                <p class="text-secondary-custom">&copy; 2026 Eric Weng</p>
+<footer class="footer navbar navbar-expand bg-body-tertiary-custom">
+    <div class="container px-5 py-3 justify-content-center">
+        <ul class="navbar-nav">
+            <li class="nav-item px-3 py-2">
+                <span class="text-secondary-custom">&copy; 2026 Eric Weng</span>
             </li>
-            <li class="nav-item px-3">
+            <li class="nav-item px-3 py-2">
                 <a class="link-secondary-custom" href="https://github.com/qgt7zm/capstone-project">View Source</a>
             </li>
         </ul>
