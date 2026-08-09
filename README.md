@@ -69,6 +69,8 @@ The recommender algorithm uses a simple mathematical formula to score elements a
 each time a scenario page loads.
 Further refinements of this recommender could normalize the data to a Z-distribution first,
 use a machine learning regression technique instead, and cache commonly-used values to improve speed.
+The class (entity-relationship) diagrams and recommender flowchart are also available under
+the [diagrams](diagrams) folder.
 
 ## Licensing
 
