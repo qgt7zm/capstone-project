@@ -4,7 +4,7 @@ Recommendation algorithm for myapp application.
 from math import sqrt
 
 from django.db import models
-from django.db.models import Avg, Case, Count, Q, Value, When
+from django.db.models import Avg, Case, Count, F, Q, Value, When
 
 from myapp.models import Element, Resource, Result, ResultRatings, order_by_citation
 
@@ -112,6 +112,7 @@ def get_recommendations_combined(scenario):
         count_outcomes_desired=Count("outcomes", distinct=True, filter=Q(
             outcomes__in=scenario.outcomes.all()
         )),  # Number of outcomes we want
+        prop_outcomes_desired=F("count_outcomes_desired") / F("count_outcomes"),
     )
 
     # Get resources for all outcomes
@@ -130,9 +131,6 @@ def get_recommendations_combined(scenario):
 
         aggregation = element_results.aggregate(
             avg_rating=Avg("rating", default=ResultRatings.NEUTRAL.value),
-            count_results=Count("pk"),  # How many results support this element
-            avg_count_elements=Avg("count_elements"),  # How "controlled" the experiment is
-            prop_outcomes_desired=Avg("count_outcomes_desired") / Avg("count_outcomes"),
             subject_similarity=Avg(Case(
                 When(subject=scenario.subject, then=Value(1.1)),
                 default=Value(0.9),
@@ -143,17 +141,21 @@ def get_recommendations_combined(scenario):
                 default=Value(0.9),
                 output_field=models.IntegerField()
             )),
+            avg_sample_size=Avg("sample_size", default=1),
+            avg_count_elements=Avg("count_elements"),  # How "controlled" the experiment is
+            avg_prop_outcomes_desired=Avg("prop_outcomes_desired"),
+            count_results=Count("pk"),  # How many results support this element
         )
-        print(aggregation)
 
         # Evaluate element score
         element_score = (
                 aggregation["avg_rating"] *
-                sqrt(aggregation["count_results"]) /
-                sqrt(aggregation["avg_count_elements"]) *
-                sqrt(aggregation["prop_outcomes_desired"]) *
                 aggregation["subject_similarity"] *
-                aggregation["age_group_similarity"]
+                aggregation["age_group_similarity"] *
+                sqrt(aggregation["avg_sample_size"]) /
+                sqrt(aggregation["avg_count_elements"]) *
+                sqrt(aggregation["avg_prop_outcomes_desired"]) *
+                sqrt(aggregation["count_results"])
         )
         element_score = round(element_score, 2)
 

@@ -11,7 +11,9 @@ user-friendly interface created in the Django web framework.
 Simply input your classroom needs, and the website will recommend a solution for you, 
 backed by results from published and peer-reviewed scientific studies.
 
-Created as a capstone project for the BS in Computer Science at UVA.
+Created as a capstone project for the BS in Computer Science at the University of Virginia.
+The [thesis portfolio](https://doi.org/10.18130/gpdm-8857) containing the technical
+report and research paper is available on the UVA Library website.
 
 ## Instructions
 
@@ -32,7 +34,7 @@ Created as a capstone project for the BS in Computer Science at UVA.
 ### Environment Variables
 
 1. Generate a Django secret key by running `python3 gen_secret_key.py`
-2. Copy or rename [.env.blank](.env.blank) to `.env` and paste your secret key there.
+2. Copy or rename [.env.blank](.env.blank) to **.env** and paste your secret key there.
 
 ### Running the Website
 
@@ -40,6 +42,14 @@ Created as a capstone project for the BS in Computer Science at UVA.
 2. Access the website on a web browser at http://127.0.0.1:8000/.
 3. (_Optional_) Import the [starter dataset](starter_data.json) by visiting
    [the data management page](http://127.0.0.1:8000/data).
+
+## Future Work
+
+This project is a proof-of-concept for data-driven instruction of gamification to laypersons.
+The recommender algorithm uses a simple mathematical formula to score elements and is recalculated
+each time a scenario page loads.
+Further refinements of this recommender could normalize the data to a Z-distribution first,
+use a machine learning regression technique instead, and cache commonly-used values to improve speed.
 
 ## Licensing
 
