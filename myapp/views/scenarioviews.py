@@ -96,3 +96,52 @@ def add_scenario_form(request) -> HttpResponse:
             messages.success(request, f'Scenario "{new_name}" created successfully.')
 
     return redirect("myapp:scenarios")
+
+
+def edit_scenario(request, scenario_pk: int) -> HttpResponse:
+    scenario = get_object_or_404(Scenario, pk=scenario_pk)
+    recommendations = get_recommendations_combined(scenario)
+
+    context = {
+        "scenario": scenario,
+        "scenario_outcomes": [outcome.name for outcome in scenario.get_outcomes()],
+        "recommendations": recommendations,
+        "outcome_choices": [outcome.name for outcome in Outcome.objects.all()],
+        "subject_choices": Subjects.labels,
+        "age_group_choices": AgeGroups.labels,
+    }
+    return render(
+        request,
+        "myapp/edit_scenario.html",
+        context
+    )
+
+
+def edit_scenario_form(request, scenario_pk: int) -> HttpResponse:
+    if request.method == "POST":
+        scenario = get_object_or_404(Scenario, pk=scenario_pk)
+        action = request.POST.get("action", None)
+        if action == "edit_scenario":
+            name = request.POST.get("name")
+
+            description = request.POST.get("description", "")
+            outcome_names = request.POST.getlist("outcomes")
+            scenario_outcomes = Outcome.objects.filter(name__in=outcome_names)
+
+            subject_label = request.POST.get("subject", None)
+            subject = get_choice_from_label(Subjects, subject_label)
+            age_group_label = request.POST.get("age_group", None)
+            age_group = get_choice_from_label(AgeGroups, age_group_label)
+
+            # Update Scenario
+            scenario.name = name
+            scenario.description = description
+            scenario.subject = subject
+            scenario.age_group = age_group
+            scenario.outcomes.set(scenario_outcomes)
+            scenario.save()
+            print(scenario)
+
+            messages.success(request, f'Scenario "{name}" updated successfully.')
+
+    return redirect("myapp:scenario_view", scenario_pk=scenario_pk)

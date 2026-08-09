@@ -1,16 +1,16 @@
 {% extends "myapp/base.html" %}
 
 <!--Metadata-->
-{% block description %}Gamification learning tool add scenario{% endblock %}
-{% block title %}Add Scenario – Gamification Learning Tool{% endblock %}
+{% block description %}Gamification learning tool edit scenario{% endblock %}
+{% block title %}Edit Scenario – Gamification Learning Tool{% endblock %}
 
 <!--Main Content-->
 {% block main %}
 <h1>Add Scenario</h1>
 
-<form method="post" action="{% url 'myapp:add_scenario_form' %}">
+<form method="post" action="{% url 'myapp:edit_scenario_form' scenario_pk=scenario.pk %}">
     {% csrf_token %}
-    <input type="hidden" name="action" value="add_scenario">
+    <input type="hidden" name="action" value="edit_scenario">
 
     <section class="row my-4">
         <h2>Overview</h2>
@@ -18,12 +18,12 @@
         <div class="mb-3">
             <label class="form-label" for="name">Name (required):</label>
             <input class="form-control" type="text" id="name" name="name"
-                   value="New Scenario" required>
+                   value="{{ scenario.name }}" required>
         </div>
 
         <div class="mb-3">
             <label class="form-label" for="description">Description:</label>
-            <textarea class="form-control" id="description" name="description"></textarea>
+            <textarea class="form-control" id="description" name="description">{{ scenario.description }}</textarea>
         </div>
     </section>
 
@@ -34,7 +34,11 @@
             <label class="form-label" for="outcomes">Outcomes (at least one):</label>
             <select class="form-select" id="outcomes" name="outcomes" multiple required>
                 {% for outcome in outcome_choices %}
+                {% if outcome in scenario_outcomes %}
+                <option value="{{ outcome }}" selected>{{ outcome }}</option>
+                {% else %}
                 <option value="{{ outcome }}">{{ outcome }}</option>
+                {% endif %}
                 {% endfor %}
             </select>
         </div>
@@ -44,7 +48,11 @@
             <select class="form-select" id="subject" name="subject">
                 <option value="" selected>N/A</option>
                 {% for subject in subject_choices %}
+                {% if subject == scenario.get_subject %}
+                <option value="{{ subject }}" selected>{{ subject }}</option>
+                {% else %}
                 <option value="{{ subject }}">{{ subject }}</option>
+                {% endif %}
                 {% endfor %}
             </select>
         </div>
@@ -54,15 +62,19 @@
             <select class="form-select" id="age_group" name="age_group">
                 <option value="" selected>N/A</option>
                 {% for age_group in age_group_choices %}
+                {% if age_group == scenario.get_age_group %}
+                <option value="{{ age_group }}" selected>{{ age_group }}</option>
+                {% else %}
                 <option value="{{ age_group }}">{{ age_group }}</option>
+                {% endif %}
                 {% endfor %}
             </select>
         </div>
     </section>
 
     <section class="my-4">
-        <button class="btn btn-success" type="submit">Confirm</button>
-        <a class="btn btn-danger" href="{% url 'myapp:scenarios' %}">Cancel</a>
+        <button class="btn btn-success" type="submit">Save</button>
+        <a class="btn btn-danger" href="{% url 'myapp:scenario_view' scenario_pk=scenario.pk %}">Cancel</a>
     </section>
 </form>
 
