@@ -80,9 +80,9 @@ def add_resource_form(request) -> HttpResponse:
                 last_name = request.POST.get(f"author{i}_last_name")
                 existing_author = Author.objects.filter(first_name=first_name, last_name=last_name)
                 if existing_author.exists():
-                    # Author already exists
-                    continue
-                author = Author.objects.create(first_name=first_name, last_name=last_name)
+                    author = existing_author[0]  # Use existing author
+                else:
+                    author = Author.objects.create(first_name=first_name, last_name=last_name)
                 authors.append(author)
 
             # Link authors to resources
@@ -92,6 +92,62 @@ def add_resource_form(request) -> HttpResponse:
             messages.success(request, f'Resource {resource} created successfully.')
 
     return redirect("myapp:resources")
+
+
+def edit_resource(request, resource_pk: int) -> HttpResponse:
+    resource = get_object_or_404(Resource, pk=resource_pk)
+
+    context = {
+        "resource": resource,
+        "results": resource.get_results(),
+    }
+    return render(
+        request,
+        "myapp/edit_resource.html",
+        context
+    )
+
+
+def edit_resource_form(request,  resource_pk: int) -> HttpResponse:
+    if request.method == "POST":
+        resource = get_object_or_404(Resource, pk=resource_pk)
+        action = request.POST.get("action", None)
+        if action == "edit_resource":
+            title = request.POST.get("title")
+            year = request.POST.get("year")
+            location = request.POST.get("location", "")
+            url = request.POST.get("url", "")
+            summary = request.POST.get("summary", "")
+
+            resource.title = title
+            resource.year = year
+            resource.publisher = location
+            resource.url = url
+            resource.summary = summary
+            resource.save()
+
+            # Add authors
+            num_authors = int(request.POST.get("num_authors"))
+            authors = []
+            for i in range(1, num_authors + 1):
+                first_name = request.POST.get(f"author{i}_first_name")
+                last_name = request.POST.get(f"author{i}_last_name")
+                existing_author = Author.objects.filter(first_name=first_name, last_name=last_name)
+                if existing_author.exists():
+                    author = existing_author[0] # Use existing author
+                else:
+                    author = Author.objects.create(first_name=first_name, last_name=last_name)
+                authors.append(author)
+
+            # Update resource authors
+            ResourceAuthor.objects.filter(resource=resource).delete()
+            for i, author in enumerate(authors):
+                ResourceAuthor.objects.create(resource=resource, author=author, order=i)
+            print(ResourceAuthor.objects.filter(resource=resource))
+
+            messages.success(request, f'Resource {resource} updated successfully.')
+
+    return redirect("myapp:resource_view", resource_pk=resource_pk)
 
 
 def delete_resource(request, resource_pk: int) -> HttpResponse:

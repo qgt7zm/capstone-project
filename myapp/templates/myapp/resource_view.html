@@ -73,6 +73,8 @@
             {% endfor %}
         </table>
     </div>
+    
+    <a class="btn btn-primary" href="{% url 'myapp:edit_resource' resource_pk=resource.pk %}">Edit</a>
 
     <a class="btn btn-primary" href="{% url 'myapp:add_result' resource_pk=resource.pk %}">Add Result</a>
     {% if results|length == 0 %}

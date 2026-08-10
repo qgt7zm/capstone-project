@@ -1,0 +1,94 @@
+{% extends "myapp/base.html" %}
+
+<!--Metadata-->
+{% block description %}Gamification learning tool add resource{% endblock %}
+{% block title %}Add Resource – Gamification Learning Tool{% endblock %}
+
+<!--Main Content-->
+{% block main %}
+<h1>Edit Resource</h1>
+
+<form method="post" action="{% url 'myapp:edit_resource_form' resource_pk=resource.pk %}">
+    {% csrf_token %}
+    <input type="hidden" name="action" value="edit_resource">
+
+    <section class="my-4">
+        <h2>Overview</h2>
+
+        <div class="mb-3">
+            <label class="form-label" for="title">Title (required):</label>
+            <input class="form-control" type="text" id="title" name="title" value="{{ resource.title }}" required>
+        </div>
+
+        <input type="hidden" id="num_authors" name="num_authors" value="1">
+
+        <div class="row" id="author1">
+            <p class="form-label">Author 1</p>
+
+            <div class="col-md-6 mb-3">
+                <label class="form-label" for="author1_first_name">First Name (required):</label>
+                <input class="form-control" type="text" id="author1_first_name" name="author1_first_name" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label class="form-label" for="author1_last_name">Last Name (required):</label>
+                <input class="form-control" type="text" id="author1_last_name" name="author1_last_name" required>
+            </div>
+        </div>
+
+        <!--Additional authors added here-->
+
+        <button type="button" class="btn btn-primary" id="add_author" onclick="addAuthorField()">Add Author</button>
+        <button type="button" class="btn btn-danger" id="remove_author" onclick="removeAuthorField()">Remove Author</button>
+    </section>
+
+    <section class="row my-4">
+        <h2>Publishing</h2>
+
+        <div class="col-md-6 mb-3">
+            <label class="form-label" for="year">Year (required):</label>
+            <input class="form-control" type="number" min="0" id="year" name="year" value="{{ resource.year }}" required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label class="form-label" for="location">Location:</label>
+            <input class="form-control" type="text" id="location" name="location" value="{{ resource.publisher }}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="url">URL:</label>
+            <input class="form-control" type="text" id="url" name="url" value="{{ resource.url }}">
+        </div>
+    </section>
+
+    <section class="my-4">
+        <h2>Additional</h2>
+
+        <div class="mb-3">
+            <label class="form-label" for="summary">Summary:</label>
+            <textarea class="form-control" id="summary" name="summary">{{ resource.summary }}</textarea>
+        </div>
+    </section>
+
+    <section class="my-4">
+        <button class="btn btn-success" type="submit">Confirm</button>
+        <a class="btn btn-danger" href="{% url 'myapp:resource_view' resource_pk=resource.pk %}">Cancel</a>
+    </section>
+</form>
+
+<!--Static JS-->
+{% load static %}
+<script src="{% static 'myapp/scripts/resource_authors.js' %}"></script>
+<script>
+    // Populate form with existing authors
+    var i = 1;
+    {% for author in resource.get_authors %}
+    document.getElementById(`author${i}_first_name`).setAttribute("value", "{{ author.first_name }}");
+    document.getElementById(`author${i}_last_name`).setAttribute("value", "{{ author.last_name }}");
+    addAuthorField();
+    i += 1;
+    {% endfor %}
+    removeAuthorField();
+</script>
+
+{% endblock %}
