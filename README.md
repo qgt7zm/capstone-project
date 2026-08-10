@@ -17,6 +17,11 @@ report and research paper is available on the UVA Library website.
 
 ## Instructions
 
+### Prerequisites
+
+This project was created with [Python 3.14](https://www.python.org/downloads/),
+[Django 5.2](https://www.djangoproject.com/download/), and Django's SQL database backend.
+
 ### Development Environment
 
 1. Clone or download this repository using the GitHub website, desktop app,
@@ -67,7 +72,7 @@ View recommendations and their relevant resources based on your entered scenario
 This project is a proof-of-concept for data-driven instruction of gamification to laypersons.
 The recommender algorithm uses a simple mathematical formula to score elements and is recalculated
 each time a scenario page loads.
-Further refinements of this recommender could normalize the data to a Z-distribution first,
+Further refinements of this recommender could normalize the data to a z-distribution first,
 use a machine learning regression technique instead, and cache commonly-used values to improve speed.
 The class (entity-relationship) diagrams and recommender flowchart are also available under
 the [diagrams](diagrams) folder.
@@ -82,3 +87,6 @@ Resources for the dataset were accessed from online databases such as the [ACM D
 under the access of the UVA library.
 All descriptions and summaries in the dataset are original work, and no text has been
 knowingly copied from their respective sources.
+
+A list of references I found while making this project, including some not included in the starter 
+data, is available in [references.bib](references.bib).
