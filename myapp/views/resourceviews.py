@@ -105,5 +105,18 @@ def delete_resource(request, resource_pk: int) -> HttpResponse:
         else:
             messages.error(request, "Please confirm deletion.")
 
-    return redirect("myapp:resource_view", scenario_pk=resource_pk)
+    return redirect("myapp:resource_view", resource_pk=resource_pk)
+
+
+def clear_results(request, resource_pk: int) -> HttpResponse:
+    if request.method == "POST":
+        resource = get_object_or_404(Resource, pk=resource_pk)
+        if request.POST.get("confirm_clear", None) == '1':
+            # DANGER: Delete records
+            resource.get_results().all().delete()
+            messages.success(request, "Results cleared successfully.")
+        else:
+            messages.error(request, "Please confirm clear.")
+
+    return redirect("myapp:resource_view", resource_pk=resource_pk)
 

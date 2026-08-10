@@ -22,6 +22,7 @@ urlpatterns = [
     path("resources/<int:resource_pk>/add_result", views.add_result, name="add_result"),
     path("resources/<int:resource_pk>/add_result/form", views.add_result_form, name="add_result_form"),
     path("resources/<int:resource_pk>/delete", views.delete_resource, name="delete_resource"),
+    path("resources/<int:resource_pk>/clear_results", views.clear_results, name="clear_results"),
 
     path("scenarios", views.scenarios, name="scenarios"),
     path("scenarios/<int:scenario_pk>", views.scenario_view, name="scenario_view"),
