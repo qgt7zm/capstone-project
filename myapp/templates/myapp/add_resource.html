@@ -36,10 +36,10 @@
             </div>
         </div>
 
-        <button class="btn btn-primary" id="add_author" onclick="addAuthorField()">Add Author</button>
-        <button class="btn btn-danger" id="remove_author" onclick="removeAuthorField()">Remove Author</button>
-
         <!--Additional authors added here-->
+
+        <button type="button" class="btn btn-primary" id="add_author" onclick="addAuthorField()">Add Author</button>
+        <button type="button" 1class="btn btn-danger" id="remove_author" onclick="removeAuthorField()">Remove Author</button>
     </section>
 
     <section class="row my-4">
@@ -78,6 +78,6 @@
 
 <!--Static JS-->
 {% load static %}
-<script src="{% static 'myapp/scripts/add_resource.js' %}"></script>
+<script src="{% static 'myapp/scripts/resource_authors.js' %}"></script>
 
 {% endblock %}

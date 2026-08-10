@@ -30,4 +30,5 @@ function removeAuthorField() {
     if (numAuthors == 1) return;
     document.getElementById(`author${numAuthors}`).remove();
     numAuthors -= 1;
+    document.getElementById("num_authors").setAttribute("value", numAuthors);
 }

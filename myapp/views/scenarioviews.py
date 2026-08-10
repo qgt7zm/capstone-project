@@ -141,7 +141,6 @@ def edit_scenario_form(request, scenario_pk: int) -> HttpResponse:
             scenario.age_group = age_group
             scenario.outcomes.set(scenario_outcomes)
             scenario.save()
-            print(scenario)
 
             messages.success(request, f'Scenario "{name}" updated successfully.')
 
