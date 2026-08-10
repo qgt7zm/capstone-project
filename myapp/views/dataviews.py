@@ -32,12 +32,12 @@ def data_upload(request) -> HttpResponse:
         form = UploadDataForm(request.POST, request.FILES)
         if form.is_valid():
             try:
-                # Import data from json
-                # Must be a json array
+                # Import data from JSON array
                 file = form.cleaned_data.get("file")
                 model_data = serializers.deserialize("json", file)
                 for model_obj in model_data:
                     model_obj.object.save()
+                    model_obj.save(save_m2m=True)
                 messages.success(request, "Data uploaded successfully.")
             except serializers.base.DeserializationError:
                 messages.error(request, "Please use the Django models .json format.")

@@ -8,6 +8,25 @@
 {% block main %}
 <h1>Data</h1>
 
+<!--Show messages-->
+{% if messages %}
+{% for message in messages %}
+
+{% if message.tags == 'success' %}
+<div class="alert alert-success mt-3">
+    <strong>{{ message }}</strong>
+</div>
+{% endif %}
+
+{% if message.tags == 'error' %}
+<div class="alert alert-danger mt-3">
+    <strong>{{ message }}</strong>
+</div>
+{% endif %}
+
+{% endfor %}
+{% endif %}
+
 <section class="my-4">
     <h2>Data Management</h2>
     <p>
@@ -21,7 +40,7 @@
     <div class="row">
         <div class="card col-md-4 mb-3">
             <div class="card-body">
-                <h5 class="fs-5">Export Data</h5>
+                <h3 class="fs-5">Export Data</h3>
                 <p>Open a JSON file containing all the records in the database.</p>
                 <a class="btn btn-success float-left"
                    href="{% url 'myapp:data_export' %}">Confirm Export</a>
@@ -30,8 +49,8 @@
 
         <div class="card col-md-4 mb-3">
             <div class="card-body">
-                <h5 class="fs-5">Upload Data</h5>
-                <form method="post" action="{% url 'myapp:data_upload' %}"
+                <h3 class="fs-5">Upload Data</h3>
+                <form method="post" id="upload_data" action="{% url 'myapp:data_upload' %}"
                       enctype="multipart/form-data">
                     {% csrf_token %}
 
@@ -57,7 +76,7 @@
                     </div>
 
                     <div>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="button" class="btn btn-primary" onclick="confirmUploadData()">
                             Confirm Upload
                         </button>
                     </div>
@@ -67,8 +86,8 @@
 
         <div class="card col-md-4 mb-3">
             <div class="card-body">
-                <h5 class="fs-5">Delete Data</h5>
-                <form method="post" action="{% url 'myapp:data_delete' %}">
+                <h3 class="fs-5">Delete Data</h3>
+                <form method="post" id="delete_data" action="{% url 'myapp:data_delete' %}">
                     {% csrf_token %}
 
                     <p>
@@ -86,7 +105,7 @@
                     </div>
 
                     <div>
-                        <button type="submit" class="btn btn-danger">
+                        <button type="button" class="btn btn-danger" onclick="confirmDeleteData()">
                             Confirm Deletion
                         </button>
                     </div>
@@ -94,25 +113,17 @@
             </div>
         </div>
     </div>
-
-    <!--Show messages-->
-    {% if messages %}
-    {% for message in messages %}
-
-    {% if message.tags == 'success' %}
-    <div class="alert alert-success mt-3">
-        <strong>{{ message }}</strong>
-    </div>
-    {% endif %}
-
-    {% if message.tags == 'error' %}
-    <div class="alert alert-danger mt-3">
-        <strong>{{ message }}</strong>
-    </div>
-    {% endif %}
-
-    {% endfor %}
-    {% endif %}
 </section>
+
+<script>
+    function confirmUploadData() {
+        if (confirm("Are you sure you want to overwrite all data?"))
+            document.getElementById("upload_data").submit();
+    }
+    function confirmDeleteData() {
+        if (confirm("Are you sure you want to delete all data?"))
+            document.getElementById("delete_data").submit();
+    }
+</script>
 
 {% endblock %}
