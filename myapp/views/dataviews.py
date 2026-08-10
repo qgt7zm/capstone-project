@@ -13,14 +13,14 @@ from myapp.models import model_classes
 
 
 def data_export(request) -> HttpResponse:
-    # Export data to json
+    # Export data to JSON
     # Source: https://docs.djangoproject.com/en/5.1/topics/serialization/
 
-    # Combine json arrays
+    # Combine JSON arrays
     all_data = []
     for model_class in model_classes:
         model_data = model_class.objects.all().order_by("pk")
-        # Exports to json array
+        # Exports to JSON array
         json_str = serializers.serialize("json", model_data)
         all_data += json.loads(json_str)
 
@@ -35,6 +35,11 @@ def data_upload(request) -> HttpResponse:
                 # Import data from JSON array
                 file = form.cleaned_data.get("file")
                 model_data = serializers.deserialize("json", file)
+
+                # DANGER: Delete all data
+                for model_class in model_classes:
+                    model_class.objects.all().delete()
+
                 for model_obj in model_data:
                     model_obj.object.save()
                     model_obj.save(save_m2m=True)
