@@ -48,7 +48,8 @@
     {% for element in recommendations.elements %}
     <ul>
         <li>
-            {{ element.name }} (Score = {{ element.score }}) ({{ element.label }})
+            <a href="{% url 'myapp:element_view' element_pk=element.pk %}">{{ element.name }}</a>
+            (Score = {{ element.score }}) ({{ element.label }})
         </li>
     </ul>
     {% endfor %}

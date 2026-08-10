@@ -165,7 +165,7 @@ class Result(models.Model):
         ordering = ["resource__title"]
 
     def get_elements(self) -> str:
-        return ", ".join([element.name for element in self.elements.all()])
+        return self.elements.all()
 
     def get_outcomes(self) -> str:
         return ", ".join([outcomes.name for outcomes in self.outcomes.all()])

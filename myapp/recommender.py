@@ -161,6 +161,7 @@ def get_recommendations_combined(scenario):
 
         element_scores.append({
             "name": element,
+            "pk": element.pk,
             "score": element_score,
             "label": get_score_label(element_score)
         })

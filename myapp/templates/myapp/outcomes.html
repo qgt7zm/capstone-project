@@ -92,7 +92,11 @@
                 <td>
                     <ul>
                         {% for element in outcome.get_elements %}
-                        <li>{{ element }}</li>
+                        <li>
+                            <a href="{% url 'myapp:element_view' element_pk=element.pk %}">
+                                {{ element }}
+                            </a>
+                        </li>
                         {% endfor %}
                     </ul>
                 </td>
