@@ -21,6 +21,7 @@ urlpatterns = [
     path("resources/add/form", views.add_resource_form, name="add_resource_form"),
     path("resources/<int:resource_pk>/add_result", views.add_result, name="add_result"),
     path("resources/<int:resource_pk>/add_result/form", views.add_result_form, name="add_result_form"),
+    path("resources/<int:resource_pk>/delete", views.delete_resource, name="delete_resource"),
 
     path("scenarios", views.scenarios, name="scenarios"),
     path("scenarios/<int:scenario_pk>", views.scenario_view, name="scenario_view"),

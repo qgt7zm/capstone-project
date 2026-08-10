@@ -92,3 +92,18 @@ def add_resource_form(request) -> HttpResponse:
             messages.success(request, f'Resource {resource} created successfully.')
 
     return redirect("myapp:resources")
+
+
+def delete_resource(request, resource_pk: int) -> HttpResponse:
+    if request.method == "POST":
+        resource = get_object_or_404(Resource, pk=resource_pk)
+        if request.POST.get("confirm_delete", None) == '1':
+            # DANGER: Delete record
+            resource.delete()
+            messages.success(request, "Resource deleted successfully.")
+            return redirect("myapp:resources")
+        else:
+            messages.error(request, "Please confirm deletion.")
+
+    return redirect("myapp:resource_view", scenario_pk=resource_pk)
+
