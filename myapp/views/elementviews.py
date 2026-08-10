@@ -2,7 +2,7 @@
 Element views for myapp application.
 """
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from myapp.models import Element
 from .viewutils import filter_elements
@@ -26,5 +26,18 @@ def elements(request) -> HttpResponse:
     return render(
         request,
         "myapp/elements.html",
+        context
+    )
+
+
+def element_view(request, element_pk: int) -> HttpResponse:
+    element = get_object_or_404(Element, pk=element_pk)
+
+    context = {
+        "element": element
+    }
+    return render(
+        request,
+        "myapp/element_view.html",
         context
     )

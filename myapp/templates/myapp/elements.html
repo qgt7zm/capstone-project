@@ -87,7 +87,11 @@
             </tr>
             {% for element in elements %}
             <tr>
-                <td>{{ element.name }}</td>
+                <td>
+                    <a href="{% url 'myapp:element_view' element_pk=element.pk %}">
+                        {{ element.name }}
+                    </a>
+                </td>
                 <td>{{ element.description }}</td>
                 <td>
                     <ul>

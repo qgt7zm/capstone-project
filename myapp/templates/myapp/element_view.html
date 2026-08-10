@@ -1,0 +1,49 @@
+{% extends "myapp/base.html" %}
+
+<!--Metadata-->
+{% block description %}Gamification learning tool element info{% endblock %}
+{% block title %}Element Info – Gamification Learning Tool{% endblock %}
+
+<!--Main Content-->
+{% block main %}
+<h1>Element Information</h1>
+
+<section class="my-4">
+    <a class="btn btn-secondary" href="{% url 'myapp:elements'%}">Back to Elements</a>
+</section>
+
+<section class="my-4">
+    <h2>Overview</h2>
+
+    <p><strong>Name:</strong> {{ element.name }}</p>
+    <p><strong>Description:</strong> {{ element.description }}</p>
+</section>
+
+<section class="my-4">
+    <h2>Outcomes ({{ element.get_outcomes|length }})</h2>
+    <ul>
+        {% for outcome in element.get_outcomes %}
+        <li>{{ outcome }}</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section class="my-4">
+    <h2>Resources ({{ element.get_resources|length }})</h2>
+    <ul>
+        {% for resource in element.get_resources %}
+        <li>
+            <a href="{% url 'myapp:resource_view' resource_pk=resource.pk %}">
+                {{ resource }}
+            </a>
+        </li>
+
+        {% endfor %}
+    </ul>
+</section>
+
+<section class="my-4">
+    <a class="btn btn-secondary" href="{% url 'myapp:elements'%}">Back to Elements</a>
+</section>
+
+{% endblock %}
