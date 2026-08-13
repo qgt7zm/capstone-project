@@ -14,6 +14,9 @@ urlpatterns = [
 
     path("elements", views.elements, name="elements"),
     path("elements/<int:element_pk>", views.element_view, name="element_view"),
+    path("elements/add", views.add_element, name="add_element"),
+    path("elements/add/form", views.add_element_form, name="add_element_form"),
+
     path("outcomes", views.outcomes, name="outcomes"),
     path("outcomes/<int:outcome_pk>", views.outcome_view, name="outcome_view"),
 

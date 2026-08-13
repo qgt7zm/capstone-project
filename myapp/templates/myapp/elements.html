@@ -8,11 +8,31 @@
 {% block main %}
 <h1>Game Elements</h1>
 
+<!--Show messages-->
+{% if messages %}
+{% for message in messages %}
+{% if message.tags == 'success' %}
+<div class="alert alert-success mt-3">
+    <strong>{{ message }}</strong>
+</div>
+{% elif message.tags == 'error' %}
+<div class="alert alert-danger mt-3">
+    <strong>{{ message }}</strong>
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+
 <p>
-    The following game elements are available for you to learn about.
+    Game elements are rules, mechanics, or systems from games intended to invoke
+    certain feelings or behaviors.
     Each element lists the expected learning outcomes and resources where it was
     referenced.
 </p>
+
+<section class="my-4">
+    <a class="btn btn-primary" href="{% url 'myapp:add_element'%}">Add Element</a>
+</section>
 
 <section class="my-4">
     <h2>Search Elements</h2>
@@ -119,5 +139,9 @@
             {% endfor %}
         </table>
     </div>
+</section>
+
+<section class="my-4">
+    <a class="btn btn-primary" href="{% url 'myapp:add_element'%}">Add Element</a>
 </section>
 {% endblock %}
