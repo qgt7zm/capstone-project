@@ -87,7 +87,11 @@
             </tr>
             {% for outcome in outcomes %}
             <tr>
-                <td>{{ outcome.name }}</td>
+                <td>
+                    <a href="{% url 'myapp:outcome_view' outcome_pk=outcome.pk %}">
+                        {{ outcome.name }}
+                    </a>
+                </td>
                 <td>{{ outcome.description }}</td>
                 <td>
                     <ul>

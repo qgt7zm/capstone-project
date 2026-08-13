@@ -1,0 +1,54 @@
+{% extends "myapp/base.html" %}
+
+<!--Metadata-->
+{% block description %}Gamification learning tool outcome info{% endblock %}
+{% block title %}Outcome Info – Gamification Learning Tool{% endblock %}
+
+<!--Main Content-->
+{% block main %}
+<h1>Outcome Information</h1>
+
+<section class="my-4">
+    <a class="btn btn-secondary" href="{% url 'myapp:outcomes'%}">Back to Outcomes</a>
+</section>
+
+<section class="my-4">
+    <h2>Overview</h2>
+
+    <p><strong>Name:</strong> {{ outcome.name }}</p>
+    <p><strong>Description:</strong> {{ outcome.description }}</p>
+</section>
+
+<section class="my-4">
+    <h2>Elements ({{ outcome.get_elements|length }})</h2>
+    <ul>
+        {% for element in outcome.get_elements %}
+        <li>
+            <td>
+                <a href="{% url 'myapp:element_view' element_pk=element.pk %}">
+                    {{ element.name }}
+                </a>
+            </td>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section class="my-4">
+    <h2>Resources ({{ outcome.get_resources|length }})</h2>
+    <ul>
+        {% for resource in outcome.get_resources %}
+        <li>
+            <a href="{% url 'myapp:resource_view' resource_pk=resource.pk %}">
+                {{ resource }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section class="my-4">
+    <a class="btn btn-secondary" href="{% url 'myapp:outcomes'%}">Back to Outcomes</a>
+</section>
+
+{% endblock %}

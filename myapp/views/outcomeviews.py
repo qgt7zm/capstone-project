@@ -2,7 +2,7 @@
 Outcome views for myapp application.
 """
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from myapp.models import Outcome
 from .viewutils import filter_outcomes
@@ -26,5 +26,18 @@ def outcomes(request) -> HttpResponse:
     return render(
         request,
         "myapp/outcomes.html",
+        context
+    )
+
+
+def outcome_view(request, outcome_pk: int) -> HttpResponse:
+    outcome = get_object_or_404(Outcome, pk=outcome_pk)
+
+    context = {
+        "outcome": outcome
+    }
+    return render(
+        request,
+        "myapp/outcome_view.html",
         context
     )
