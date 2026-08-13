@@ -36,7 +36,11 @@
     <p><strong>Desired Outcomes:</strong></p>
     <ul>
         {% for outcome in scenario.get_outcomes %}
-        <li>{{ outcome }}</li>
+        <li>
+            <a href="{% url 'myapp:outcome_view' outcome_pk=outcome.pk %}">
+                {{ outcome }}
+            </a>
+        </li>
         {% endfor %}
     </ul>
 </section>

@@ -23,7 +23,11 @@
     <h2>Outcomes ({{ element.get_outcomes|length }})</h2>
     <ul>
         {% for outcome in element.get_outcomes %}
-        <li>{{ outcome }}</li>
+        <li>
+            <a href="{% url 'myapp:outcome_view' outcome_pk=outcome.pk %}">
+                {{ outcome }}
+            </a>
+        </li>
         {% endfor %}
     </ul>
 </section>
@@ -37,7 +41,6 @@
                 {{ resource }}
             </a>
         </li>
-
         {% endfor %}
     </ul>
 </section>

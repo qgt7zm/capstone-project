@@ -164,11 +164,11 @@ class Result(models.Model):
     class Meta:
         ordering = ["resource__title"]
 
-    def get_elements(self) -> str:
+    def get_elements(self) -> QuerySet[Element]:
         return self.elements.all()
 
-    def get_outcomes(self) -> str:
-        return ", ".join([outcomes.name for outcomes in self.outcomes.all()])
+    def get_outcomes(self) -> QuerySet[Outcome]:
+        return self.outcomes.all()
 
     def get_rating(self) -> str:
         return str(ResultRatings(self.rating).label)

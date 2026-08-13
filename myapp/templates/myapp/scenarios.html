@@ -137,11 +137,11 @@
                 <td>{{ scenario.get_subject }}</td>
                 <td>{{ scenario.get_age_group }}</td>
                 <td>
-                    <ul>
-                        {% for outcome in scenario.get_outcomes %}
-                        <li>{{ outcome }}</li>
-                        {% endfor %}
-                    </ul>
+                    <!--Comma-Separated Values-->
+                    {% for outcome in scenario.get_outcomes %}
+                    <a href="{% url 'myapp:outcome_view' outcome_pk=outcome.pk %}">
+                        {{ outcome }}</a>{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
                 </td>
             </tr>
             {% endfor %}

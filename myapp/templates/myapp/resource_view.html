@@ -70,7 +70,13 @@
                         {{ element }}</a>{% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 </td>
-                <td>{{ result.get_outcomes }}</td>
+                <td>
+                    <!--Comma-Separated Values-->
+                    {% for outcome in result.get_outcomes %}
+                    <a href="{% url 'myapp:outcome_view' outcome_pk=outcome.pk %}">
+                        {{ outcome }}</a>{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
                 <td>{{ result.get_rating }}</td>
                 <td>{{ result.get_subject }}</td>
                 <td>{{ result.get_age_group }}</td>
