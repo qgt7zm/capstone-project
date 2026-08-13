@@ -1,0 +1,35 @@
+{% extends "myapp/base.html" %}
+
+<!--Metadata-->
+{% block description %}Gamification learning tool edit outcome{% endblock %}
+{% block title %}Edit Element – Gamification Learning Tool{% endblock %}
+
+<!--Main Content-->
+{% block main %}
+<h1>Edit Element</h1>
+
+<form method="post" action="{% url 'myapp:edit_outcome_form' outcome_pk=outcome.pk %}">
+    {% csrf_token %}
+    <input type="hidden" name="action" value="edit_outcome">
+
+    <section class="my-4">
+        <h2>Overview</h2>
+
+        <div class="mb-3">
+            <label class="form-label" for="name">Name:</label>
+            <input class="form-control" type="text" id="name" name="name" value="{{ outcome.name }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="description">Description:</label>
+            <textarea class="form-control" id="description" name="description">{{ outcome.description }}</textarea>
+        </div>
+    </section>
+
+    <section class="my-4">
+        <button class="btn btn-success" type="submit">Confirm</button>
+        <a class="btn btn-danger" href="{% url 'myapp:outcome_view' outcome_pk=outcome.pk %}">Cancel</a>
+    </section>
+</form>
+
+{% endblock %}

@@ -71,3 +71,34 @@ def add_outcome_form(request) -> HttpResponse:
             messages.success(request, f'Outcome {outcome} created successfully.')
 
     return redirect("myapp:outcomes")
+
+
+def edit_outcome(request, outcome_pk: int) -> HttpResponse:
+    outcome = get_object_or_404(Outcome, pk=outcome_pk)
+
+    context = {
+        "outcome": outcome,
+    }
+    return render(
+        request,
+        "myapp/edit_outcome.html",
+        context
+    )
+
+
+def edit_outcome_form(request, outcome_pk: int) -> HttpResponse:
+    if request.method == "POST":
+        action = request.POST.get("action", None)
+        if action == "edit_outcome":
+            outcome = get_object_or_404(Outcome, pk=outcome_pk)
+            name = request.POST.get("name")
+            description = request.POST.get("description")
+
+            # Update outcome
+            outcome.name = name;
+            outcome.description = description
+            outcome.save()
+
+            messages.success(request, f'Outcome {outcome} modified successfully.')
+
+    return redirect("myapp:outcome_view", outcome_pk=outcome_pk)

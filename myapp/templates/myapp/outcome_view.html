@@ -12,6 +12,14 @@
     <a class="btn btn-secondary" href="{% url 'myapp:outcomes'%}">Back to Outcomes</a>
 </section>
 
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} mt-3">
+    <strong>{{ message }}</strong>
+</div>
+{% endfor %}
+{% endif %}
+
 <section class="my-4">
     <h2>Overview</h2>
 
@@ -45,6 +53,8 @@
         </li>
         {% endfor %}
     </ul>
+
+    <a class="btn btn-primary" href="{% url 'myapp:edit_outcome' outcome_pk=outcome.pk %}">Edit</a>
 </section>
 
 <section class="my-4">

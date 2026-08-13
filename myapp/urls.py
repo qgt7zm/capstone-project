@@ -23,6 +23,8 @@ urlpatterns = [
     path("outcomes/<int:outcome_pk>", views.outcome_view, name="outcome_view"),
     path("outcomes/add", views.add_outcome, name="add_outcome"),
     path("outcomes/add/form", views.add_outcome_form, name="add_outcome_form"),
+    path("outcomes/<int:outcome_pk>/edit", views.edit_outcome, name="edit_outcome"),
+    path("outcomes/<int:outcome_pk>/edit/form", views.edit_outcome_form, name="edit_outcome_form"),
 
     path("resources", views.resources, name="resources"),
     path("resources/<int:resource_pk>", views.resource_view, name="resource_view"),
