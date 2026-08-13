@@ -71,3 +71,34 @@ def add_element_form(request) -> HttpResponse:
             messages.success(request, f'Element {element} created successfully.')
 
     return redirect("myapp:elements")
+
+
+def edit_element(request, element_pk: int) -> HttpResponse:
+    element = get_object_or_404(Element, pk=element_pk)
+
+    context = {
+        "element": element,
+    }
+    return render(
+        request,
+        "myapp/edit_element.html",
+        context
+    )
+
+
+def edit_element_form(request, element_pk: int) -> HttpResponse:
+    if request.method == "POST":
+        action = request.POST.get("action", None)
+        if action == "edit_element":
+            element = get_object_or_404(Element, pk=element_pk)
+            name = request.POST.get("name")
+            description = request.POST.get("description")
+
+            # Update element
+            element.name = name;
+            element.description = description
+            element.save()
+
+            messages.success(request, f'Element {element} modified successfully.')
+
+    return redirect("myapp:element_view", element_pk=element_pk)
