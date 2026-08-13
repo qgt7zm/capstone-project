@@ -81,12 +81,10 @@
 <script src="{% static 'myapp/scripts/resource_authors.js' %}"></script>
 <script>
     // Populate form with existing authors
-    var i = 1;
     {% for author in resource.get_authors %}
-    document.getElementById(`author${i}_first_name`).setAttribute("value", "{{ author.first_name }}");
-    document.getElementById(`author${i}_last_name`).setAttribute("value", "{{ author.last_name }}");
+    document.getElementById(`author{{ forloop.counter }}_first_name`).setAttribute("value", "{{ author.first_name }}");
+    document.getElementById(`author{{ forloop.counter }}_last_name`).setAttribute("value", "{{ author.last_name }}");
     addAuthorField();
-    i += 1;
     {% endfor %}
     removeAuthorField();
 </script>

@@ -106,6 +106,7 @@ class Element(models.Model):
 
     class Meta:
         ordering = ["name"]
+        unique_together = ["name"]
 
     def get_outcomes(self) -> QuerySet['Outcome']:
         outcome_pks = (
@@ -132,6 +133,7 @@ class Outcome(models.Model):
 
     class Meta:
         ordering = ["name"]
+        unique_together = ["name"]
 
     def get_elements(self) -> QuerySet[Element]:
         element_pks = (
