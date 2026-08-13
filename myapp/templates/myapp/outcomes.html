@@ -8,11 +8,29 @@
 {% block main %}
 <h1>Learning Outcomes</h1>
 
+<!--Show messages-->
+{% if messages %}
+{% for message in messages %}
+{% if message.tags == 'success' %}
+<div class="alert alert-success mt-3">
+    <strong>{{ message }}</strong>
+</div>
+{% elif message.tags == 'error' %}
+<div class="alert alert-danger mt-3">
+    <strong>{{ message }}</strong>
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+
 <p>
-    The following learning outcomes are available for you to learn about.
-    Each outcome lists the expected game elements and resources where it was
-    referenced.
+    Learning outcomes are desirable changes in student behavior caused by elements.
+    Each outcome lists the expected game elements and resources where it was referenced.
 </p>
+
+<section class="my-4">
+    <a class="btn btn-primary" href="{% url 'myapp:add_outcome'%}">Add Outcome</a>
+</section>
 
 <section class="my-4">
     <h2>Search Outcomes</h2>
@@ -121,4 +139,7 @@
     </div>
 </section>
 
+<section class="my-4">
+    <a class="btn btn-primary" href="{% url 'myapp:add_outcome'%}">Add Outcome</a>
+</section>
 {% endblock %}
