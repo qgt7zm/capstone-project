@@ -102,3 +102,17 @@ def edit_element_form(request, element_pk: int) -> HttpResponse:
             messages.success(request, f'Element {element} modified successfully.')
 
     return redirect("myapp:element_view", element_pk=element_pk)
+
+
+def delete_element(request, element_pk: int) -> HttpResponse:
+    if request.method == "POST":
+        element = get_object_or_404(Element, pk=element_pk)
+        if request.POST.get("confirm_delete", None) == '1':
+            # DANGER: Delete record
+            element.delete()
+            messages.success(request, "Element deleted successfully.")
+            return redirect("myapp:elements")
+        else:
+            messages.error(request, "Please confirm deletion.")
+
+    return redirect("myapp:element_view", element_pk=element_pk)

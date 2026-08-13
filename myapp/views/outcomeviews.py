@@ -102,3 +102,17 @@ def edit_outcome_form(request, outcome_pk: int) -> HttpResponse:
             messages.success(request, f'Outcome {outcome} modified successfully.')
 
     return redirect("myapp:outcome_view", outcome_pk=outcome_pk)
+
+
+def delete_outcome(request, outcome_pk: int) -> HttpResponse:
+    if request.method == "POST":
+        outcome = get_object_or_404(Outcome, pk=outcome_pk)
+        if request.POST.get("confirm_delete", None) == '1':
+            # DANGER: Delete record
+            outcome.delete()
+            messages.success(request, "Outcome deleted successfully.")
+            return redirect("myapp:outcomes")
+        else:
+            messages.error(request, "Please confirm deletion.")
+
+    return redirect("myapp:outcome_view", outcome_pk=outcome_pk)

@@ -55,10 +55,27 @@
     </ul>
 
     <a class="btn btn-primary" href="{% url 'myapp:edit_outcome' outcome_pk=outcome.pk %}">Edit</a>
+    <button type="button" class="btn btn-danger" onclick="confirmDeleteOutcome()">
+        Delete
+    </button>
 </section>
+
+<form method="post" id="delete_outcome" action="{% url 'myapp:delete_outcome' outcome_pk=outcome.pk %}">
+    {% csrf_token %}
+    <div class="mb-3">
+        <input type="hidden" name="confirm_delete" value="1">
+    </div>
+</form>
 
 <section class="my-4">
     <a class="btn btn-secondary" href="{% url 'myapp:outcomes'%}">Back to Outcomes</a>
 </section>
+
+<script>
+    function confirmDeleteOutcome() {
+        if (confirm("Are you sure you want to delete this outcome?"))
+            document.getElementById('delete_outcome').submit();
+    }
+</script>
 
 {% endblock %}

@@ -18,6 +18,7 @@ urlpatterns = [
     path("elements/add/form", views.add_element_form, name="add_element_form"),
     path("elements/<int:element_pk>/edit", views.edit_element, name="edit_element"),
     path("elements/<int:element_pk>/edit/form", views.edit_element_form, name="edit_element_form"),
+    path("elements/<int:element_pk>/delete", views.delete_element, name="delete_element"),
 
     path("outcomes", views.outcomes, name="outcomes"),
     path("outcomes/<int:outcome_pk>", views.outcome_view, name="outcome_view"),
@@ -25,6 +26,7 @@ urlpatterns = [
     path("outcomes/add/form", views.add_outcome_form, name="add_outcome_form"),
     path("outcomes/<int:outcome_pk>/edit", views.edit_outcome, name="edit_outcome"),
     path("outcomes/<int:outcome_pk>/edit/form", views.edit_outcome_form, name="edit_outcome_form"),
+    path("outcomes/<int:outcome_pk>/delete", views.delete_outcome, name="delete_outcome"),
 
     path("resources", views.resources, name="resources"),
     path("resources/<int:resource_pk>", views.resource_view, name="resource_view"),
