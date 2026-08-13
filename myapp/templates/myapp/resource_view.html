@@ -6,19 +6,20 @@
 
 <!--Main Content-->
 {% block main %}
+
+<!--Show messages-->
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} mt-3">
+    <strong>{{ message }}</strong>
+</div>
+{% endfor %}
+{% endif %}
+
 <h1>Resource Information</h1>
 
 <section class="my-4">
     <a class="btn btn-secondary" href="{% url 'myapp:resources'%}">Back to Resources</a>
-
-    <!--Show messages-->
-    {% if messages %}
-    {% for message in messages %}
-    <div class="alert alert-{{ message.tags }} mt-3">
-        <strong>{{ message }}</strong>
-    </div>
-    {% endfor %}
-    {% endif %}
 </section>
 
 <section class="my-4">

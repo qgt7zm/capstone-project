@@ -5,27 +5,24 @@
 {% block title %}Data – Gamification Learning Tool{% endblock %}
 
 <!--Main Content-->
-{% block main %}
-<h1>Data</h1>
 
+{% block main %}
 <!--Show messages-->
 {% if messages %}
 {% for message in messages %}
-
 {% if message.tags == 'success' %}
 <div class="alert alert-success mt-3">
     <strong>{{ message }}</strong>
 </div>
-{% endif %}
-
-{% if message.tags == 'error' %}
+{% elif message.tags == 'error' %}
 <div class="alert alert-danger mt-3">
     <strong>{{ message }}</strong>
 </div>
 {% endif %}
-
 {% endfor %}
 {% endif %}
+
+<h1>Data</h1>
 
 <section class="my-4">
     <h2>Data Management</h2>

@@ -6,12 +6,8 @@
 
 <!--Main Content-->
 {% block main %}
-<h1>Element Information</h1>
 
-<section class="my-4">
-    <a class="btn btn-secondary" href="{% url 'myapp:elements'%}">Back to Elements</a>
-</section>
-
+<!--Show Messages-->
 {% if messages %}
 {% for message in messages %}
 <div class="alert alert-{{ message.tags }} mt-3">
@@ -19,6 +15,12 @@
 </div>
 {% endfor %}
 {% endif %}
+
+<h1>Element Information</h1>
+
+<section class="my-4">
+    <a class="btn btn-secondary" href="{% url 'myapp:elements'%}">Back to Elements</a>
+</section>
 
 <section class="my-4">
     <h2>Overview</h2>

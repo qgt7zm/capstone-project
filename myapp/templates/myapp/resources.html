@@ -6,26 +6,23 @@
 
 <!--Main Content-->
 {% block main %}
-<h1>Resources</h1>
 
 <!--Show messages-->
 {% if messages %}
 {% for message in messages %}
-
 {% if message.tags == 'success' %}
 <div class="alert alert-success mt-3">
     <strong>{{ message }}</strong>
 </div>
-{% endif %}
-
-{% if message.tags == 'error' %}
+{% elif message.tags == 'error' %}
 <div class="alert alert-danger mt-3">
     <strong>{{ message }}</strong>
 </div>
 {% endif %}
-
 {% endfor %}
 {% endif %}
+
+<h1>Resources</h1>
 
 <section class="my-4">
     <p>
